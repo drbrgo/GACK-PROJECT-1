@@ -16,33 +16,27 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     */
 }
 
-function validateInput(testInput){
+function validateInput(testInput) {
 
-let validNumber = true;
-if (numQuestions.isNan(value)) {
-    alert("Please enter a number");
-    event.preventDefault();
+    // let validNumber = true;
+    // if (numQuestions.isNan(value)) {
+    //     alert("Please enter a number");
+    //     event.preventDefault();
+    // }
+
+    // let validLetter = true;
+    // if (isNaN(pilotName.value) || isNaN(copilotName.value)) {
+    //     alert("Please use letters");
+    //     event.preventDefault();
+    // }
+    // }
+    // let completeFields = true;
+    // for (let i in allFields)
+    //     if (allFields[i].value || !validLetter && !validNumber) {
+    //         alert("Please complete all fields");
+    //         event.preventDefault();
 }
 
-let validLetter = true;
-if (isNaN(pilotName.value) || isNaN(copilotName.value)) {
-    alert("Please use letters");
-    event.preventDefault();
-}}
-
-
-    // window.addEventListener("load", function () {
-    //     let form = document.querySelector("form");
-    //     form.addEventListener("submit", function (event) {
-    //         let usernameInput = document.querySelector("input[name=username]");
-    //         let teamName = document.querySelector("input[name=team]");
-    //         if (usernameInput.value === "" || teamName.value === "") {
-    //             alert("All fields are required!");
-    //             // stop the form submission
-    //             event.preventDefault();
-    //         }
-    //     });
-    // });
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     window.addEventListener("load", function () {
@@ -50,30 +44,27 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         form.addEventListener("submit", function (event) {
             // let usernameInput = document.querySelector("input[name=username]");
             // let teamName = document.querySelector("input[name=team]");
-            let completeFields = true;
-            for (let i in allFields)
-                if (allFields[i].value || !validLetter && !validNumber){
-                    alert("Please complete all fields");
-                    event.preventDefault();
-                }
+
+
+
+
+
         }
-        });
-}
 
 async function myFetch() {
-    let planetsReturned;
+                let planetsReturned;
 
-    planetsReturned = await fetch().then(function (response) {
-    });
+                planetsReturned = await fetch().then(function (response) {
+                });
 
-    return planetsReturned;
-}
+                return planetsReturned;
+            }
 
 function pickPlanet(planets) {
-}
+            }
 
 module.exports.addDestinationInfo = addDestinationInfo;
-module.exports.validateInput = validateInput;
-module.exports.formSubmission = formSubmission;
-module.exports.pickPlanet = pickPlanet;
-module.exports.myFetch = myFetch;
+        module.exports.validateInput = validateInput;
+        module.exports.formSubmission = formSubmission;
+        module.exports.pickPlanet = pickPlanet;
+        module.exports.myFetch = myFetch;
