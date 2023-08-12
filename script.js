@@ -26,6 +26,14 @@ window.addEventListener("load", function () {
             validNumber = false;
             event.preventDefault();
         }
+
+        let validLetters = true;
+        if (isNaN(pilotName.value)|| isNaN(copilotName.value)) {
+            alert("Pilot and Co-pilot names should be letters only");
+            event.preventDefault();
+        }
+
+        
     });
 
     let listedPlanets = fetch("https://handlers.education.launchcode.org/static/planets.json").then(function () {
