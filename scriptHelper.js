@@ -16,7 +16,21 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     */
 }
 
-function validateInput(testInput) {
+function validateInput(testInput){
+
+let validNumber = true;
+if (numQuestions.isNan(value)) {
+    alert("Please enter a number");
+    event.preventDefault();
+}
+
+let validLetter = true;
+if (isNaN(pilotName.value) || isNaN(copilotName.value)) {
+    alert("Please use letters");
+    event.preventDefault();
+}}
+
+
     // window.addEventListener("load", function () {
     //     let form = document.querySelector("form");
     //     form.addEventListener("submit", function (event) {
@@ -29,10 +43,21 @@ function validateInput(testInput) {
     //         }
     //     });
     // });
-}
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-
+    window.addEventListener("load", function () {
+        let form = document.querySelector("form");
+        form.addEventListener("submit", function (event) {
+            // let usernameInput = document.querySelector("input[name=username]");
+            // let teamName = document.querySelector("input[name=team]");
+            let completeFields = true;
+            for (let i in allFields)
+                if (allFields[i].value || !validLetter && !validNumber){
+                    alert("Please complete all fields");
+                    event.preventDefault();
+                }
+        }
+        });
 }
 
 async function myFetch() {
