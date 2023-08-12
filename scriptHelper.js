@@ -3,7 +3,22 @@ require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     window.addEventListener("load", function () {
-console.log("destination loaded");
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+        console.log("destination loaded");
 let missionDest = document.querySelectorAll("#mainTarget");
 for (let i=0; i<missionDest.length; i++){
     missionDest[i].load += "Test Destination Info!"
@@ -21,10 +36,6 @@ for (let i=0; i<missionDest.length; i++){
                  <img src="">
     
 }
-
-
-
-
 
 
 
