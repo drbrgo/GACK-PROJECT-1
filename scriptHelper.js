@@ -2,6 +2,12 @@
 require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
+    window.addEventListener("load", function () {
+console.log("destination loaded");
+let missionDest = document.querySelectorAll("#mainTarget");
+for (let i=0; i<missionDest.length; i++){
+    missionDest[i].load += "Test Destination Info!"
+}
     // Here is the HTML formatting for our mission target div.
     /*
                  <h2>Mission Destination</h2>
@@ -13,8 +19,17 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                      <li>Number of Moons: </li>
                  </ol>
                  <img src="">
-    */
+    
 }
+
+
+
+
+
+
+
+
+
 
 function validateInput(testInput) {
 
@@ -39,6 +54,7 @@ function validateInput(testInput) {
 
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+
     window.addEventListener("load", function () {
         let form = document.querySelector("form");
         form.addEventListener("submit", function (event) {
