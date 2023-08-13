@@ -4,7 +4,20 @@ require('isomorphic-fetch');
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     window.addEventListener("load", function () {
 
-        
+      // Here is the HTML formatting for our mission target div.
+    /*
+                 <h2>Mission Destination</h2>
+                 <ol>
+                     <li>Name: ${json.name} </li>
+                     <li>Diameter: ${json.diameter}</li>
+                     <li>Star: ${star}</li>
+                     <li>Distance from Earth: ${distance} </li>
+                     <li>Number of Moons: ${moons}</li>
+                 </ol>
+                 <img src="json.image">
+    
+}
+   
 
 
 
@@ -23,21 +36,6 @@ let missionDest = document.querySelectorAll("#mainTarget");
 for (let i=0; i<missionDest.length; i++){
     missionDest[i].load += "Test Destination Info!"
 }
-    // Here is the HTML formatting for our mission target div.
-    /*
-                 <h2>Mission Destination</h2>
-                 <ol>
-                     <li>Name: </li>
-                     <li>Diameter: </li>
-                     <li>Star: ${star}</li>
-                     <li>Distance from Earth: </li>
-                     <li>Number of Moons: </li>
-                 </ol>
-                 <img src="">
-    
-}
-
-
 
 
 
@@ -81,14 +79,24 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 async function myFetch() {
                 let planetsReturned;
 
-                planetsReturned = await fetch().then(function (response) {
+                planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function (response) {
+                    console.log(response);
+                    //access json in response
+                    response.json().then(function(json){
+                        console.log(json);
+
+                    })
                 });
 
                 return planetsReturned;
             }
 
 function pickPlanet(planets) {
-            }
+    let nameOfPlanet = {
+        planetName: [],
+    }
+     
+}
 
 module.exports.addDestinationInfo = addDestinationInfo;
         module.exports.validateInput = validateInput;

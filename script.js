@@ -23,19 +23,17 @@ window.addEventListener("load", function () {
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse = fetch("https://handlers.education.launchcode.org/static/planets.json").then(function () {
         return Response.json();
-
-
-
+        
         listedPlanetsResponse.then(function (result) {
             listedPlanets = result;
             console.log(listedPlanets);
         }).then(function () {
             console.log(listedPlanets);
 // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-        // function planetPicker() {
-        //     if (pickPlanet() === "")
-        //     let randomIndex;
-        //    do randomIndex = Math.floor(Math.random() * results.length);
+        function planetPicker() {
+            if (pickPlanet() === "")
+            let randomIndex;
+           do randomIndex = Math.floor(Math.random() * results.length);
         // }
     });
 
