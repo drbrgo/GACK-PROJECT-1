@@ -5,6 +5,10 @@ const { addDestinationInfo, pickPlanet, formSubmission } = require("./scriptHelp
 
 window.addEventListener("load", function () {
 
+    function init() {
+        let numQuestions = document.getElementsByName("fuelLevel" + "cargoMass");
+    }
+
     let form = document.querySelector("form");
     form.addEventListener("submit", function (event) {
         let pilotName = document.querySelector("input[name=pilotName]");
@@ -23,7 +27,7 @@ window.addEventListener("load", function () {
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse = fetch("https://handlers.education.launchcode.org/static/planets.json").then(function () {
         return Response.json();
-        
+
         listedPlanetsResponse.then(function (result) {
             listedPlanets = result;
             console.log(listedPlanets);
@@ -42,9 +46,7 @@ window.addEventListener("load", function () {
     }
 
 
-//  function init() {
-//         let numQuestions = document.getElementsByName("fuelLevel" + "cargoMass");
-//     }
+//  
 //     let form = document.querySelector("form");
 //     form.addEventListener("submit", function (event) {
 //         let pilotName = document.querySelector("input[name=pilotName]");

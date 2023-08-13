@@ -1,11 +1,12 @@
 // Write your helper functions here!
 require('isomorphic-fetch');
 
-function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-    window.addEventListener("load", function () {
+function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl){
+
+}
 
       // Here is the HTML formatting for our mission target div.
-    /*
+    
     //needs const that includes json data
     //const planetsReturned?? or missionDest = document.getElementbyId("missionTarget");
                  <h2>Mission Destination</h2>
@@ -44,23 +45,36 @@ for (let i=0; i<missionDest.length; i++){
 
 function validateInput(testInput) {
 
-    // let validNumber = true;
-    // if (numQuestions.isNan(value)) {
-    //     alert("Please enter a number");
-    //     event.preventDefault();
-    // }
+    if(testInput === ""){
+        return "Empty";
+    } else if (isNan(testInput)){
+        return "Not a Number";
+    } else{
+        return "Is a Number";
+    }
 
-    // let validLetter = true;
-    // if (isNaN(pilotName.value) || isNaN(copilotName.value)) {
-    //     alert("Please use letters");
-    //     event.preventDefault();
-    // }
-    // }
-    // let completeFields = true;
-    // for (let i in allFields)
-    //     if (allFields[i].value || !validLetter && !validNumber) {
-    //         alert("Please complete all fields");
-    //         event.preventDefault();
+
+
+
+
+
+
+    if (numQuestions.isNan(value)) {
+        alert("Please enter a number");
+        event.preventDefault();
+    }
+
+    let validLetter = true;
+    if (isNaN(pilotName.value) || isNaN(copilotName.value)) {
+        alert("Please use letters");
+        event.preventDefault();
+    }
+    }
+    let completeFields = true;
+    for (let i in allFields)
+        if (allFields[i].value || !validLetter && !validNumber) {
+            alert("Please complete all fields");
+            event.preventDefault();
 }
 
 
