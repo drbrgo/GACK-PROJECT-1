@@ -4,5 +4,12 @@
     "workbench.panel.defaultLocation": "right",
     "outline.problems.badges": false,
     "outline.problems.colors": false,
-    "outline.problems.enabled": false
+    "outline.problems.enabled": false,
+    "workbench.colorCustomizations": {
+        "editorError.foreground": "#ff000000",
+        "editorWarning.foreground": "#ff000000",
+        "editorInfo.foreground": "#ff000000"
+
+
+    }
 }
