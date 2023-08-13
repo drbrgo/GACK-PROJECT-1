@@ -6,6 +6,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
       // Here is the HTML formatting for our mission target div.
     /*
+    //needs const that includes json data
+    //const planetsReturned?? or missionDest = document.getElementbyId("missionTarget");
                  <h2>Mission Destination</h2>
                  <ol>
                      <li>Name: ${json.name} </li>
@@ -79,13 +81,10 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 async function myFetch() {
                 let planetsReturned;
 
-                planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function (response) {
-                    console.log(response);
+                planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json");
+                    let data = await response.json();
                     //access json in response
-                    response.json().then(function(json){
-                        console.log(json);
-
-                    })
+                   
                 });
 
                 return planetsReturned;
