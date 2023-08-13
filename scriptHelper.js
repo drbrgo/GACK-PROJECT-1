@@ -34,11 +34,11 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 
 
-        console.log("destination loaded");
+         {/* console.log("destination loaded");
 let missionDest = document.querySelectorAll("#mainTarget");
 for (let i=0; i<missionDest.length; i++){
-    missionDest[i].load += "Test Destination Info!"
-}
+    missionDest[i].load += "Test Destination Info!" */}
+
 
 
 
@@ -56,26 +56,34 @@ function validateInput(testInput) {
 
 }
 
-
-
-
     
 
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    let allFields = {
+        pilot: "",
+        copilot: "",
+        fuel: "",
+        cargo: "",
+    };
 
-    window.addEventListener("load", function () {
-        let form = document.querySelector("form");
-        form.addEventListener("submit", function (event) {
-           if (numQuestions.isNan(value)) {
-        alert("Please enter a number");
-        event.preventDefault();
-    }
+    let completeFields = true;
+    for (let i in allFields)
+        if (allFields[i].value === "Empty") {
+            alert("Please complete all fields");
+            event.preventDefault();
 
-    let validLetter = true;
-    if (isNaN(pilotName.value) || isNaN(copilotName.value)) {
-        alert("Please use letters");
-        event.preventDefault();
+
+            
+    //        if (validateInput)
+    //     alert("Please enter a number");
+    //     event.preventDefault();
+    // }
+
+    // let validLetter = true;
+    // if (isNaN(pilotName.value) || isNaN(copilotName.value)) {
+    //     alert("Please use letters");
+    //     event.preventDefault();
     }
     }
     let completeFields = true;

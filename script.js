@@ -22,7 +22,7 @@ window.addEventListener("load", function () {
 
 
 
-        let listedPlanets = myFetch(listedPlanetsRespons);
+        let listedPlanets = myFetch(listedPlanetsResponse);
 
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse = fetch("https://handlers.education.launchcode.org/static/planets.json").then(function () {
@@ -41,7 +41,7 @@ window.addEventListener("load", function () {
         // }
     });
 
-    formSubmission(){
+    formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass){
         console.log();
     }
 
