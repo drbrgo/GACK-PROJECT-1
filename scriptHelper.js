@@ -19,28 +19,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                  </ol>
                  <img src="json.image">
     
-}
+
    
-
-
-
-
-
-
-
-
-
-
-
-
-
-         {/* console.log("destination loaded");
-let missionDest = document.querySelectorAll("#mainTarget");
-for (let i=0; i<missionDest.length; i++){
-    missionDest[i].load += "Test Destination Info!" */}
-
-
-
 
 
 function validateInput(testInput) {
@@ -54,55 +34,31 @@ function validateInput(testInput) {
     }
 
 
-}
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
 
-    
+const allFields = [{
+        pilotName: "",
+        copilotName: "",
+        fuelLevel: "",
+        cargoMass: "",
+    }];
 
-
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    let allFields = {
-        pilot: "",
-        copilot: "",
-        fuel: "",
-        cargo: "",
-    };
-
-    let completeFields = true;
-    for (let i in allFields)
-        if (allFields[i].value === "Empty") {
-            alert("Please complete all fields");
+ for (let i in allFields)
+    if (validateInput(allFields[i].value) === "Empty"){
+        alert("Please complete all fields");
             event.preventDefault();
-
-
-            
-    //        if (validateInput)
-    //     alert("Please enter a number");
-    //     event.preventDefault();
-    // }
-
-    // let validLetter = true;
-    // if (isNaN(pilotName.value) || isNaN(copilotName.value)) {
-    //     alert("Please use letters");
-    //     event.preventDefault();
-    }
-    }
-    let completeFields = true;
-    for (let i in allFields)
-        if (allFields[i].value || !validLetter && !validNumber) {
-            alert("Please complete all fields");
-            event.preventDefault();
-}
-           
-           
-           
-            // let usernameInput = document.querySelector("input[name=username]");
-            // let teamName = document.querySelector("input[name=team]");
-
-
-
-
-
         }
+        else if (validateInput(allFields[0,1].value) !=="Not a Number"){
+        alert("Letters only");
+        event.preventDefault();
+    }
+    else if (validateInput(allFields[2,3].value) !== "Is a Number"){
+        alert("Numbers only");
+        event.preventDefault();
+    } 
+
+}
+
 
 async function myFetch() {
                 let planetsReturned;
@@ -116,7 +72,7 @@ async function myFetch() {
                 return planetsReturned;
             }
 
-function pickPlanet(planets) {
+function pickPlanet(planetsReturned) {
     let nameOfPlanet = {
         planetName: [],
     }

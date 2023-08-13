@@ -15,14 +15,14 @@ window.addEventListener("load", function () {
         let copilotName = document.querySelector("input[name=copilotName]");
         let fuelLevel = document.querySelector("input[name=fuelLevel]");
         let cargoMass = document.querySelector("input[name=cargoMass]");
-        if (pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoMass === "") {
-            alert("All fields are required!");
-            event.preventDefault();
-        }
+        // if (pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoMass === "") {
+        //     alert("All fields are required!");
+        //     event.preventDefault();
+        // }
 
 
 
-        let listedPlanets = myFetch(listedPlanetsResponse);
+        let listedPlanets;
 
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse = fetch("https://handlers.education.launchcode.org/static/planets.json").then(function () {
