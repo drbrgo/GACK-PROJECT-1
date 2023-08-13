@@ -23,30 +23,27 @@ window.addEventListener("load", function () {
 
 
         let listedPlanets;
-
-    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-    let listedPlanetsResponse = fetch("https://handlers.education.launchcode.org/static/planets.json").then(function () {
-        return Response.json();
-
+        // Set listedPlanetsResponse equal to the value returned by calling myFetch()
+        let listedPlanetsResponse = myFetch();
         listedPlanetsResponse.then(function (result) {
             listedPlanets = result;
             console.log(listedPlanets);
         }).then(function () {
             console.log(listedPlanets);
-// Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-        function planetPicker() {
-            if (pickPlanet() === "")
-            let randomIndex;
-           do randomIndex = Math.floor(Math.random() * results.length);
+            // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+            function planetPicker() {
+                if (pickPlanet() === "")
+                    let randomIndex;
+                do randomIndex = Math.floor(Math.random() * results.length);
         // }
     });
 
-    formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass){
-        console.log();
-    }
+        formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass){
+            console.log();
+        }
 
 
-//  
+//
 //     let form = document.querySelector("form");
 //     form.addEventListener("submit", function (event) {
 //         let pilotName = document.querySelector("input[name=pilotName]");

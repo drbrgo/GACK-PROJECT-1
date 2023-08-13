@@ -8,7 +8,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
       // Here is the HTML formatting for our mission target div.
 
     //needs const that includes json data
-    //const planetsReturned?? or missionDest = document.getElementbyId("missionTarget");
+    //const planetsReturned?? document.getElementbyId("missionTarget");
                  <h2>Mission Destination</h2>
                  <ol>
                      <li>Name: ${json.name} </li>
@@ -37,7 +37,8 @@ function validateInput(testInput) {
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
 
 const allFields = [{
-        pilotName: "",
+        
+    pilotName: "",
         copilotName: "",
         fuelLevel: "",
         cargoMass: "",
@@ -57,7 +58,11 @@ const allFields = [{
         event.preventDefault();
     } 
 
+{/* shuttle requirements here */}
+
+
 }
+
 
 
 async function myFetch() {
