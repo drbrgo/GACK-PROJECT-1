@@ -35,10 +35,9 @@ function validateInput(testInput) {
 
 
 function formSubmission(document, list, pilot, copilot, fuel, cargo) {
-    if validateInput == true;
     alert("Ya dun goofed");
 event.preventDefault();
-}
+
 
 if ((validateInput(pilotName) === "Empty" || validateInput(copilotName)=== "Empty"" || validateInput(fuelLevel) === "Empty"" || validateInput(cargoMass) === "Empty"")) {
     {
@@ -46,16 +45,14 @@ if ((validateInput(pilotName) === "Empty" || validateInput(copilotName)=== "Empt
             event.preventDefault();
 }
 }
-        if ((validateInput(pilotName)!=="Not a Number"|| validateInput(copilotName)!=="Not a Number")){
-
-            {
+        if ((validateInput(pilot)!=="Not a Number"|| validateInput(copilotName)!=="Not a Number")){
         alert("Letters only");
         event.preventDefault();
-            }}
-            if ((validateInput(fuelAmount)!== "Is a Number") && (validateInput(cargoWeight)!== "Is a Number"))
+            }
+            if ((validateInput(fuelAmount)!== "Is a Number") || (validateInput(cargoWeight)!== "Is a Number"))
             {
       alert("Letters only");
-        event.preventDefault();}}
+        event.preventDefault();}
        
 
 {/* shuttle requirements here */}
