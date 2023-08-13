@@ -1,12 +1,12 @@
 // Write your helper functions here!
 require('isomorphic-fetch');
 
-function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl){
+function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
 
 }
 
       // Here is the HTML formatting for our mission target div.
-    
+
     //needs const that includes json data
     //const planetsReturned?? or missionDest = document.getElementbyId("missionTarget");
                  <h2>Mission Destination</h2>
@@ -59,7 +59,15 @@ function validateInput(testInput) {
 
 
 
-    if (numQuestions.isNan(value)) {
+    
+
+
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+
+    window.addEventListener("load", function () {
+        let form = document.querySelector("form");
+        form.addEventListener("submit", function (event) {
+           if (numQuestions.isNan(value)) {
         alert("Please enter a number");
         event.preventDefault();
     }
@@ -76,13 +84,9 @@ function validateInput(testInput) {
             alert("Please complete all fields");
             event.preventDefault();
 }
-
-
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-
-    window.addEventListener("load", function () {
-        let form = document.querySelector("form");
-        form.addEventListener("submit", function (event) {
+           
+           
+           
             // let usernameInput = document.querySelector("input[name=username]");
             // let teamName = document.querySelector("input[name=team]");
 
