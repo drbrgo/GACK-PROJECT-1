@@ -1,13 +1,9 @@
 // Write your JavaScript code here!
 
-const { addDestinationInfo, pickPlanet, formSubmission } = require("./scriptHelper");
+const { addDestinationInfo, pickPlanet } = require("./scriptHelper");
 
 
 window.addEventListener("load", function () {
-
-    function init() {
-        let numQuestions = document.getElementsByName("fuelLevel" + "cargoMass");
-    }
 
     let form = document.querySelector("form");
     form.addEventListener("submit", function (event) {
@@ -15,11 +11,6 @@ window.addEventListener("load", function () {
         let copilotName = document.querySelector("input[name=copilotName]");
         let fuelLevel = document.querySelector("input[name=fuelLevel]");
         let cargoMass = document.querySelector("input[name=cargoMass]");
-        // if (pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoMass === "") {
-        //     alert("All fields are required!");
-        //     event.preventDefault();
-        // }
-
 
 
         let listedPlanets;
@@ -29,18 +20,22 @@ window.addEventListener("load", function () {
             listedPlanets = result;
             console.log(listedPlanets);
         }).then(function () {
-            console.log(listedPlanets);
-            // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-            function planetPicker() {
-                if (pickPlanet() === "")
-                    let randomIndex;
-                do randomIndex = Math.floor(Math.random() * results.length);
-        // }
+            {
+                console.log(listedPlanets);
+
+
+                // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+
+                function planetPicker() {
+                    if (pickPlanet() === "")
+                        let randomIndex;
+                    do randomIndex = Math.floor(Math.random() * results.length);
     });
 
-        formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass){
-            console.log();
-        }
+        formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass);
+        console.log();
+
+    });
 
 
 //
@@ -54,13 +49,3 @@ window.addEventListener("load", function () {
 //             alert("All fields are required!");
 //             event.preventDefault();
 //         }
-
-
-
-
-//     });
-
-//     Window.addEventListener("load", function () {
-//     const takeOffButton = document.getElementById('takeoff')
-//     takeOffButton.addEventListener("click", function () {
-//         let takeOff = window.confirm("Confirm Take Off?")
