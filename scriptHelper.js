@@ -1,7 +1,8 @@
 
-require('isomorphic-fetch');
+require( 'isomorphic-fetch' );
 
-function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
+function addDestinationInfo ( document, name, diameter, star, distance, moons, imageUrl )
+{
 
 
 
@@ -18,9 +19,9 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                      <li>Number of Moons: ${moons}</li>
                  </ol>
                  <img src="">
-    
+
 }
-   
+
 
 
 function validateInput(testInput) {
@@ -35,16 +36,14 @@ function validateInput(testInput) {
 
 
 function formSubmission(document, list, pilot, copilot, fuel, cargo) {
-    alert("Ya dun goofed");
+    alert("Ya dun goofed");}
 event.preventDefault();
 
 
-if ((validateInput(pilotName) === "Empty" || validateInput(copilotName)=== "Empty"" || validateInput(fuelLevel) === "Empty"" || validateInput(cargoMass) === "Empty"")) {
+if (validateInput(pilotName)) === "Empty" || (validateInput(copilotName)) === "Empty"" || (validateInput(fuelLevel)) === "Empty"" || (validateInput(cargoMass))=== "Empty""))
     {
-        alert("Please complete all fields");
+    alert("Please complete all fields");
             event.preventDefault();
-}
-}
         if ((validateInput(pilot)!=="Not a Number"|| validateInput(copilotName)!=="Not a Number")){
         alert("Letters only");
         event.preventDefault();
@@ -53,7 +52,7 @@ if ((validateInput(pilotName) === "Empty" || validateInput(copilotName)=== "Empt
             {
       alert("Letters only");
         event.preventDefault();}
-       
+
 
 {/* shuttle requirements here */}
 
@@ -64,7 +63,7 @@ async function myFetch() {
                 planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json");
                     let data = await response.json();
                     //access json in response
-                   
+
                 });
 
                 return planetsReturned;
@@ -74,7 +73,7 @@ function pickPlanet(planets) {
     let nameOfPlanet = {
         planetName: [],
     }
-     
+
 
 
 module.exports.addDestinationInfo = addDestinationInfo;
