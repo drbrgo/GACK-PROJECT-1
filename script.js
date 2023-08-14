@@ -4,11 +4,14 @@
 window.addEventListener("load", function () {
 
 
-let listedPlanets;
+
         // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-let listedPlanetsResponse = myFetch(planetsReturned);
+
+planetsReturned();
+
+let listedPlanetsResponse = 
 console.log(listedPlanetsResponse);
-listedPlanets = listedPlanetsResponse;
+let listedPlanets = listedPlanetsResponse;
             console.log(listedPlanets);
         
         
@@ -23,14 +26,14 @@ addDestinationInfo(document, finalPlanet);
 
     //form and formsub
 
-window.addEventListener("load", function () {
+// window.addEventListener("load", function () {
 const form = document.querySelector("form");
 
 // form.addEventListener("submit", function(event)
 
 document.addEventListener("click", function (event){
 
-    if (event.
+    // if (event.target.id === ""
         let pilotName = document.querySelector("input[name=pilotName]").value;
         let copilotName = document.querySelector("input[name=copilotName]").value;
         let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
@@ -38,7 +41,7 @@ document.addEventListener("click", function (event){
 
 
     formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass);
-        event(preventDefault)();
+        // event(preventDefault)();
 });
-});
+;
 

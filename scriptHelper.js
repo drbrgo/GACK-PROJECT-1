@@ -76,10 +76,12 @@ if (fuel >= 10000 && cargo <= 10000){
 }
 
 async function myFetch() {
-    let = planetsReturned;
 
-     let response = await fetch("https://handlers.education.launchcode.org/static/planets.json");
-    planetsReturned = await response.json();
+     let response = await fetch("https://handlers.education.launchcode.org/static/planets.json",{
+    
+     });
+    let planetsReturned = await response.json();
+    console.log(planetsReturned);
         return planetsReturned;
 }
 
