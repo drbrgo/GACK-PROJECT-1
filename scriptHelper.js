@@ -42,7 +42,7 @@ function formSubmission(document, list, pilotName, copilotName, fuelLevel, cargo
         event.preventDefault();
     }
 }   
-    
+  //function for validating status  
  document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotName} is ready for launch`;
  document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilotName} is ready for launch`;
 
@@ -78,9 +78,9 @@ if (fuel >= 10000 && cargo <= 10000){
 async function myFetch() {
     let = planetsReturned;
 
-     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json");
-    let data = await planetsReturned.json();
-        return data;
+     let response = await fetch("https://handlers.education.launchcode.org/static/planets.json");
+    planetsReturned = await response.json();
+        return planetsReturned;
 }
 
 function pickPlanet(planets) {
