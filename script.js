@@ -1,16 +1,9 @@
 // Write your JavaScript code here!
 
-const { addDestinationInfo, pickPlanet } = require("./scriptHelper");
+const { addDestinationInfo, pickPlanet, formSubmission } = require("./scriptHelper");
 
 
 window.addEventListener("load", function () {
-
-    let form = document.querySelector("form");
-    form.addEventListener("submit", function (event) {
-        let pilotName = document.querySelector("input[name=pilotName]");
-        let copilotName = document.querySelector("input[name=copilotName]");
-        let fuelLevel = document.querySelector("input[name=fuelLevel]");
-        let cargoMass = document.querySelector("input[name=cargoMass]");
 
 
         let listedPlanets;
@@ -30,9 +23,15 @@ window.addEventListener("load", function () {
                      randomIndex = Math.floor(Math.random() * results.length);
                     addDestinationInfo(randomIndex);
     })
-
+    window.addEventListener("load", function () {
+let form = document.querySelector("form");
+    form.addEventListener("submit", function (event) {
+        let pilotName = document.querySelector("input[name=pilotName]");
+        let copilotName = document.querySelector("input[name=copilotName]");
+        let fuelLevel = document.querySelector("input[name=fuelLevel]");
+        let cargoMass = document.querySelector("input[name=cargoMass]");
         formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass);
 event.preventDefault();
 
-    }} );
-}});
+    });
+});
