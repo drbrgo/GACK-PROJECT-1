@@ -11,11 +11,11 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     //const planetsReturned?? document.getElementbyId("missionTarget");
                  <h2>Mission Destination</h2>
                  <ol>
-                     <li>Name: ${json.name} </li>
-                     <li>Diameter: ${json.diameter}</li>
+                     <li>Name: `${json.name}`` </li>
+                     <li>Diameter: `${json.diameter}`</li>
                      <li>Star: ${star}</li>
-                     <li>Distance from Earth: ${distance} </li>
-                     <li>Number of Moons: ${moons}</li>
+                     <li>Distance from Earth: `${distance}` </li>
+                     <li>Number of Moons: `${moons}`</li>
                  </ol>
                  <img src="">
     
@@ -25,38 +25,34 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 function validateInput(testInput) {
 
-    if(testInput === ""){
+    if (testInput === ""){
         return "Empty";
-    } else if (isNan(testInput)){
+    } else if (isNan(Number(testInput))){
         return "Not a Number";
     } else{
         return "Is a Number";
     }
-
-
-function formSubmission(document, list, pilot, copilot, fuel, cargo) {
-    alert("Ya dun goofed");
-event.preventDefault();
 }
+;
 
-if (validateInput(pilotName)) === "Empty" || (validateInput(copilotName)) === "Empty"" || (validateInput(fuelLevel)) === "Empty"" || (validateInput(cargoMass))=== "Empty"")) 
-    {
-    alert("Please complete all fields");
-            event.preventDefault();
-        if ((validateInput(pilot)!=="Not a Number"|| validateInput(copilotName)!=="Not a Number")){
+function formSubmission(document, list, pilotName, copilotName, fuelLevel, cargoMass) {
+   if (validateInput(pilotName) === "Empty" || validateInput(copilotName) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty") {
+        alert("All fields are required!");
+    }
+        if (validateInput(pilotName) !=="Not a Number"|| validateInput(copilotName) !== "Not a Number") {
         alert("Letters only");
-        event.preventDefault();
+       
             }
-            if ((validateInput(fuelAmount)!== "Is a Number") || (validateInput(cargoWeight)!== "Is a Number"))
+            if (validateInput(fuelLevel)!== "Is a Number") || (validateInput(cargoMass)!== "Is a Number")
             {
       alert("Numbers only");
-        event.preventDefault();}
-       
-
+            }
+        }   
+    
 document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
         document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
-if (fuel < 10000){
+if (fuelLevel < 10000){
     {
         document.getElementById("faultyItems").style.visibility = "visible";
         document.getElementById("fuelStatus").innerHTML = "There is not enough fuel for the journey";
@@ -66,7 +62,7 @@ if (fuel < 10000){
     }
 }
 
-if (cargo > 10000){
+if (cargoMass > 10000){
 {
     document.getElementById("faultyItems").style.visibility = "visible";
         document.getElementById("cargoStatus").innerHTML = "Dat mass doe";
@@ -87,14 +83,11 @@ if (fuel >= 10000 && cargo <= 10000){
 async function myFetch() {
                 let planetsReturned;
 
-                planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json");
-                    let data = await response.json();
-                    //access json in response
-                   
-                });
+                planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+        });
 
-                return planetsReturned;
-            }
+    return planetsReturned;
+}
 
 function pickPlanet(planets) {
     let nameOfPlanet = {
