@@ -15,14 +15,17 @@ window.addEventListener("load", function () {
         }).then(function () {
                 console.log(listedPlanets);
 
+                let chosenOnes = pickPlanet(listedPlanets);
+addDestinationInfo(document, chosenOnes);
+        });
 
                 // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
 
-                // function planetPicker() {
-                //         let randomIndex = pickPlanet(listedPlanets);
-                //      randomIndex = Math.floor(Math.random() * results.length);
-                //     addDestinationInfo(randomIndex);
+                
+                //     
     })
+
+    //form and formsub
     window.addEventListener("load", function () {
 let form = document.querySelector("form");
     form.addEventListener("submit", function (event) {
