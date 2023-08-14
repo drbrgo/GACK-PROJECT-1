@@ -8,16 +8,17 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
       // Here is the HTML formatting for our mission target div.
 
     //needs const that includes json data
-    //const planetsReturned?? document.getElementbyId("missionTarget");
-                 <h2>Mission Destination</h2>
+    let missionTarget = document.getElementbyId("missionTarget");
+    missionTarget.innerHTML =
+                 `<h2>Mission Destination</h2>
                  <ol>
-                     <li>Name: `${json.name}`` </li>
-                     <li>Diameter: `${json.diameter}`</li>
-                     <li>Star: ${star}</li>
-                     <li>Distance from Earth: `${distance}` </li>
-                     <li>Number of Moons: `${moons}`</li>
+                     <li>Name: ${json.name}</li>
+                     <li>Diameter: ${json.diameter}</li>
+                     <li>Star: ${json.star}</li>
+                     <li>Distance from Earth: ${json.distance}</li>
+                     <li>Number of Moons: ${json.moons}</li>
                  </ol>
-                 <img src="">
+                 <img src="${json.imageUrl}">`
     
 }
    
@@ -86,19 +87,16 @@ if (fuel >= 10000 && cargo <= 10000){
 async function myFetch() {
                 let planetsReturned;
 
-                planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json")let data = await response.json();
-
-        });
-
+                planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json");let data = await response.json();
+// how to turn respon.json into planets return??
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
-
     let randPlan = Math.floor(Math.random() * results.length);  
     console.log(planets[randPlan]);
     return planets[randPlan];
-     
+}
 
 
 module.exports.addDestinationInfo = addDestinationInfo;
