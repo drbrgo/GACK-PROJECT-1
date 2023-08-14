@@ -19,7 +19,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                      <li>Number of Moons: ${json.moons}</li>
                  </ol>
                  <img src="${json.imageUrl}">`
-    
+    ;
 }
    
 
