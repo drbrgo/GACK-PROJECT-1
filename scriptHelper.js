@@ -86,16 +86,18 @@ if (fuel >= 10000 && cargo <= 10000){
 async function myFetch() {
                 let planetsReturned;
 
-                planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+                planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json")let data = await response.json();
+
         });
 
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
-    let nameOfPlanet = {
-        planetName: [],
-    }
+
+    let randPlan = Math.floor(Math.random() * results.length);  
+    console.log(planets[randPlan]);
+    return planets[randPlan];
      
 
 
