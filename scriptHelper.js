@@ -38,14 +38,14 @@ function formSubmission(document, list, pilotName, copilotName, fuelLevel, cargo
         alert("Letters only");
         event.preventDefault();
     }
-    if (validateInput(fuelLevel)!== "Is a Number") || (validateInput(cargoMass)!== "Is a Number"){
+    if (validateInput(fuelLevel) !== "Is a Number" || validateInput(cargoMass)!== "Is a Number"){
         alert("Numbers only");
         event.preventDefault();
     }
 }   
     
-document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotName} is ready for launch`;
-document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilotName} is ready for launch`;
+ document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotName} is ready for launch`;
+ document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilotName} is ready for launch`;
 
 if (fuelLevel < 10000){
     

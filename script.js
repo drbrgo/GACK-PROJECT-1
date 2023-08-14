@@ -1,14 +1,12 @@
-// Write your JavaScript code here!
 
-const { addDestinationInfo, pickPlanet, formSubmission } = require("./scriptHelper");
+
 
 window.addEventListener("load", function () {
 
 
 let listedPlanets = myFetch();
         // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-let listedPlanetsResponse = fetch("https://handlers.education.launchcode.org/static/planets.json").then(function () {
-        return Response.json();
+let listedPlanetsResponse = myFetch(data)
 });
         listedPlanetsResponse.then(function (result) {
             listedPlanets = result;
