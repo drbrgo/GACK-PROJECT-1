@@ -1,6 +1,6 @@
 // Write your JavaScript code here!
 
-// const { addDestinationInfo, pickPlanet, formSubmission } = require("./scriptHelper");
+
 
 
 window.addEventListener("load", function () {
@@ -14,28 +14,31 @@ window.addEventListener("load", function () {
             console.log(listedPlanets);
         }).then(function () {
                 console.log(listedPlanets);
+listedPlanetsResponse.then(function(result) {
+    listedPlanets = result;
+    let selectedPlanet = pickPlanet(listedPlanets);
+    addDestinationInfo(document, selectedPlanet);
+});
 
-                let chosenOnes = pickPlanet(listedPlanets);
-addDestinationInfo(document, chosenOnes);
-        })
-
+    })
+    });
                 // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination
 
     //form and formsub
    
-    window.addEventListener("load", function () {
-let form = document.querySelector("launchForm");
-    form.addEventListener("submit", function (event) {
-        let pilotName = document.querySelector("input[name=pilotName]");
-        let copilotName = document.querySelector("input[name=copilotName]");
-        let fuelLevel = document.querySelector("input[name=fuelLevel]");
-        let cargoMass = document.querySelector("input[name=cargoMass]");
+window.addEventListener("load", function () {
+   let form = document.querySelector("form");
+   form.addEventListener("submit", function(event){
 
-let subButt = document.querySelector("formSubmit");
-subButt.addEventListener("click", function(){
+        let pilotName = document.querySelector("input[name=pilotName]").value;
+        let copilotName = document.querySelector("input[name=copilotName]").value;
+        let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
+        let cargoMass = document.querySelector("input[name=cargoMass]").value;
+
+
     formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass);
-}
+
 event.preventDefault();
-    }
-    })
- } )
+   });
+});
+

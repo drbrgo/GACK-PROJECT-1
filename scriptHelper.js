@@ -53,9 +53,8 @@ function formSubmission(document, list, pilotName, copilotName, fuelLevel, cargo
             }
         }   
     
-document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
-        document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
-
+document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotName} is ready for launch`;
+    document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilotName} is ready for launch`;
 if (fuelLevel < 10000){
     
         document.getElementById("faultyItems").style.visibility = "visible";
@@ -81,20 +80,21 @@ if (fuel >= 10000 && cargo <= 10000){
     document.getElementById("launchStatus").style.color ="#4196A";
     document.getElementById("launchStatus").innerHTML = "Shuttle is ready for launch";
     document.getElementById("faultyItems").style.visibility = "hidden";
+    
 
 }
 
 async function myFetch() {
-                let planetsReturned;
+        
+              let planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json");
+              let data = await planetsReturned.json();
 
-                planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json");let data = await response.json();
 // how to turn respon.json into planets return??
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
     let randPlan = Math.floor(Math.random() * results.length);  
-    console.log(planets[randPlan]);
     return planets[randPlan];
 }
 
