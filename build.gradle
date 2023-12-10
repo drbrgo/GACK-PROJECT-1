@@ -17,12 +17,13 @@ repositories {
 
 dependencies {
 //We'll need to uncomment these once we have created a mySQL schema and attached it to the project. See text here: https://education.launchcode.org/java-web-dev-curriculum/intro-orm-mapping/reading/orm/index.html
-//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-//	implementation 'mysql:mysql-connector-java:8.0.32'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'mysql:mysql-connector-java:8.0.32'
 
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation("org.springframework.security:spring-security-crypto:5.5.1")
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
