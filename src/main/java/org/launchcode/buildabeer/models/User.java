@@ -1,6 +1,7 @@
 package org.launchcode.buildabeer.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -12,6 +13,9 @@ public class User extends AbstractEntity {
 
     @NotNull
     private String pwHash;
+
+    @OneToOne(mappedBy = "fridge")
+    private Fridge fridge;
 
     public User() {}
 
