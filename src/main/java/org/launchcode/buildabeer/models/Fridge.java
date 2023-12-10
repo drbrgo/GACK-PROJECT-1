@@ -8,13 +8,13 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Fridge extends AbstractEntity{
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @OneToMany
-    @JoinColumn(name = "beer_id")
-    private Beer beer;
+//    @OneToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
+//
+//    @OneToMany
+//    @JoinColumn(name = "beer_id")
+//    private Beer beer;
 
 
 }

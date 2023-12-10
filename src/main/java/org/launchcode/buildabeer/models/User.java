@@ -14,8 +14,8 @@ public class User extends AbstractEntity {
     @NotNull
     private String pwHash;
 
-    @OneToOne(mappedBy = "fridge")
-    private Fridge fridge;
+//    @OneToOne(mappedBy = "fridge")
+//    private Fridge fridge;
 
     public User() {}
 
