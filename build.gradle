@@ -1,14 +1,14 @@
 plugins {
 	id 'java'
-	id("org.springframework.boot") version "3.2.0"
-	id("io.spring.dependency-management") version "1.1.4"
+	id 'org.springframework.boot' version '3.2.0'
+	id 'io.spring.dependency-management' version '1.1.4'
 }
 
-group = "org.launchcode"
-version = "0.0.1-SNAPSHOT"
+group = 'org.launchcode'
+version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = '17'
 }
 
 repositories {
@@ -16,15 +16,18 @@ repositories {
 }
 
 dependencies {
+//We'll need to uncomment these once we have created a mySQL schema and attached it to the project. See text here: https://education.launchcode.org/java-web-dev-curriculum/intro-orm-mapping/reading/orm/index.html
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'mysql:mysql-connector-java:8.0.32'
+
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation("org.springframework.security:spring-security-crypto:5.5.1")
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	implementation 'mysql:mysql-connector-java:8.0.28'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.withType<Test> {
+tasks.named('test') {
 	useJUnitPlatform()
 }
