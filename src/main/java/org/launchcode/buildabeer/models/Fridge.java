@@ -5,6 +5,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
+import java.util.List;
+
 @Entity
 public class Fridge extends AbstractEntity{
 
@@ -14,7 +16,12 @@ public class Fridge extends AbstractEntity{
 
     @OneToMany
     @JoinColumn(name = "beer_id")
-    private Beer beer;
+    private List<Beer> beers;
 
+    public Fridge(){}
 
+    public Fridge(User user, List<Beer> beers) {
+        this.user = user;
+        this.beers = beers;
+    }
 }
