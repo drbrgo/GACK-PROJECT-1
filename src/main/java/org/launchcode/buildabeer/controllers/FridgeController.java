@@ -1,9 +1,9 @@
 package org.launchcode.buildabeer.controllers;
 
+import org.launchcode.buildabeer.data.BeerRepository;
 import org.launchcode.buildabeer.data.FridgeRepository;
 import org.launchcode.buildabeer.data.UserRepository;
 import org.launchcode.buildabeer.models.Fridge;
-import org.launchcode.buildabeer.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,17 +23,21 @@ public class FridgeController {
     @Autowired
     private UserRepository userRepository;
 
-//    @Autowired
-//    private BeerRepository beerRepository;
+    @Autowired
+    private BeerRepository beerRepository;
 
-    //Could consider making this based on FindByUsername instead of id
-//    @GetMapping("{userId}")
-//    public String displayUserFridge(Model model, @PathVariable int fridgeId){
-//        Optional optFridge = fridgeRepository.findById(fridgeId);
-//        if (optFridge.isPresent()) {
-//        Fridge fridge = (Fridge) optFridge.get();
-//        model.addAttribute("fridge", fridge);
-//        }
-//    }
-//
+  //  Could consider making this based on FindByUsername instead of id
+    @GetMapping("{fridgeId}")
+    public String displayUserFridge(Model model, @PathVariable int fridgeId){
+        Optional optFridge = fridgeRepository.findById(fridgeId);
+        if (optFridge.isPresent()) {
+        Fridge fridge = (Fridge) optFridge.get();
+        model.addAttribute("fridge", fridge);
+        return "fridge";
+        }
+        else {
+            return "redirect:../";
+        }
+    }
+
 }
