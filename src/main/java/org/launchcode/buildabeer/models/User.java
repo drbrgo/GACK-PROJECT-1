@@ -18,6 +18,7 @@ public class User extends AbstractEntity {
     private Fridge fridge;*/
     //Test line
 
+
     public User() {}
 
     public User(String username, String password) {
