@@ -5,6 +5,8 @@ import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+//Test line
+
 @Entity
 public class User extends AbstractEntity {
 
@@ -16,7 +18,6 @@ public class User extends AbstractEntity {
 
    /* @OneToOne(mappedBy = "fridge")
     private Fridge fridge;*/
-    //Test line
 
     public User() {}
 
