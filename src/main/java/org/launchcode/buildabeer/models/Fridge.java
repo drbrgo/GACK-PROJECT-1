@@ -9,13 +9,14 @@ import java.util.List;
 
 @Entity
 public class Fridge extends AbstractEntity{
-
-    @OneToOne
+ 
+    /*@OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany
     @JoinColumn(name = "beer_id")
+
     private List<Beer> beers;
 
     public Fridge(){}
@@ -24,4 +25,5 @@ public class Fridge extends AbstractEntity{
         this.user = user;
         this.beers = beers;
     }
+
 }

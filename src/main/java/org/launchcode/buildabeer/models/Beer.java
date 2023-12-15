@@ -6,7 +6,7 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Beer extends AbstractEntity{
 
-    @ManyToOne
-    private Fridge fridge;
+/*    @ManyToOne
+    private Fridge fridge;*/
 
 }

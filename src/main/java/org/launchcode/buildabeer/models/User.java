@@ -14,8 +14,10 @@ public class User extends AbstractEntity {
     @NotNull
     private String pwHash;
 
+
     @OneToOne
     private Fridge fridge;
+
 
     public User() {}
 
