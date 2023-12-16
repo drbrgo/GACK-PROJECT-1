@@ -11,18 +11,22 @@ import java.util.List;
 @Controller
 @RequestMapping("register")
 public class RegisterController {
-    private static final List<String> newUsers = new ArrayList<>();
-    @GetMapping ("user") //this lives at /register/user
-
-    public String registerHereForm() {
+    private static List<String> newUser = new ArrayList<>();
+    @GetMapping //this lives at /register linked from home page
+    public String register() {
         return "register";
 }
-@PostMapping ("register")
-public String registerUser(@RequestParam String registerFirstName, String registerLastName, String birthdate, String phone, String email, String street, String city, String state, String zipCode) {
-        newUsers.add(registerFirstName); newUsers.add(registerLastName); newUsers.add(birthdate); newUsers.add(phone); newUsers.add(email); newUsers.add(street); newUsers.add(city); newUsers.add(state); newUsers.add(zipCode);
-        return "redirect:/submit"; //user will be redirected to submit confirmation page
+@GetMapping ("register") //this lives at /register will take you directly to form
+public String registerForm() {
+        return "register";
+}
+    @PostMapping("register")
+    public String registerUser(@RequestParam String registerFirstName, String registerLastName, String birthdate, String phone, String email, String street, String city, String state, String zipCode) {
+        newUser.add(registerFirstName); newUser.add(registerLastName); newUser.add(birthdate); newUser.add(phone); newUser.add(email); newUser.add(street); newUser.add(city); newUser.add(state); newUser.add(zipCode);
+        return "redirect:"; //user will be redirected to submit confirmation page
+}
 
-    }
+
 
 }
 
