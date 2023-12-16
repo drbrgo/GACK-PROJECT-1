@@ -11,11 +11,10 @@ import java.util.List;
 @Controller
 @RequestMapping("register")
 public class UserController {
-    private static List<String> users = new ArrayList<>();
+    private static final List<String> users = new ArrayList<>();
     @GetMapping ("user") //this lives at /register/user
 
     public String registerHereForm() {
-
         return "user";
 }
 @PostMapping ("user")
@@ -23,7 +22,7 @@ public String registerUser(@RequestParam String registerFirstName, String regist
         users.add(registerFirstName); users.add(registerLastName); users.add(birthdate); users.add(phone); users.add(email); users.add(street); users.add(city); users.add(state); users.add(zipCode);
 
         //the if else statement is still not working properly
-        if (users != null || users.isEmpty()) {
+        if (users.isEmpty()) {
         System.out.println("All fields are required!");
         return "redirect:";
         } else {
