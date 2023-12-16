@@ -22,6 +22,7 @@ public class UserController {
 public String registerUser(@RequestParam String registerFirstName, String registerLastName, String birthdate, String phone, String email, String street, String city, String state, String zipCode) {
         users.add(registerFirstName); users.add(registerLastName); users.add(birthdate); users.add(phone); users.add(email); users.add(street); users.add(city); users.add(state); users.add(zipCode);
 
+        //the if else statement is still not working properly
         if (users != null || users.isEmpty()) {
         System.out.println("All fields are required!");
         return "redirect:";
