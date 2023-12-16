@@ -22,6 +22,7 @@ public class User extends AbstractEntity {
    /* @OneToOne(mappedBy = "fridge")
     private Fridge fridge;*/
 
+
     public User() {}
 
     public User(String username, String password) {
