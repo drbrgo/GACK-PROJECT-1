@@ -1,10 +1,8 @@
 package org.launchcode.buildabeer.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,16 +15,24 @@ public class RegisterController {
         return "register";
 }
 @GetMapping ("register") //this lives at /register will take you directly to form
-public String registerForm() {
-        return "register";
-}
-    @PostMapping("register")
-    public String registerUser(@RequestParam String registerFirstName, String registerLastName, String birthdate, String phone, String email, String street, String city, String state, String zipCode) {
+    public String displayRegisterForm(@RequestParam String registerFirstName, String registerLastName, String birthdate, String phone, String email, String street, String city, String state, String zipCode) {
         newUser.add(registerFirstName); newUser.add(registerLastName); newUser.add(birthdate); newUser.add(phone); newUser.add(email); newUser.add(street); newUser.add(city); newUser.add(state); newUser.add(zipCode);
-        return "redirect:"; //user will be redirected to submit confirmation page
-}
+        return "register";
+    }
 
+    @PostMapping("register/add")
+    public String addRegisterForm (@RequestParam String registerFirstName, String registerLastName, String birthdate, String phone, String email, String street, String city, String state, String zipCode) {
+        newUser.add(registerFirstName); newUser.add(registerLastName); newUser.add(birthdate); newUser.add(phone); newUser.add(email); newUser.add(street); newUser.add(city); newUser.add(state); newUser.add(zipCode);
+        return "redirect:/submit"; //user will be redirected to submit confirmation page
+    }
 
+/*
+You have successfully registered. Welcome Beer Enthusiast
+*/
+/*  @PostMapping()
+    public String registerNewUser(@RequestParam String newUser) {
+        newUser.put(newUser);
+    }*/
 
 }
 
