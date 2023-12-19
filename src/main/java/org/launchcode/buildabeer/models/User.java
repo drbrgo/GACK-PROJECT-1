@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-//Test line
 
 @Entity
 public class User extends AbstractEntity {
@@ -31,6 +30,7 @@ public class User extends AbstractEntity {
     }
 
     public String getUsername() {
+
         return username;
     }
 
@@ -39,6 +39,7 @@ public class User extends AbstractEntity {
 
     // Instance method to use the bcrypt multi-step matcher (.equals is not enough)
     public boolean isMatchingPassword(String password) {
+
         return encoder.matches(password, pwHash);
     }
 
