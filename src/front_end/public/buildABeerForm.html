@@ -1,39 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<body>What kind of beer are ya?</body><head><title>Feer Borm</title>
 
-    <form method="get" enctype="application/x-www-form-urlencoded" action="/html/codes/html_form_handler.cfm">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
 
-<p>
-<label>Name
-<input type="text" name="customer_name" required>
-</label> 
-</p>
 
-<p>
-<label>Phone 
-<input type="tel" name="phone_number">
-</label>
-</p>
+    <title>Feer Borm</title>
 
-<p>
+</head>
+
+<body>What kind of beer are ya?
+
+
+<form method="get" enctype="application/x-www-form-urlencoded" action="/html/codes/html_form_handler.cfm">
+    <p> This <a href="https://www.pexels.com/photo/food-dinner-lunch-meal-4147875">Photo</a> was taken by <a
+            href="https://www.pexels.com/@daria">Daria</a> on Pexels.
+
+
+        <label>Name
+            <input type="text" name="customer_name" required>
+        </label>
+        <label>Phone </label><label>
+            <input type="tel" name="phone_number">
+        </label>
+
+    <p>
 <label>Email 
 <input type="email" name="email_address">
 </label>
 </p>
 
 <fieldset>
-<legend>Which taxi do you require?</legend>
+<legend></legend>
 <p><label> <input type="radio" name="taxi" required value="car"> Car </label></p>
 <p><label> <input type="radio" name="taxi" required value="van"> Van </label></p>
 <p><label> <input type="radio" name="taxi" required value="tuktuk"> Tuk Tuk </label></p>
 </fieldset>
 
 <fieldset>
-<legend>Extras</legend>
-<p><label> <input type="checkbox" name="extras" value="baby"> Baby Seat </label></p>
-<p><label> <input type="checkbox" name="extras" value="wheelchair"> Wheelchair Access </label></p>
-<p><label> <input type="checkbox" name="extras" value="tip"> Stock Tip </label></p>
+<legend>What type of flavor notes do you prefer?</legend>
+<p><label> <input type="checkbox" name="extras" value="fruity"> Fruity </label></p>
+<p><label> <input type="checkbox" name="extras" value="malty"> Malty </label></p>
+<p><label> <input type="checkbox" name="extras" value="sour"> Sour </label></p>
+    <p><label> <input type="checkbox" name="extras" value="sweet"> Sweet </label></p>
+    <p><label> <input type="checkbox" name="extras" value="bitter"> Bitter </label></p>
+    <p><label> <input type="checkbox" name="extras" value="hoppy"> Hoppy </label></p>
+    <p><label> <input type="checkbox" name="extras" value="floral"> Floral </label></p>
 </fieldset>
 
 <p>
@@ -71,7 +85,9 @@
 </label>
 </p>
 
-<p><button>Submit Booking</button></p>
+    <p><div class="animatedBox"><button id="loading-button">Build my Beer!</button>
+    <script src="buttonloader.js"></script></div></p>
 
 </form>
-</head></html>
+</body>
+</html>
