@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<body>
+  <h1>Tell us more about yourself!</h1>
+  
+  
+  
+  <form method="get" enctype="application/x-www-form-urlencoded" action="/html/codes/html_form_handler.cfm">
+
+
+<title>Beer Form</title>
+
+<p>
+<!-- //Page title  Let's -->
+
+<label>Name
+<input type="text" name="customer_name" required>
+</label>
+</p>
+
+<p>
+<label>Phone 
+<input type="tel" name="phone_number">
+</label>
+</p>
+
+<p>
+<label>Email 
+<input type="email" name="email_address">
+</label>
+</p>
+
+<fieldset>
+<legend>Which taxi do you require?</legend>
+<p><label> <input type="radio" name="taxi" required value="car"> Car </label></p>
+<p><label> <input type="radio" name="taxi" required value="van"> Van </label></p>
+<p><label> <input type="radio" name="taxi" required value="tuktuk"> Tuk Tuk </label></p>
+</fieldset>
+
+<fieldset>
+<legend>What flavors do you enjoy in a beer? (Select all that apply)</legend>
+<p><label> <input type="checkbox" name="extras" value="baby"> Fruity </label></p>
+<p><label> <input type="checkbox" name="extras" value="wheelchair"> Sweet </label></p>
+<p><label> <input type="checkbox" name="extras" value="tip"> Bitter </label></p>
+<p><label> <input type="checkbox" name="extras" value="tip"> Hoppy </label></p>
+<p><label> <input type="checkbox" name="extras" value="tip"> Floral </label></p>
+<p><label> <input type="checkbox" name="extras" value="tip"> Earthy </label></p>
+</fieldset>
+
+<p>
+<label>Pickup Date/Time
+<input type="datetime-local" name="pickup_time" required>
+</label>
+</p>
+	
+<p>
+<label>What type of beer do you generally prefer?
+<select id="pickup_place" name="pickup_place">
+<option value="" selected="selected">Select One</option>
+<option value="office" >Lager</option>
+<option value="town_hall" >Ale</option>
+<option value="telepathy" >Stout</option>
+<option value="telepathy" >Porter</option>
+<option value="telepathy" >IPA (India Pale Ale)</option>
+<option value="telepathy" >Sour</option>
+<option value="telepathy" >Wheat beer</option>
+<option value="telepathy" >Other</option>
+</select>
+</label> 
+</p>
+
+<p>
+<label>Dropoff Place
+<input type="text" name="dropoff_place" required list="destinations">
+</label>
+
+<datalist id="destinations">
+<option value="Airport">
+<option value="Beach">
+<option value="Fred Flinstone's House">
+</datalist>
+</p>
+
+<p>
+<label>Special Instructions
+<textarea name="comments" maxlength="500"></textarea>
+</label>
+</p>
+
+<p><button>Submit Booking</button></p>
+
+</form>
+</body>
+</head></html>
