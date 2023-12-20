@@ -1,22 +1,17 @@
 package org.launchcode.buildabeer.controllers.api;
 
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
-import org.launchcode.buildabeer.models.ApiItem;
-import org.launchcode.buildabeer.models.Beer;
+import org.launchcode.buildabeer.models.dto.ApiDTO;
+import org.launchcode.buildabeer.services.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/api")
@@ -47,17 +42,56 @@ public class ApiPunkBeerController {
 //        }
 
     //let's try this one instead
-        @Autowired
-        private RestTemplate restTemplate;
 
+//        @Autowired
+//        private RestTemplate restTemplate;
+
+        @Autowired
+        private ApiService apiService;
+
+        //returns all beers at the url
+//        @GetMapping("/data")
+//        public ResponseEntity<List<ApiDTO>> fetchDataFromExternalAPI() {
+//            String apiUrl = "https://api.punkapi.com/v2/beers?abv_lt=3";
+//            List<ApiDTO> beers = apiService.getBeers();
+//            return ResponseEntity.ok(beers);
+//        }
+
+    //returns beer at specific index
+//    @GetMapping("/data")
+//    public ResponseEntity<ApiDTO> fetchDataFromExternalAPI() {
+//        String apiUrl = "https://api.punkapi.com/v2/beers?abv_lt=3";
+//        List<ApiDTO> beers = apiService.getBeers();
+//        ApiDTO beer = beers.isEmpty() ? null : beers.get(0);
+//        return ResponseEntity.ok(beer);
+//    }
+
+//returns beers that match request param
+    private String taste = "backbone";
         @GetMapping("/data")
-        public ResponseEntity<ArrayList> fetchDataFromExternalAPI() {
-            String apiUrl = "https://api.punkapi.com/v2/beers?abv_lt=3";
-            ArrayList result = restTemplate.getForObject(apiUrl, ArrayList.class);
-            //System.out.println(result); does nothing
-            System.out.println(result.get(1,2));
-            return ResponseEntity.ok(result);
+        public ResponseEntity<List<ApiDTO>> getBeersByTaste(@RequestParam String taste) {
+            List<ApiDTO> allBeers = apiService.getBeers();
+
+            List<ApiDTO> matchingBeers = allBeers.stream()
+                    .filter(beer -> beer.getDescription().toLowerCase().contains(taste.toLowerCase()))
+                    .collect(Collectors.toList());
+
+            return ResponseEntity.ok(matchingBeers);
         }
 
-    }
+//to return a list of beer names only
+//        @GetMapping("/beerNames")
+//        public ResponseEntity<List<String>> getBeerNames() {
+//            List<ApiDTO> allBeers = apiService.getBeers();
+//
+//            List<String> beerNames = allBeers.stream()
+//                    .map(ApiDTO::getName)
+//                    .collect(Collectors.toList());
+//
+//            return ResponseEntity.ok(beerNames);
+//        }
+}
+
+
+
 

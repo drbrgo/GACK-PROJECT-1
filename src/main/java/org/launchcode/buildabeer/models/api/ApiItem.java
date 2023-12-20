@@ -1,8 +1,9 @@
-package org.launchcode.buildabeer.models;
+package org.launchcode.buildabeer.models.api;
 
 import jakarta.validation.constraints.NotNull;
+import org.launchcode.buildabeer.models.AbstractEntity;
 
-public class ApiItem extends AbstractEntity{
+public class ApiItem extends AbstractEntity {
     private String name;
 
     @NotNull
