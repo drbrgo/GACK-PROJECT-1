@@ -18,7 +18,7 @@ import org.launchcode.buildabeer.data.UserRepository;
 import java.util.Optional;
 
 @Controller
-public class HomeController {
+public class    HomeController {
     @Autowired
     private UserRepository userRepository;
     //The block of text from here to the getmapping annotation may need to be moved elsewhere. Carrie's
