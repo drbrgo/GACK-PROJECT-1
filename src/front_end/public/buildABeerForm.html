@@ -1,23 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
+    <title>Building your beer</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <script src = "" href=""></script>
+    <script src = "" href=""></script>
+    <script src = "" href=""></script>
+<!--    //The above Pending script file creation.
+example script most likely <script> fetchPunkAPI("name of .js file w fetch function);
+async function getPunkAPI(file) {
+let myBeerObject = await fetch(file);
+let y = await myBeerObject.text();
+document.getElementById("demo").innerHTML = y;
+}
+</script>
+</body>
+</html>
 
-
-    <title>Feer Borm</title>
+-->
 
 </head>
 
-<body>What kind of beer are ya?
+<body>
+<h1>What can I get for you?</h1>
 
+<div id="" data-testid="">
+    API id inserted here. id names to be filled in later.
+</div>
 
-<form method="get" enctype="application/x-www-form-urlencoded" action="/html/codes/html_form_handler.cfm">
-    <p> This <a href="https://www.pexels.com/photo/food-dinner-lunch-meal-4147875">Photo</a> was taken by <a
-            href="https://www.pexels.com/@daria">Daria</a> on Pexels.
+<div id="">
 
+</div>
+<form method="POST" enctype="application/x-www-form-urlencoded" action="/buildbeer/form'">
+<!--    <p> This <a href="https://www.pexels.com/photo/food-dinner-lunch-meal-4147875">Photo</a> was taken by <a-->
+<!--&lt;!&ndash;            href="https://www.pexels.com/@daria">Daria</a> on Pexels.&ndash;&gt; Not critical path: Testing out pexels image integration-->
 
         <label>Name
             <input type="text" name="customer_name" required>
@@ -25,7 +44,6 @@
         <label>Phone </label><label>
             <input type="tel" name="phone_number">
         </label>
-
     <p>
 <label>Email 
 <input type="email" name="email_address">
@@ -52,7 +70,7 @@
 
 <p>
 <label>Pickup Date/Time
-<input type="datetime-local" name="pickup_time" required>
+<input type="" name="pickup_time" required>
 </label>
 </p>
 	
