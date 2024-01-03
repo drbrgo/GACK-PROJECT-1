@@ -5,8 +5,10 @@ import LoginForm from './components/LoginForm'
 export default function Home() {
     return (
       <div>
+      <p>Nav bar</p>
       <p>Home page!</p>
       <LoginForm />
+      <p>link to create a new profile</p>
       </div>
     )
   }
