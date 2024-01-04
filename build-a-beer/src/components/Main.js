@@ -1,11 +1,12 @@
-const Main = () => {
+/*const Main = () => {
+
     return (
         <main>
             <div>
-                <h4>Log In</h4>
+                <h4>Profile</h4>
             </div>
         </main>
     )
 }
-
-export default Main;
+created this file, not sure if i will use it
+export default Main;*/
