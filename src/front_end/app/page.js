@@ -1,6 +1,9 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-import LoginForm from './components/LoginForm'
+ 'use client'
+
+import Image from 'next/image';
+import styles from './page.module.css';
+import LoginForm from './components/LoginForm';
+import React, { useState } from 'react';
 
 export default function Home() {
     return (
@@ -8,7 +11,7 @@ export default function Home() {
       <p>Nav bar</p>
       <p>Home page!</p>
       <LoginForm />
-      <p>link to create a new profile</p>
+      <p class="mt-5">Tired of the same old stuff, are you? <a href="/createprofile">Register here.</a></p>
       </div>
     )
   }
