@@ -15,9 +15,7 @@ export default class User extends Component {
             <header>
                 <h1>Hello Beer Enthusiast!</h1>
                 <h3>Log-In</h3> 
-                <button onClick={logIn}>Log-In</button>
-                <h3>Register</h3>   
-                <button onClick={register}>Register</button>             
+                <button onClick={logIn}>Log-In</button>            
             </header>
         );
 
