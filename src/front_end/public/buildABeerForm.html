@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
-    <title>Building your beer</title>
+    <title>Build your beer</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
@@ -25,6 +25,7 @@ document.getElementById("demo").innerHTML = y;
 </head>
 
 <body>
+
 <h1>What can I get for you?</h1>
 
 <div id="" data-testid="">
@@ -69,36 +70,36 @@ document.getElementById("demo").innerHTML = y;
 </fieldset>
 
 <p>
-<label>Pickup Date/Time
-<input type="" name="pickup_time" required>
+<label>Current time of day (hh:mm)
+<input type="" name="imbibe_time" required>
 </label>
 </p>
-	
+
 <p>
-<label>Pickup Place
-<select id="pickup_place" name="pickup_place">
+<label>Wood. In what type of barrels do you like your brewski to be brewed?
+<select id="barrelType" name="barrelType">
 <option value="" selected="selected">Select One</option>
-<option value="office" >Taxi Office</option>
-<option value="town_hall" >Town Hall</option>
-<option value="telepathy" >We'll Guess!</option>
+<option value="frenchOak" >French Oak</option>
+<option value="americanOak" >American Oak</option>
+<option value="cedar" >Cedar</option>
 </select>
 </label> 
 </p>
 
 <p>
-<label>Dropoff Place
-<input type="text" name="dropoff_place" required list="destinations">
+<label>Where was the last place you had a beer?
+<input type="text" name="recentPlace" required list="locations">
 </label>
 
-<datalist id="destinations">
-<option value="Airport">
-<option value="Beach">
-<option value="Fred Flinstone's House">
+<datalist id="locations">
+<option value="At home">
+<option value="The beach">
+<option value="In a cave">
 </datalist>
 </p>
 
 <p>
-<label>Special Instructions
+<label>If animals could talk, which would be the rudest? Enter below
 <textarea name="comments" maxlength="500"></textarea>
 </label>
 </p>

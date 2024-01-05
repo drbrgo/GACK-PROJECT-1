@@ -1,42 +1,46 @@
 package org.launchcode.buildabeer.controllers;
 
 
+import org.launchcode.buildabeer.models.Beer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 
 //There may be changes to name of variables, classes, methods, etc. as we further harmonize the project
 
-@Controller
-@RequestMapping("/buildbeer")
-@ResponseBody
-public class FormController {
-    @GetMapping("buildbeer/form")
+//@Controller
+//@RequestMapping
+//
+//public class FormController {
+//    @GetMapping
+//    public String displayBuildBeerForm(){
+//        return "buildBeerForm";
+//    }
+//    //@PostMapping
+//    //public String renderNewBeer(@RequestParam String ???, @RequestParam String ???, Model model){
+//        //Beer newBeer = new Beer(beerID?, ???);
+//        //newBeer.setNewBeer(beerID);
+//    //model.addAttribute("beer", newBeer);
+//        return "newBeer" // or beerID object ?
+//    }
+//}
 
-    public String displayBuildBeerForm(){
-        return "<html>" +
-                "<body>" +
-                "<form actions='/buildbeer/form' method='POST'>" +
-                "<p>Complete the form to generate your beer</p>" +
-                "<input type='text' name='beer' />" +
-                "<button type='submit'>Click me</button" +
-                "</form>" +
-                "</body>" +
-                "</html>";
-    }
-
-    //Testing form submission with Response Body first
-    @PostMapping("buildbeer/form")
-    public String renderNewBeer(){
-        return "<html>" +
-                "<body>" +
-                "<h3>1 beer coming up!</h3>" +
-                "<p>Say hello to your new beer, " + " + generatedBeer + </p>" +
-                "<input type='text' name='beer' />" +
-                "</body>" +
-                "</html>";
-    }
-}
-
-
-
+//I think the model would be the Beer because a new Beer class object(beerID, etc) would be created upon form submission but not sure
+// Example of Beer model code:
+//
+//public class Beer {
+//
+//    private int beerID;
+//    private String beerType; (all variables/fields/methods tbd)
+//    private String beerName;
+//    private ArrayList<String> setNewBeer = new ArrayList<>();
+//
+//    public Beer(int beerID, String beerType, String beerName){
+//        this.beerType = beerType;
+//        this.beerName = beerName;
+//
+//        Getters and setters would go here
+//    }
+//}
