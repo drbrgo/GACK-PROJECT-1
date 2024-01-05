@@ -25,4 +25,4 @@ export default class User extends Component {
     
 }
  
-//from here 2 buttons will take you to log in to the user profile or register page (admin) if either are selected
+// log in from here?  register page (admin) is here
