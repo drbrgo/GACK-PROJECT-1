@@ -1,10 +1,10 @@
 
-//the form will be here under admin for new users, once submitted it will go to user profile
+//the register form will be here under admin for new users, once submitted it will go to user profile
 //edit and save option?
 export default function Register() {
 
     //link to define frontend talking to the backend 
-//    const webUrl: string = "http://localhost:8080"
+    const webUrl: string = "http://localhost:8080"
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
@@ -21,19 +21,17 @@ export default function Register() {
         zipCode: String(event.target.zipCode.value),
     }
 
-console.log(profileData)
-
 //this info will be sent to the backend
-//await fetch(webUrl + "/admin/addNewUser", {
-//method: 'POST',
-//headers: {
-//    "Content-Type": "application/json"
-//},
-//body: JSON.stringify(profileData),
-//}).then((response) => response.json()).then(profileData => {
-//    console.log(profileData);
+await fetch(webUrl + "/admin/addNewUser", {
+    method: 'POST',
+    headers: {
+        "Content-Type": "application/json"
+        },
+        body: JSON.stringify(profileData),
+        }).then((response) => response.json()).then(profileData => {
+    console.log(profileData);
 
-//})
+})
 
 }
 
