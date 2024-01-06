@@ -6,18 +6,26 @@ export default function FridgeAdmin(){
 
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault();
-
+        
         const data={
             // Will this need to be where we edit beers? Delete beers here? 
         }
-        //the below is wrong. Should be fetching from MySQL if possible, not Intellij
         // window.addEventListener("load", function() {
         //     fetch(webUrl + "/admin/" + fridgeId).then(function(response){
         //         console.log(response);
         //     });
         // });
+        //The below may only be needed for form submission
+        // await fetch(webUrl + "/fridge/{fridgeid}", {
+        //     method: "GET", 
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify(data),
+        // })
+
     }
     return(
         <>
@@ -36,10 +44,16 @@ export default function FridgeAdmin(){
                 <th>Notes</th>
             </tr>
             <tr>
-                <th></th>
+                <td>first beer name</td>
+                <td>First beer pic</td>
+                <td>First beer type</td>
+                <td>first beer ABV</td>
+                <td>First beer notes</td>
+                <button>Delete</button>
             </tr>
             </table>
-        
+            
+            
         </div>
         </>
     )
