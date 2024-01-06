@@ -114,6 +114,7 @@ public class HomeController {
                     "login.invalid",
                     "You're flagged! Have a glass of water and try again with valid credentials."
             );
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
             return new ResponseEntity<>(loginDTO, HttpStatus.OK);
         }
