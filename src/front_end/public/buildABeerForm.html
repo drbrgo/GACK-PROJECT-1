@@ -36,8 +36,10 @@ document.getElementById("demo").innerHTML = y;
 
 </div>
 <form method="POST" enctype="application/x-www-form-urlencoded" action="/buildbeer/form'">
-<!--    <p> This <a href="https://www.pexels.com/photo/food-dinner-lunch-meal-4147875">Photo</a> was taken by <a-->
+<!--navbar w username, settings, sign out, fridge?  <p> This <a href="https://www.pexels.com/photo/food-dinner-lunch-meal-4147875">Photo</a> was taken by <a-->
 <!--&lt;!&ndash;            href="https://www.pexels.com/@daria">Daria</a> on Pexels.&ndash;&gt; Not critical path: Testing out pexels image integration-->
+
+
 
         <label>Name
             <input type="text" name="customer_name" required>
@@ -46,16 +48,16 @@ document.getElementById("demo").innerHTML = y;
             <input type="tel" name="phone_number">
         </label>
     <p>
-<label>Email 
+<label>Email
 <input type="email" name="email_address">
 </label>
 </p>
 
 <fieldset>
-<legend></legend>
-<p><label> <input type="radio" name="taxi" required value="car"> Car </label></p>
-<p><label> <input type="radio" name="taxi" required value="van"> Van </label></p>
-<p><label> <input type="radio" name="taxi" required value="tuktuk"> Tuk Tuk </label></p>
+<legend>In what type of barrels do you like your brewski to be brewed?</legend>
+<p><label> <input type="radio" name="frenchOak" required value="French Oak">  </label></p>
+<p><label> <input type="radio" name="AmericanOak" required value="American Oak">  </label></p>
+<p><label> <input type="radio" name="Cedar" required value="Cedar">  </label></p>
 </fieldset>
 
 <fieldset>
@@ -70,20 +72,20 @@ document.getElementById("demo").innerHTML = y;
 </fieldset>
 
 <p>
-<label>Current time of day (hh:mm)
-<input type="" name="imbibe_time" required>
+<label>Local Date and Time
+<input type="datetime-local" name="imbibe_time" required>
 </label>
 </p>
 
 <p>
-<label>Wood. In what type of barrels do you like your brewski to be brewed?
+<label>
 <select id="barrelType" name="barrelType">
 <option value="" selected="selected">Select One</option>
 <option value="frenchOak" >French Oak</option>
 <option value="americanOak" >American Oak</option>
 <option value="cedar" >Cedar</option>
 </select>
-</label> 
+</label>
 </p>
 
 <p>
