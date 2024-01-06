@@ -1,16 +1,9 @@
-package org.launchcode.buildabeer.models;
+package org.launchcode.buildabeer.models.api;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
+import org.launchcode.buildabeer.models.AbstractEntity;
 
-@Entity
-public class Beer extends AbstractEntity{
-
-/*    @ManyToOne
-    private Fridge fridge;*/
-
-
+public class ApiItem extends AbstractEntity {
     private String name;
 
     @NotNull
@@ -19,9 +12,9 @@ public class Beer extends AbstractEntity{
     @NotNull
     private Double abv;
 
-    public Beer() {}
+    public ApiItem() {}
 
-    public Beer(String name, String tastingNotes, Double abv) {
+    public ApiItem(String name, String tastingNotes, Double abv) {
         this.name = name;
         this.tastingNotes = tastingNotes;
         this.abv = abv;
@@ -52,4 +45,5 @@ public class Beer extends AbstractEntity{
     public void setAbv(Double abv) {
         this.abv = abv;
     }
+
 }
