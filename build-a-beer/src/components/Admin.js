@@ -6,7 +6,7 @@ export default function Register() {
     //link to define frontend talking to the backend 
     const webUrl: string = "http://localhost:8080"
 
-    const handleSubmit = (event: any) => {
+    const handleSubmit = async (event: any) => {
         event.preventDefault();
         //console.log("Button clicked")
 
@@ -31,7 +31,7 @@ await fetch(webUrl + "/admin/addNewUser", {
         }).then((response) => response.json()).then(profileData => {
     console.log(profileData);
 
-})
+}) 
 
 }
 
