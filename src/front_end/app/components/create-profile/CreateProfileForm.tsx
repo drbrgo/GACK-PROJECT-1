@@ -4,9 +4,33 @@ import React from "react";
 
 export default function CreateProfileForm() {
 
-    const handleSubmit = (event: any) => {
+    const webUrl: string = "http://localhost:8080"
+
+    const handleSubmit = async (event: any) => {
         event.preventDefault();
-        console.log("Button clicked")
+
+        //object is being sendt to the backend, inputs that have been filled in
+        const data = { 
+            firstName: String(event.target.firstName.value),
+            lastName: String(event.target.lastName.value),
+            birthdate: Number(event.target.birthdate.value),
+            phoneNumber: Number(event.target.phoneNumber.value),
+            emailAddress: String(event.target.emailAddress.value),
+            streetAddress: String(event.target.streetAddress.value),
+            city: String(event.target.city.value),
+            state: String(event.target.state.value),
+            zipCode: Number(event.target.zipCode.value),
+        }
+        await fetch(webUrl + "/createProfile/createNewProfile", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data),
+        }).then((response) => response.json()).then(data => {
+            console.log(data);
+        })
+//POST request is not working. once I added fetching w/JSON, received 406 error Not Acceptable.  server is not receiving the object.
 
     }
 
@@ -26,7 +50,7 @@ export default function CreateProfileForm() {
 
                 <div>
                 <h5>Birthdate: </h5>
-                <input type="text" autoComplete="off" id="birthdate" required minLength={6} maxLength={6}/>
+                <input type="text" autoComplete="off" id="birthdate" required minLength={8} maxLength={8}/>
                 </div> 
 
                 <div>
