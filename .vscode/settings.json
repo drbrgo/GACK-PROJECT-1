@@ -9,7 +9,6 @@
         "editorError.foreground": "#ff000000",
         "editorWarning.foreground": "#ff000000",
         "editorInfo.foreground": "#ff000000"
-
-
-    }
+    },
+    "java.compile.nullAnalysis.mode": "automatic"
 }
