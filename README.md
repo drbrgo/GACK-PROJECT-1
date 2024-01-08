@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Launch Checklist
 
 ## Assignment Requirements
@@ -65,3 +66,22 @@ After reviewing the test output, your TA will check your submission for the foll
    In the assignment, you can select whichever planet they want. If you have attempted the bonus mission, then your code is randomly selecting an item from the planets API.
 
 When you are done with the assignment, submit the link to your repository on Canvas.
+=======
+Welcome to Build-A-Beer!
+
+This application is designed for beer enthusiasts like you! We decided to create a custom beer generating application to bring beer customizing to everyday life. We want everyone to enjoy customizing a tasty beer of their own in the simplest way. You will be able to create your own beer based on features of beer that you enjoy. 
+
+Happy Creating!
+
+GACK Team
+Drew Goga
+Marleny Arrue
+Ryan Coyle
+Suburwa King
+
+## Authors
+
+- [@drbrgo](https://github.com/drbrgo/GACK-PROJECT-1)
+
+https://github.com/drbrgo/GACK-PROJECT-1
+>>>>>>> b18271c75af9d89280fda94ce9ffbe6fa3b7998a
