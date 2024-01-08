@@ -6,9 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class CreateProfileEntity {
+public class CreateProfile {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Generated Value defines primary key attributes for database. Generated Identity indicates primary keys for the entity using the database identity column.
     private Long id;
     private String firstName;
     private String lastName;
@@ -20,7 +20,7 @@ public class CreateProfileEntity {
     private String state;
     private int zipCode;
 
-    public CreateProfileEntity(String firstName, String lastName, int birthdate, int phoneNumber, String emailAddress, String streetAddress, String city, String state, int zipCode) {
+    public CreateProfile(String firstName, String lastName, int birthdate, int phoneNumber, String emailAddress, String streetAddress, String city, String state, int zipCode) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthdate = birthdate;
