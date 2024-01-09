@@ -20,7 +20,7 @@ public class BuildABeerApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/user/fridge-javaconfig").allowedOrigins("http://localhost:8080");
+				registry.addMapping("/user/fridge-javaconfig").allowedOrigins("http://localhost:3000");
 			}
 		};
 	}
