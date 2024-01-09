@@ -1,5 +1,5 @@
 'use client'
-
+import React from "react";
 export default function FridgeAdmin(){
 
     const webUrl = "http://localhost:8080"
@@ -17,7 +17,7 @@ export default function FridgeAdmin(){
         //         console.log(response);
         //     });
         // });
-        //The below may only be needed for form submission
+      
         // await fetch(webUrl + "/fridge/{fridgeid}", {
         //     method: "GET", 
         //     headers: {
