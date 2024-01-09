@@ -1,11 +1,10 @@
 package org.launchcode.buildabeer.controllers;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 import org.launchcode.buildabeer.models.User;
 import org.launchcode.buildabeer.models.dto.LoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,48 +13,11 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.launchcode.buildabeer.data.UserRepository;
 
-import java.util.Optional;
-
 @Controller
 @CrossOrigin
 public class HomeController {
     @Autowired
     private UserRepository userRepository;
-    //The block of text from here to the getmapping annotation may need to be moved elsewhere. Carrie's
-    //art gallery app has an authentication controller that contains all log-in and account creation stuff.
-    //Just sticking this here for now, as my job is to make the landing page, which has login functionality.
-    //Once Suburwa gets the user account creation off the ground, I imagine this will change a little bit,
-    //as we'll have actual user data to work with.
-
-    // The key to store user IDs
-    private static final String userSessionKey = "user";
-
-    // Stores key/value pair with session key and user ID
-    private static void setUserInSession(HttpSession session, User user) {
-        session.setAttribute(userSessionKey, user.getId());
-        System.out.println("session: " + session.getAttribute("user"));
-    }
-
-    // Look up user with key
-    public User getUserFromSession(HttpSession session) {
-
-        // Get user ID from database using key
-        Integer userId = (Integer) session.getAttribute(userSessionKey);
-        if (userId == null) {
-            return null;
-        }
-
-        // Get optional back from database
-        Optional<User> userOpt = userRepository.findById(userId);
-
-        // Early return with null if user not found
-        if (userOpt.isEmpty()) {
-            return null;
-        }
-
-        // Return user object (unboxed from optional)
-        return userOpt.get();
-    }
 
 
     @GetMapping
@@ -98,7 +60,7 @@ public class HomeController {
 
     //for use with react front end
     @PostMapping
-    public ResponseEntity<?> processLoginForm(@RequestBody LoginDTO loginDTO, Errors errors) {
+    public ResponseEntity<?> processLoginForm(@RequestBody LoginDTO loginDTO, Errors errors, HttpSession session) {
         //User theUser = new User (loginDTO.getUsername(), loginDTO.getPassword());
 
         //Look up user in database using username they provided in the form
@@ -116,7 +78,23 @@ public class HomeController {
             );
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-            return new ResponseEntity<>(loginDTO, HttpStatus.OK);
+            //otherwise, set user in session
+            session.setAttribute("user", theUser);
+
+            //use httpheaders to redirect to profile page
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Location", "/user/profile");
+            return new ResponseEntity<>(headers, HttpStatus.FOUND);
+
+            //return new ResponseEntity<>(loginDTO, HttpStatus.OK);
+
+        //let's try to return a token!
+        // generate toekn uncomment the below once spring security is g2g
+//        String authToken = generateAuthToken(theUser.getUsername());
+//
+//        // return token with user id
+//        AuthResponse authResponse = new AuthResponse(authToken, theUser.getId());
+//        return ResponseEntity.ok(authResponse);
         }
 
     }

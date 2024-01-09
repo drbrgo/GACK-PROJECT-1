@@ -130,7 +130,7 @@ const LoginForm = () => {
                 autoComplete="off"
                 id="username"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(event) => setUsername(event.target.value)}
               />
             </div>
           </div>
@@ -144,7 +144,7 @@ const LoginForm = () => {
                 autoComplete="off"
                 id="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(event) => setPassword(event.target.value)}
               />
             </div>
           </div>
