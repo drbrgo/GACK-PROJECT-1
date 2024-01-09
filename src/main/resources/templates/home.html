@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Build-a-Beer</title>
+</head>
+<body>
+
+<div th:replace="~{fragments :: page-header}"></div>
+
+    <main>
+        <form method="post">
+            <div class="container">
+                <div class="row">
+                    <div class="form-item col-4">
+                        <label th:for="username">Username</label>
+                        <input th:field="${loginDTO.username}" />
+                        <p class="error" th:errors="${loginDTO.username}"></p>
+                    </div>
+                </div>
+         </div>
+        <div class="container">
+            <div class="row">
+                <div class="form-item col-4">
+                    <label th:for="password">Password</label>
+                    <input th:field="${loginDTO.password}" type="password" />
+                    <p class="error" th:errors="${loginDTO.password}"></p>
+                </div>
+            </div>
+        </div>
+
+    <button type="submit">Log In</button>
+</form>
+<p class="mt-5">Tired of the same old stuff, are you? <a href="/CreateProfile">Register here.</a></p>
+</main>
+<img th:src="@{/images/lite-beer.jpg}" style="width:310px;height:438px">
+</body>
+</html>
