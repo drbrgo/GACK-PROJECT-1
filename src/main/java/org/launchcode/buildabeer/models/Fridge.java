@@ -24,6 +24,6 @@ public class Fridge extends AbstractEntity{
     public Fridge(User user, List<Beer> beers) {
         this.user = user;
         this.beers = beers;
-    }*/
+    }
 
 }

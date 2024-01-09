@@ -13,13 +13,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.launchcode.buildabeer.data.UserRepository;
 
-@Controller
-<<<<<<< HEAD
-public class    HomeController {
-=======
 @CrossOrigin
 public class HomeController {
->>>>>>> main
     @Autowired
     private UserRepository userRepository;
 
