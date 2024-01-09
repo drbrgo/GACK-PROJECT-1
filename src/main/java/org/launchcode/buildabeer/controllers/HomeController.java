@@ -17,8 +17,12 @@ import org.launchcode.buildabeer.data.UserRepository;
 import java.util.Optional;
 
 @Controller
+<<<<<<< HEAD
+public class    HomeController {
+=======
 @CrossOrigin
 public class HomeController {
+>>>>>>> main
     @Autowired
     private UserRepository userRepository;
     //The block of text from here to the getmapping annotation may need to be moved elsewhere. Carrie's

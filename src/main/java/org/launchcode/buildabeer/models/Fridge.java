@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class Fridge extends AbstractEntity{
  
-    /*@OneToOne
+    //*@OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 
