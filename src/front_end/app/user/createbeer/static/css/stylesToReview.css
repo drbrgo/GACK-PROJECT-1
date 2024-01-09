@@ -1,0 +1,31 @@
+body {
+    background-color: darkslategrey;
+    color: azure;
+    font-size: 1.1em;
+}
+p {
+    color: coral;
+}
+#intro {
+    font-size: 1.3em;
+}
+.colorful {
+    color: orange;
+}
+
+.animatedBox {
+  width: 100px;
+  padding: 10px;
+  margin: 20px;
+  text-align: center;
+  font: 24px sans-serif;
+  color: white;
+  background: yellowgreen;
+  outline: 0px solid black;
+  animation: myAnimation 3s linear 1s 3 alternate forwards;
+}
+@keyframes myAnimation {
+  100% {
+    outline: 20px solid gold;
+  }
+}
