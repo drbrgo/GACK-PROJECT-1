@@ -1,14 +1,16 @@
 package org.launchcode.buildabeer.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Beer extends AbstractEntity{
 
-/*    @ManyToOne
-    private Fridge fridge;*/
+    @ManyToOne
+    @JoinColumn
+    private Fridge fridge;
 
 
     private String name;
