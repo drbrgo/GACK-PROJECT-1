@@ -9,7 +9,7 @@ export default function CreateProfileForm() {
     const handleSubmit = async (event: any) => {
         event.preventDefault();
 
-        //object is being sendt to the backend, inputs that have been filled in
+        //object is being sent to the backend, inputs that have been filled in
         const data = { 
             firstName: String(event.target.firstName.value),
             lastName: String(event.target.lastName.value),
@@ -30,7 +30,7 @@ export default function CreateProfileForm() {
         }).then((response) => response.json()).then(data => {
             console.log(data);
         })
-//POST request is not working. once I added fetching w/JSON, received 406 error Not Acceptable.  server is not receiving the object.
+//POST request working. server is receiving the object entered in form.
 
     }
 
