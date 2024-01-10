@@ -31,22 +31,24 @@ public class FridgeController {
 
   //  Could consider making this based on FindByUsername instead of id
 
-    @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping
-    public String displayUserFridge(Model model, @PathVariable int fridgeId){
-        Optional optFridge = fridgeRepository.findById(fridgeId);
-        if (optFridge.isPresent()) {
-        Fridge fridge = (Fridge) optFridge.get();
-        model.addAttribute("fridge", fridge);
-        return "fridge";
-        }
-        else {
-            return "redirect:../";
-        }
-    }
+//    @CrossOrigin(origins = "http://localhost:3000")
+//    @GetMapping
+//    public String displayUserFridge(Model model, @PathVariable int fridgeId){
+//        Optional optFridge = fridgeRepository.findById(fridgeId);
+//        if (optFridge.isPresent()) {
+//        Fridge fridge = (Fridge) optFridge.get();
+//        model.addAttribute("fridge", fridge);
+//        return "fridge";
+//        }
+//        else {
+//            return "redirect:../";
+//        }
+//    }
 
-    @GetMapping("/getFridge-javaconfig")
+    @GetMapping("/getBeers")
     public ResponseEntity<?> getBeerObjects() {
-        return new ResponseEntity<>(fridgeRepository.findAll(), HttpStatus.OK);
+        System.out.println("getBeers");
+        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
+
     }
 }

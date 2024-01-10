@@ -18,10 +18,10 @@ export default function fridgeAdmin(){
 
     useEffect(function(){
         const getBeers = async() => {
-            await fetch(webUrl + '/user/fridge/getFridge',)
-            .then(Response => Response.json())
+            await fetch(webUrl + '/user/fridge/getBeers')
+            .then(response => response.json())
             .then(data => {
-                console.log(data);
+                console.log(data); 
             })
         }
         getBeers()

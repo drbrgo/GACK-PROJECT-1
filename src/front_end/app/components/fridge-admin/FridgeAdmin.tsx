@@ -36,6 +36,7 @@ export default function FridgeAdmin(){
         </div>
         <div className="flex justify-center"> 
             <table className="bg-green-300/60 p-2 rounded-md">
+                <thead>
             <tr>
                 <th>Beer Name</th>
                 <th>Picture?</th>
@@ -43,6 +44,8 @@ export default function FridgeAdmin(){
                 <th>ABV</th>
                 <th>Notes</th>
             </tr>
+            </thead>
+            <tbody>
             <tr>
                 <td>first beer name</td>
                 <td>First beer pic</td>
@@ -51,6 +54,7 @@ export default function FridgeAdmin(){
                 <td>First beer notes</td>
                 <button>Delete</button>
             </tr>
+            </tbody>
             </table>
             
             

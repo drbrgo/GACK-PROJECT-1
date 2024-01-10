@@ -24,4 +24,19 @@ public class Fridge extends AbstractEntity{
         this.beers = beers;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Beer> getBeers() {
+        return beers;
+    }
+
+    public void setBeers(List<Beer> beers) {
+        this.beers = beers;
+    }
 }
