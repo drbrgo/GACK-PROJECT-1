@@ -97,4 +97,17 @@ public class HomeController {
 //        return ResponseEntity.ok(authResponse);
         }
 
+    @GetMapping("/user/profile")
+    public String displayUserProfileDummyTest(HttpSession session, Model model) {
+        // check if user is in session
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            model.addAttribute("user", user);
+            return "dashboard";
+        } else {
+            return "redirect:/login";
+        }
+
+    }
+
     }

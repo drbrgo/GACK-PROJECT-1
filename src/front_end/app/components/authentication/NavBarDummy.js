@@ -1,9 +1,13 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 const NavBarDummy = () => {
     const [user, setUser] = useState(null);
 
-    const webUrl = "http://localhost:8080/"
+    const webUrl = "http://localhost:8080/user/profile";
+
+    //what is the correct library for this module?
+    const router = useRouter();
 
     useEffect(() => {
         // fetch user info from backend
@@ -20,16 +24,17 @@ const NavBarDummy = () => {
                     const userData = await response.json();
                     setUser(userData);
                 } else {
-                    history.push('/')
                     console.error('Failed to fetch user data');
+                    router.push('/');
                 }
             } catch (error) {
                 console.error('Error fetching user data', error);
+                router.push('/');
             }
         };
 
         fetchUser();
-    }, []);
+    }, [router]);
 
     return (
         <div>

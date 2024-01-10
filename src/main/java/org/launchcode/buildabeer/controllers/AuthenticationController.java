@@ -1,12 +1,25 @@
 package org.launchcode.buildabeer.controllers;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.launchcode.buildabeer.data.UserRepository;
 import org.launchcode.buildabeer.models.User;
+import org.launchcode.buildabeer.models.dto.DummyRegistrationDTO;
+import org.launchcode.buildabeer.models.dto.LoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000/", allowCredentials = "true")
+        //(origins = "http://localhost:3000/registerdummy", allowCredentials = "true")
+@RestController
 public class AuthenticationController {
     @Autowired
     private UserRepository userRepository;
@@ -39,5 +52,62 @@ public class AuthenticationController {
 
         // Return user object (unboxed from optional)
         return userOpt.get();
+    }
+
+    @GetMapping("/registerdummy")
+    public String displayDummyRegistrationForm(Model model, HttpSession session) {
+        model.addAttribute(new DummyRegistrationDTO());
+        model.addAttribute("loggedIn", session.getAttribute("user") != null);
+        return "register";
+    }
+
+    @PostMapping("/registerdummy")
+    public ResponseEntity<?> processDummyRegistrationForm(@ModelAttribute @Valid DummyRegistrationDTO dummyRegistrationDTO,
+                                          Errors errors,
+                                          HttpServletRequest request) {
+
+        System.out.println("DTO received from frontend: " + dummyRegistrationDTO);
+
+
+        //Send user back to form if errors are found
+        if (errors.hasErrors()) {
+            System.out.println("errors has errors");
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("general errors");
+        }
+
+            // Look up user in database using username they provided in the form
+            User existingUser = userRepository.findByUsername(dummyRegistrationDTO.getUsername());
+
+            // Send user back to form if username already exists
+            if (existingUser != null) {
+                errors.rejectValue("username", "username.alreadyExists", "A user with that username already exists");
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).body("username already in use");
+            }
+
+            // Send user back to form if passwords didn't match
+            String password = dummyRegistrationDTO.getPassword();
+            String verifyPassword = dummyRegistrationDTO.getVerifyPassword();
+            if (!password.equals(verifyPassword)) {
+                errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
+                HttpHeaders headers = new HttpHeaders();
+                headers.add("Error", "Passwords don't match");
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).body("passwords don't match");
+            }
+
+            // OTHERWISE, save new username and hashed password in database, start a new session, and redirect to home page
+            User newUser = new User(dummyRegistrationDTO.getUsername(), dummyRegistrationDTO.getPassword());
+            userRepository.save(newUser);
+            setUserInSession(request.getSession(), newUser);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Location", "/user/profile");
+            return new ResponseEntity<>(headers, HttpStatus.FOUND);
+        }
+
+
+    // handler for logout
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/login";
     }
 }

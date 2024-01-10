@@ -1,6 +1,6 @@
 'use client'
 
-import NavBarDummy from '@/app/components/NavBarDummy';
+import NavBarDummy from '../../components/authentication/NavBarDummy';
 import React from 'react';
 
 const ProfilePage = () => {
