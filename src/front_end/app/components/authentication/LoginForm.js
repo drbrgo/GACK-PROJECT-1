@@ -89,6 +89,8 @@ const LoginForm = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          // 'Access-Control-Allow-Origin': webUrl,
+          // 'Vary': 'Origin'
         },
         body: JSON.stringify(data),
       });
@@ -98,9 +100,17 @@ const LoginForm = () => {
         throw new Error(`You're flagged! Have a glass of water and try again with valid credentials.`);
       }
 
-      const responseData = await response.json();
+      if (response.ok) {
+        // extract session ID from response headers
+        const sessionId = response.headers.get('Set-Cookie');
+        // store the session ID in localStorage or cookies
+        localStorage.setItem('sessionId', sessionId);
+        //document.cookie(sessionId); cookie is not a function
+    }
+
+      //const responseData = await response.json();
       console.log("request data:", data);
-      console.log("response data", responseData);
+      //console.log("response data", responseData);
 
       // reset input values and error message upon successful submission
       setUsername('');

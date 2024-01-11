@@ -7,7 +7,7 @@ const NavBarDummy = () => {
     const webUrl = "http://localhost:8080/user/profile";
 
     //what is the correct library for this module?
-    const router = useRouter();
+   // const router = useRouter();
 
     useEffect(() => {
         // fetch user info from backend
@@ -34,7 +34,7 @@ const NavBarDummy = () => {
         };
 
         fetchUser();
-    }, [router]);
+    }, []);
 
     return (
         <div>

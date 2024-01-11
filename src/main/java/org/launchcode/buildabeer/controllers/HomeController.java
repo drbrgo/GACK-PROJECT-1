@@ -1,5 +1,6 @@
 package org.launchcode.buildabeer.controllers;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.launchcode.buildabeer.models.User;
 import org.launchcode.buildabeer.models.dto.LoginDTO;
@@ -14,20 +15,20 @@ import org.springframework.web.bind.annotation.*;
 import org.launchcode.buildabeer.data.UserRepository;
 
 @Controller
-@CrossOrigin
+@CrossOrigin (origins = "http://localhost:3000")
 public class HomeController {
     @Autowired
     private UserRepository userRepository;
 
+//for use without react frontend
+//    @GetMapping
+//    public String displayLoginForm(Model model, HttpSession session) {
+//        model.addAttribute(new LoginDTO()); // "loginFormDTO" variable implicit
+//        model.addAttribute("loggedIn", session.getAttribute("user") != null);
+//        return "home";
+//    }
 
-    @GetMapping
-    public String displayLoginForm(Model model, HttpSession session) {
-        model.addAttribute(new LoginDTO()); // "loginFormDTO" variable implicit
-        model.addAttribute("loggedIn", session.getAttribute("user") != null);
-        return "home";
-    }
 
-    //for use without react frontend
 //    @PostMapping
 //    public String processLoginForm(@ModelAttribute @Valid LoginDTO loginDTO, Errors errors, HttpServletRequest request) {
 //
@@ -59,7 +60,7 @@ public class HomeController {
 //    }
 
     //for use with react front end
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<?> processLoginForm(@RequestBody LoginDTO loginDTO, Errors errors, HttpSession session) {
         //User theUser = new User (loginDTO.getUsername(), loginDTO.getPassword());
 
@@ -68,6 +69,8 @@ public class HomeController {
 
         // Get the password the user supplied in the form
         String password = loginDTO.getPassword();
+
+        System.out.println(loginDTO.getUsername());
 
         // Send user back to form if username does not exist OR if password hash doesn't match
         if (theUser == null || !theUser.isMatchingPassword(password)) {
@@ -80,11 +83,19 @@ public class HomeController {
         }
             //otherwise, set user in session
             session.setAttribute("user", theUser);
+            System.out.println("your ass should be logged in now, but if it's not, the error is due to session setting" +
+                    "or headers");
+            System.out.println(session.getId());
 
             //use httpheaders to redirect to profile page
-            HttpHeaders headers = new HttpHeaders();
+            /*HttpHeaders headers = new HttpHeaders();
             headers.add("Location", "/user/profile");
-            return new ResponseEntity<>(headers, HttpStatus.FOUND);
+            return new ResponseEntity<>(headers, HttpStatus.FOUND);*/
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Set-Cookie", "JSESSIONID=" + session.getId() + "; HttpOnly; SameSite=None; Secure");
+
+            return ResponseEntity.ok().headers(headers).build();
 
             //return new ResponseEntity<>(loginDTO, HttpStatus.OK);
 
@@ -97,17 +108,17 @@ public class HomeController {
 //        return ResponseEntity.ok(authResponse);
         }
 
-    @GetMapping("/user/profile")
-    public String displayUserProfileDummyTest(HttpSession session, Model model) {
-        // check if user is in session
-        User user = (User) session.getAttribute("user");
-        if (user != null) {
-            model.addAttribute("user", user);
-            return "dashboard";
-        } else {
-            return "redirect:/login";
-        }
-
-    }
+//    @GetMapping("/user/profile")
+//    public String displayUserProfileDummyTest(HttpSession session, Model model) {
+//        // check if user is in session
+//        User user = (User) session.getAttribute("user");
+//        if (user != null) {
+//            model.addAttribute("user", user);
+//            return "dashboard";
+//        } else {
+//            return "redirect:/login";
+//        }
+//
+//    }
 
     }

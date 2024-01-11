@@ -3,21 +3,102 @@ package org.launchcode.buildabeer.controllers;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.launchcode.buildabeer.data.RegisterDummyRepository;
 import org.launchcode.buildabeer.data.UserRepository;
+import org.launchcode.buildabeer.models.RegisterDummy;
 import org.launchcode.buildabeer.models.User;
 import org.launchcode.buildabeer.models.dto.DummyRegistrationDTO;
 import org.launchcode.buildabeer.models.dto.LoginDTO;
+import org.launchcode.buildabeer.models.dto.RegisterDummyDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:3000/", allowCredentials = "true")
+//start fresh to test using different registerdummyrepostiory and registerdummydto -- works just fine
+
+/*@Controller
+@CrossOrigin
+//@RequestMapping(value = "/registerdummy")
+public class AuthenticationController {
+
+    //access our repository
+    @Autowired
+    RegisterDummyRepository registerDummyRepository;
+
+    @PostMapping ("/registerdummy")
+    public ResponseEntity<?> registerDummy (@RequestBody RegisterDummyDTO registerDummyDTO) {
+
+        //build a model with data from dto
+        RegisterDummy newUser = new RegisterDummy(registerDummyDTO.getUsername(), registerDummyDTO.getPassword());
+
+        //add new data as entry in repository
+        registerDummyRepository.save(newUser);
+
+        return new ResponseEntity<>(registerDummyRepository.findAll(), HttpStatus.OK);
+
+    }
+
+}*/
+
+//now let's start with a simplified version
+
+@Controller
+@CrossOrigin
+public class AuthenticationController {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @PostMapping("/registerdummy")
+    public ResponseEntity<?> processDummyRegistrationForm(@RequestBody DummyRegistrationDTO dummyRegistrationDTO,
+                                                          Errors errors,
+                                                          HttpServletRequest request) {
+
+
+        // Look up user in database using username they provided in the form
+        User existingUser = userRepository.findByUsername(dummyRegistrationDTO.getUsername());
+
+        // Send user back to form if username already exists
+        if (existingUser != null) {
+            errors.rejectValue("username", "username.alreadyExists", "A user with that username already exists");
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("username already in use");
+        }
+
+        // Send user back to form if passwords didn't match NOT WORKING!!!!
+        String password = dummyRegistrationDTO.getPassword();
+        String verifyPassword = dummyRegistrationDTO.getVerifyPassword();
+        if (!password.equals(verifyPassword)) {
+            errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
+            System.out.println("passwords don't match");
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("passwords don't match");
+        }
+
+        // OTHERWISE, save new username and hashed password in database, start a new session, and redirect to home page
+        User newUser = new User(dummyRegistrationDTO.getUsername(), dummyRegistrationDTO.getPassword());
+        userRepository.save(newUser);
+
+        //set user in session and redirect to profile page
+
+        return new ResponseEntity<>(userRepository.findAll(), HttpStatus.FOUND);
+    }
+
+
+}
+
+
+
+
+
+
+
+/*@CrossOrigin(origins = "http://localhost:3000/", allowCredentials = "true")
         //(origins = "http://localhost:3000/registerdummy", allowCredentials = "true")
 @RestController
 public class AuthenticationController {
@@ -110,4 +191,4 @@ public class AuthenticationController {
         request.getSession().invalidate();
         return "redirect:/login";
     }
-}
+}*/
