@@ -1,10 +1,27 @@
 'use client'
 import React from "react";
-export default function FridgeAdmin(){
+import FridgeDisplay from "./FridgeDisplay";
+export default function FridgeAdmin(props: any){
 
     const webUrl = "http://localhost:8080"
 
+    const removeBeer = (beerId: number) => {
+        fetch(webUrl + '/user/fridge/removeBeer/' + beerId, {
+            method: "DELETE",
+        }).then((response) => response.json()).then(data => {
+            props.setBeers(data);
+        })
+    }
 
+    const allBeers = props.beers.map((beer: any) => {
+        return( 
+            < FridgeDisplay 
+            key={beer.id}
+            beer={beer}
+            removeBeer={removeBeer}
+            />
+         )
+    })
 
     const handleSubmit = async(event) => {
         event.preventDefault();
@@ -28,37 +45,9 @@ export default function FridgeAdmin(){
 
     }
     return(
-        <>
-        <div>
-        <script>
 
-        </script>
+        <div>
+            {allBeers}
         </div>
-        <div className="flex justify-center"> 
-            <table className="bg-green-300/60 p-2 rounded-md">
-                <thead>
-            <tr>
-                <th>Beer Name</th>
-                <th>Picture?</th>
-                <th>Type</th>
-                <th>ABV</th>
-                <th>Notes</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>first beer name</td>
-                <td>First beer pic</td>
-                <td>First beer type</td>
-                <td>first beer ABV</td>
-                <td>First beer notes</td>
-                <button>Delete</button>
-            </tr>
-            </tbody>
-            </table>
-            
-            
-        </div>
-        </>
     )
 }

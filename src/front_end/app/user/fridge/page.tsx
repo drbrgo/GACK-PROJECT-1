@@ -22,14 +22,21 @@ export default function fridgeAdmin(){
             .then(response => response.json())
             .then(data => {
                 console.log(data); 
+                setBeers(data)
             })
         }
         getBeers()
     },[])
     return(
+        <>
     <div>
     <p>This is a User's 'fridge admin' page</p>
-
-    <FridgeAdmin />
-    </div>)
+        </div>
+        <div>
+    <FridgeAdmin 
+    beers={beers}
+    setBeers={setBeers}
+    />
+    </div>
+    </>)
 }

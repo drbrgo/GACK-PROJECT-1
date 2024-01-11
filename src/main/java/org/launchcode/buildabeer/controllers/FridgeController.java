@@ -3,17 +3,16 @@ package org.launchcode.buildabeer.controllers;
 import org.launchcode.buildabeer.data.BeerRepository;
 import org.launchcode.buildabeer.data.FridgeRepository;
 import org.launchcode.buildabeer.data.UserRepository;
+import org.launchcode.buildabeer.models.Beer;
 import org.launchcode.buildabeer.models.Fridge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:3000")
 @Controller
@@ -45,10 +44,21 @@ public class FridgeController {
 //        }
 //    }
 
+    @CrossOrigin
     @GetMapping("/getBeers")
     public ResponseEntity<?> getBeerObjects() {
-        System.out.println("getBeers");
         return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
+    }
 
+    @CrossOrigin
+    @DeleteMapping("/removeBeer/{id}")
+    public ResponseEntity<?> removeBeer(@PathVariable int id){
+        Optional<Beer> removeBeer = beerRepository.findById(id);
+
+        if(removeBeer.isPresent()){
+            System.out.println("beer is present");
+            beerRepository.delete(removeBeer.get());
+        }
+        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
     }
 }
