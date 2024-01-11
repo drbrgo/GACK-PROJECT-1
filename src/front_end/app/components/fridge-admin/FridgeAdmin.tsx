@@ -19,6 +19,7 @@ export default function FridgeAdmin(props: any){
             key={beer.id}
             beer={beer}
             removeBeer={removeBeer}
+            setBeers={props.setBeers}
             />
          )
     })

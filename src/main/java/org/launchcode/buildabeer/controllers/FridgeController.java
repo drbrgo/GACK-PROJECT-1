@@ -5,6 +5,7 @@ import org.launchcode.buildabeer.data.FridgeRepository;
 import org.launchcode.buildabeer.data.UserRepository;
 import org.launchcode.buildabeer.models.Beer;
 import org.launchcode.buildabeer.models.Fridge;
+import org.launchcode.buildabeer.models.dto.BeerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +60,21 @@ public class FridgeController {
             System.out.println("beer is present");
             beerRepository.delete(removeBeer.get());
         }
+        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
+    }
+
+    @PutMapping("/updateBeer/{id}")
+    public ResponseEntity<?> updateBeer(@PathVariable int id, @RequestBody BeerDTO beerDTO){
+
+        Optional<Beer> updateBeer = beerRepository.findById(id);
+
+        if (updateBeer.isPresent()) {
+            updateBeer.get().setName(beerDTO.getName());
+            updateBeer.get().setAbv(beerDTO.getAbv());
+            updateBeer.get().setTastingNotes(beerDTO.getTastingNotes());
+            beerRepository.save(updateBeer.get());
+        }
+
         return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
     }
 }
