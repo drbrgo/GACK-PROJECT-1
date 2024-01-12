@@ -65,6 +65,8 @@
 
 // }
 
+import { setCookie } from 'cookies-next';
+//import { cookies } from 'next/headers';
 import React, { useState } from 'react';
 
 const LoginForm = () => {
@@ -101,16 +103,25 @@ const LoginForm = () => {
       }
 
       if (response.ok) {
-        // extract session ID from response headers
-        const sessionId = response.headers.get('Set-Cookie');
-        // store the session ID in localStorage or cookies
-        localStorage.setItem('sessionId', sessionId);
-        //document.cookie(sessionId); cookie is not a function
+        // extract session ID from response headers don't think this matters
+        //const sessionId = response.headers.get('Set-Cookie');
+        // store the session ID in localStorage or cookies don't think this matters
+        //localStorage.setItem('sessionId', sessionId);
+        //document.cookies(sessionId); 
+        //console.log(getCookies());
+        //document.cookie = `user=${response.headers.getSetCookie}; path=/`;
+        console.log(data);
+        console.log(data.username);
+        setCookie('username', data.username, {
+          httpOnly: false,
+          path: '/',
+        }) 
+        //can't use the below because 'use client' statement
+        //cookies.set('username', data.username);
+        
     }
 
-      //const responseData = await response.json();
       console.log("request data:", data);
-      //console.log("response data", responseData);
 
       // reset input values and error message upon successful submission
       setUsername('');

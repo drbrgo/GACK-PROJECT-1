@@ -93,7 +93,9 @@ public class HomeController {
             return new ResponseEntity<>(headers, HttpStatus.FOUND);*/
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add("Set-Cookie", "JSESSIONID=" + session.getId() + "; HttpOnly; SameSite=None; Secure");
+            headers.add("Set-Cookie", "JSESSIONID=" + session.getId());
+            headers.add("Set-Cookie", "username=" + session.getAttribute(theUser.getUsername()));
+            //"; HttpOnly; SameSite=None; Secure
 
             return ResponseEntity.ok().headers(headers).build();
 
