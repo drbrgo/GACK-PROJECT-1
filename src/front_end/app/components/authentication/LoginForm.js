@@ -65,6 +65,8 @@
 
 // }
 
+import { setCookie } from 'cookies-next';
+//import { cookies } from 'next/headers';
 import React, { useState } from 'react';
 
 const LoginForm = () => {
@@ -89,6 +91,8 @@ const LoginForm = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          // 'Access-Control-Allow-Origin': webUrl,
+          // 'Vary': 'Origin'
         },
         body: JSON.stringify(data),
       });
@@ -98,9 +102,26 @@ const LoginForm = () => {
         throw new Error(`You're flagged! Have a glass of water and try again with valid credentials.`);
       }
 
-      const responseData = await response.json();
+      if (response.ok) {
+        // extract session ID from response headers don't think this matters
+        //const sessionId = response.headers.get('Set-Cookie');
+        // store the session ID in localStorage or cookies don't think this matters
+        //localStorage.setItem('sessionId', sessionId);
+        //document.cookies(sessionId); 
+        //console.log(getCookies());
+        //document.cookie = `user=${response.headers.getSetCookie}; path=/`;
+        console.log(data);
+        console.log(data.username);
+        setCookie('username', data.username, {
+          httpOnly: false,
+          path: '/',
+        }) 
+        //can't use the below because 'use client' statement
+        //cookies.set('username', data.username);
+        
+    }
+
       console.log("request data:", data);
-      console.log("response data", responseData);
 
       // reset input values and error message upon successful submission
       setUsername('');
@@ -130,7 +151,7 @@ const LoginForm = () => {
                 autoComplete="off"
                 id="username"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(event) => setUsername(event.target.value)}
               />
             </div>
           </div>
@@ -144,7 +165,7 @@ const LoginForm = () => {
                 autoComplete="off"
                 id="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(event) => setPassword(event.target.value)}
               />
             </div>
           </div>

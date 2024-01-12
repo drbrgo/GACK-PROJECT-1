@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import styles from './page.module.css';
-import LoginForm from './components/LoginForm';
+import LoginForm from './components/authentication/LoginForm';
 import React, { useState } from 'react';
 
 export default function Home() {
