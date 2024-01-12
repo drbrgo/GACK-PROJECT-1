@@ -9,7 +9,7 @@ import { Adamina } from 'next/font/google';
 export default function Home() {
     return (
       <div>
-      <p>Nav bar </p> <p class="mt-5"><a href="/user/profile/admin">Admin</a></p>
+      <p>Nav bar <button type="admin"><a href="/user/admin"> Admin</a></button></p> 
       <p>Home page!</p>
       <LoginForm />
       <p class="mt-5">Tired of the same old stuff, are you? <a href="/createprofile">Register here.</a></p>
