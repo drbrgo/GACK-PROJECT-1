@@ -5,13 +5,15 @@ import styles from './page.module.css';
 import LoginForm from './components/LoginForm';
 import React, { useState } from 'react';
 
+import { Adamina } from 'next/font/google';
 export default function Home() {
     return (
       <div>
-      <p>Nav bar</p>
+      <p>Nav bar </p> <p class="mt-5"><a href="/user/profile/admin">Admin</a></p>
       <p>Home page!</p>
       <LoginForm />
       <p class="mt-5">Tired of the same old stuff, are you? <a href="/createprofile">Register here.</a></p>
+      
       </div>
     )
   }
