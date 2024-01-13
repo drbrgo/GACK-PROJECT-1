@@ -89,6 +89,11 @@ public class AuthenticationController {
         return new ResponseEntity<>(userRepository.findAll(), HttpStatus.FOUND);
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return ResponseEntity.status(HttpStatus.OK).body("logged out");
+    }
 
 }
 

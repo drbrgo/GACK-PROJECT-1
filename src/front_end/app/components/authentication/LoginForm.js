@@ -66,8 +66,12 @@
 // }
 
 import { setCookie } from 'cookies-next';
+import { parseCookie } from 'next/dist/compiled/@edge-runtime/cookies';
+import { getCookies } from 'cookies-next';
 //import { cookies } from 'next/headers';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
 
 const LoginForm = () => {
   // manage input values
@@ -77,6 +81,8 @@ const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const webUrl = "http://localhost:8080/"; 
+
+  const router = useRouter();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -115,13 +121,19 @@ const LoginForm = () => {
         setCookie('username', data.username, {
           httpOnly: false,
           path: '/',
-        }) 
+        });
+        router.push('/user/profile');
+        //window.location.href="/user/profile"; doesn't work to redirect
         //can't use the below because 'use client' statement
         //cookies.set('username', data.username);
         
     }
 
       console.log("request data:", data);
+      //parsecookie(cookiename) returns a map of cookie value and boolean value true
+      console.log(parseCookie(username[0]));
+      //getCookies returns an object with cookies as key value pairs. .username returns the value of the username cookie.
+      console.log(getCookies().username);
 
       // reset input values and error message upon successful submission
       setUsername('');

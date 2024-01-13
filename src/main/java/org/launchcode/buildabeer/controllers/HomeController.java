@@ -83,8 +83,8 @@ public class HomeController {
         }
             //otherwise, set user in session
             session.setAttribute("user", theUser);
-            System.out.println("your ass should be logged in now, but if it's not, the error is due to session setting" +
-                    "or headers");
+            //System.out.println("your ass should be logged in now, but if it's not, the error is due to session setting" +
+                   // "or headers"); it was due to headers -- cannot redirect from backend
             System.out.println(session.getId());
 
             //use httpheaders to redirect to profile page
@@ -93,7 +93,7 @@ public class HomeController {
             return new ResponseEntity<>(headers, HttpStatus.FOUND);*/
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add("Set-Cookie", "JSESSIONID=" + session.getId());
+//            headers.add("Set-Cookie", "JSESSIONID=" + session.getId());
             headers.add("Set-Cookie", "username=" + session.getAttribute(theUser.getUsername()));
             //"; HttpOnly; SameSite=None; Secure
 
