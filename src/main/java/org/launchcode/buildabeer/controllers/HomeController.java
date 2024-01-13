@@ -94,12 +94,13 @@ public class HomeController {
 
             HttpHeaders headers = new HttpHeaders();
 //            headers.add("Set-Cookie", "JSESSIONID=" + session.getId());
-            headers.add("Set-Cookie", "username=" + session.getAttribute(theUser.getUsername()));
+            //headers.add("Set-Cookie", "username=" + session.getAttribute(theUser.getUsername()));
             //"; HttpOnly; SameSite=None; Secure
+            headers.add("User-ID", theUser.getUsername());
 
-            return ResponseEntity.ok().headers(headers).build();
+            //return ResponseEntity.ok().headers(headers).build();
 
-            //return new ResponseEntity<>(loginDTO, HttpStatus.OK);
+            return new ResponseEntity<>(theUser, HttpStatus.OK);
 
         //let's try to return a token!
         // generate toekn uncomment the below once spring security is g2g

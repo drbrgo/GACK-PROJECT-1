@@ -73,7 +73,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   // manage input values
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -118,6 +118,7 @@ const LoginForm = () => {
         //document.cookie = `user=${response.headers.getSetCookie}; path=/`;
         console.log(data);
         console.log(data.username);
+        console.log(response.headers.get('User-ID'));
         setCookie('username', data.username, {
           httpOnly: false,
           path: '/',
