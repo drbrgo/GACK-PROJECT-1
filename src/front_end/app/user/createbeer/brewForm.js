@@ -12,11 +12,12 @@ export default function CreateBeer(props: any) {
             }
 
         const data = {
-            name: String(event.target.name.value),
-            style: String(event.target.style.value),
-            note1: String(event.target.note1.value),
-            note2: String(event.target.note2.value),
-            note3: String(event.target.note3.value),
+            username: String(event.target.username.value),
+            Wolfenstein: String(event.target.Wolfenstein.value),
+            barrelType: String(event.target.barrelType.value),
+            basic: String(event.target.basic.value),
+            recentPlace: String(event.target.recentPlace.value),
+            userComments: String(event.target.userComments.value),
         }
 
         await fetch(webUrl + "/beercreated", { //beercreated??
@@ -28,12 +29,12 @@ export default function CreateBeer(props: any) {
         }).then((response) => response.json()).then((data: BeerCreated[]) => {
             props.setBeerCreated(data);
 
-            event.target.name.value = ""
-            event.target.style.value = ""
-            event.target.note1.value = ""
-            event.target.note2.value = ""
-            event.target.note3.value = ""
-            event.target.abv.value = ""
+            event.target.username.value = ""
+            event.target.Wolfenstein.value = ""
+            event.target.barrelType.value = ""
+            event.target.basic.value = ""
+            event.target.recentPlace.value = ""
+            event.target.userComments.value = ""
 
         })
     }

@@ -19,9 +19,13 @@
 </header>
 <br>
 
+<label for="username">Welcome!</label>
+<!--<input type="text" id="username" name="username"> Will add autopopulate with the logged in username-->
+<br>
+<br>
 
     <fieldset>
-        <legend>How strong of a beer are ya lookin' to make?</legend>
+        <legend>How strong of a beer are ya lookin' for today?</legend>
 
         <div>
         <input type="radio" name="Wolfenstein" required value="easy"><label>Can I play, Daddy?</label>
@@ -37,7 +41,6 @@
 <br>
     <fieldset>
         <legend>Preferred flavor notes</legend>
-
         <div>
          <input type="checkbox" id="fruity" name="extras" value="fruity"><label for="fruity">Fruity</label>
          </div>
@@ -64,8 +67,6 @@
         <input type="button" value="Submit" onclick="getSelectedCheckboxes()">
     </fieldset>
 <br>
-
-
      <label>
          <fieldset>
              <legend>Barrel Type</legend>
@@ -79,22 +80,26 @@
 
 <br>
 <br>
-<label>Which one of these is the Pumpkin Spice Latte of beers?</label>
+<label><fieldset>
+    <legend>Which one of these is the Pumpkin Spice Latte of beers?</legend>
+    <style=
+    <label for="Blue Moon">Blue Moon</label>
+    <input type="color" id="favcolor" name="favcolor" value="#f8c471">
+</label>
 
 
 <br><br>
-     <label>Where was the last place you had a beer?
+     <label><fieldset>
+         <legend>Where was the last place you had a beer?</legend>
             <input type="text" name="recentPlace" required list="locations">
-
-
         <datalist id="locations">
             <option value="At home">
             <option value="The beach">
             <option value="In a cave">
         </datalist>
-<p></p>
 
-<br>
+
+<br><br><br>
 <fieldset>
 <legend>If animals could talk, which would be the rudest? Enter below<legend>
     <br>
