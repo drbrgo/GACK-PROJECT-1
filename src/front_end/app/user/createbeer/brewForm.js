@@ -13,7 +13,7 @@ export default function CreateBeer(props: any) {
 
         const featureData = {
             username: String(event.target.username.value),
-            Wolfenstein: String(event.target.Wolfenstein.value),
+            wolfenstein: String(event.target.wolfenstein.value),
             barrelType: String(event.target.barrelType.value),
             basic: IsNum(event.target.basic.value),
             recentPlace: String(event.target.recentPlace.value),
@@ -30,7 +30,7 @@ export default function CreateBeer(props: any) {
             props.setBeerCreated(featureData);
 
             event.target.username.value = ""
-            event.target.Wolfenstein.value = ""
+            event.target.wolfenstein.value = ""
             event.target.barrelType.value = ""
             event.target.basic.value = ""
             event.target.recentPlace.value = ""
@@ -48,8 +48,6 @@ export default function CreateBeer(props: any) {
 //        <<h1>Proprietary Brew Form</h1>
           </head>
               <body>
-
-
           <h1>Proprietary Brew Form</h1>
           <br>
           <label for="username">Welcome!</label>
@@ -60,13 +58,13 @@ export default function CreateBeer(props: any) {
               <fieldset>
                   <legend>How strong of a beer are ya lookin' for today?</legend>
                   <div>
-                  <input type="radio" name="Wolfenstein" required value="easy"><label>Can I play, Daddy?</label>
+                  <input type="radio" name="wolfenstein" required value="ggez"><label>Can I play, Daddy?</label>
                   </div>
                   <div>
-                  <input type="radio" name="Wolfenstein" required value="medium"><label>Bring 'em on!</label>
+                  <input type="radio" name="wolfenstein" required value="medium"><label>Bring 'em on!</label>
                   </div>
                   <div>
-                  <input type="radio" name="Wolfenstein" required value="hard"><label>I am Death incarnate!</label>
+                  <input type="radio" name="wolfenstein" required value="hard"><label>I am Death incarnate!</label>
                   </div>
                </fieldset>
           <br>

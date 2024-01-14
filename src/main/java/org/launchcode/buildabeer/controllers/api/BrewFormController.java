@@ -3,37 +3,41 @@ package org.launchcode.buildabeer.controllers.api;
 
 //There may be changes to name of variables, classes, methods, etc. as we further harmonize the project
 
-//@Controller
-//@RequestMapping
+import org.launchcode.buildabeer.data.BeerRepository;
+import org.launchcode.buildabeer.data.BrewFormRepository;
+import org.launchcode.buildabeer.data.FridgeRepository;
+import org.launchcode.buildabeer.data.UserRepository;
+import org.launchcode.buildabeer.models.BrewForm;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("user/createbeer")//need to double check
 public class BrewFormController {
 
-    //@GetMapping
-//    public String displayBuildBeerForm(){
-//        return "buildBeerForm";
-//    }
-//    //@PostMapping
-//    //public String renderNewBeer(@RequestParam String ???, @RequestParam String ???, Model model){
-//        //Beer newBeer = new Beer(beerID?, ???);
-//        //newBeer.setNewBeer(beerID);
-//    //model.addAttribute("beer", newBeer);
-//        return "newBeer" // or beerID object ?
-//    }
-//}
+    @Autowired
+    BrewFormRepository brewFormRepository;
 
-//I think the model would be the Beer because a new Beer class object(beerID, etc) would be created upon form submission but not sure
-// Example of Beer model code:
-//
-//public class Beer {
-//
-//    private int beerID;
-//    private String beerType; (all variables/fields/methods tbd)
-//    private String beerName;
-//    private ArrayList<String> setNewBeer = new ArrayList<>();
-//
-//    public Beer(int beerID, String beerType, String beerName){
-//        this.beerType = beerType;
-//        this.beerName = beerName;
-//
-//        Getters and setters would go here
-//    }
-}
+    @Autowired
+    private FridgeRepository fridgeRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private BeerRepository beerRepository;
+
+    @GetMapping
+    public String displayBrewForm(Model model, @PathVariable String user_id){ //def not sure about this one, ...
+        return "user/createbeer";
+    }
+    @PostMapping
+    public String renderNewBeer(@RequestParam String ???, @RequestParam String ???, Model model){
+        BrewForm brewForm = new BrewForm()beerID?, ???);
+        newBeer.setNewBeer(beerID);
+    model.addAttribute("createbeer", createbeer);
+        return "redirect:../" // or beerID object ?
+    }
+
+

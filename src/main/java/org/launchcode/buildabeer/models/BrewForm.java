@@ -7,18 +7,78 @@ import jakarta.validation.constraints.NotNull;
 public class BrewForm extends AbstractEntity {
 
 
-    private String name;
+    private String username;
 
     @NotNull
-    private String tastingNotes;
+    private String wolfenstein;
 
     @NotNull
-    private Double abv;
+    private String barrelType;
 
-    public Beer() {}
+    @NotNull
+    private int basic;
 
-    public Beer(String name, String tastingNotes, Double abv) {
-        this.name = name;
-        this.tastingNotes = tastingNotes;
-        this.abv = abv;
+    @NotNull
+    private String recentPlace;
+
+    @NotNull
+    private String userComments;
+
+    public BrewForm(String username, String wolfenstein, String barrelType, int basic, String recentPlace, String userComments) {
+        this.username = username;
+        this.wolfenstein = wolfenstein;
+        this.barrelType = barrelType;
+        this.basic = basic;
+        this.recentPlace = recentPlace;
+        this.userComments = userComments;
+    }
+//unsure whether getter and setters are needed here...i'll look into it
+
+    public String getUsername() {
+        return username;
+    }
+
+//    public void setUsername(String username) {
+//        this.username = username;
+//    }
+
+    public String getWolfenstein() {
+        return wolfenstein;
+    }
+
+    public void setWolfenstein(String wolfenstein) {
+        this.wolfenstein = wolfenstein;
+    }
+
+    public String getBarrelType() {
+        return barrelType;
+    }
+
+    public void setBarrelType(String barrelType) {
+        this.barrelType = barrelType;
+    }
+
+    public int getBasic() {
+        return basic;
+    }
+
+    public void setBasic(int basic) {
+        this.basic = basic;
+    }
+
+    public String getRecentPlace() {
+        return recentPlace;
+    }
+
+    public void setRecentPlace(String recentPlace) {
+        this.recentPlace = recentPlace;
+    }
+
+    public String getUserComments() {
+        return userComments;
+    }
+
+    public void setUserComments(String userComments) {
+        this.userComments = userComments;
+    }
 }
