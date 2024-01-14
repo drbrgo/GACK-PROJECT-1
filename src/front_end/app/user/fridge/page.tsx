@@ -1,10 +1,9 @@
 'use client'
 import FridgeAdmin from "../../components/fridge-admin/FridgeAdmin";
 import { useState, useEffect } from "react";
-import { isInterfaceDeclaration } from "typescript";
 import React from "react";
-
-    interface Beers {
+import NavBarCustom  from '../../components/NavBarCustom';
+    interface Beer {
         id : number,
         name: string,
         tastingNotes: string,
@@ -14,7 +13,7 @@ export default function fridgeAdmin(){
 
     const webUrl = "http://localhost:8080"
 
-    const [beers, setBeers] = useState<Beers[]>([])
+    const [beers, setBeers] = useState<Beer[]>([])
 
     useEffect(function(){
         const getBeers = async() => {
@@ -28,9 +27,10 @@ export default function fridgeAdmin(){
         getBeers()
     },[])
     return(
-        <>
+        <><NavBarCustom/>
     <div>
     <p>This is a User's 'fridge admin' page</p>
+        
         </div>
         <div>
     <FridgeAdmin 

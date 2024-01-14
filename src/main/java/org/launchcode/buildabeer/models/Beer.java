@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotNull;
 public class Beer extends AbstractEntity{
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "fridge_id")
     private Fridge fridge;
 
     @NotNull

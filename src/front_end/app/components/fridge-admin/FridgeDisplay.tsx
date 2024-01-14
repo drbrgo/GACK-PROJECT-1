@@ -1,9 +1,18 @@
 import { useState } from "react"
 
-export default function FridgeDisplay(props: any){
+//Handling Editing and Removing Beers below
 
+interface Beer {
+    id : number,
+    name: string,
+    tastingNotes: string,
+    abv: number
+}
+export default function FridgeDisplay(props: any){
+    
         const webUrl = "http://localhost:8080"
 
+        //useState<boolean>(false) is used below in ternary operator to determine whether or not we are in a state of editing the beer.
         const [beer, setBeer] = useState<boolean>(false);
 
         const handleSubmit = (event: any) =>{
@@ -21,15 +30,15 @@ export default function FridgeDisplay(props: any){
                 "Content-Type": "application/json"
             }, 
             body: JSON.stringify(data),
-        }).then((response) => response.json()).then(data => {
+        }).then((response) => response.json()).then((data: Beer[]) => {
             props.setBeers(data);
             setBeer(prev => !prev)
         })
 
         }
     return (
-            <div className="border-2 p-2 m-2 bg-gray-100" > 
-            
+            <div  className="fridge"  > 
+            {/* if beer is true, editing beer card will be present. Otherwise, it will not. */}
                     {beer ?
 
                 <div>
@@ -61,7 +70,6 @@ export default function FridgeDisplay(props: any){
                         <th>Beer Name</th>
                         <th>ABV</th>
                         <th>Tasting Notes</th>
-                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
