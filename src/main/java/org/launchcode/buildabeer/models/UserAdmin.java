@@ -21,7 +21,7 @@ public class UserAdmin {
     private String state;
     private int zipCode;
 
-    public UserAdmin(Long id, String firstName, String lastName, int birthdate, int phoneNumber, String emailAddress, String streetAddress, String city, String state, int zipCode) {
+    public UserAdmin(String firstName, String lastName, int birthdate, int phoneNumber, String emailAddress, String streetAddress, String city, String state, int zipCode) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthdate = birthdate;

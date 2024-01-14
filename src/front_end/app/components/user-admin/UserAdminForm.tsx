@@ -2,7 +2,7 @@
 
 export default function UserAdminForm() {
 
-    const webURL: string = "http://localhost:8080"
+    const webUrl: string = "http://localhost:8080"
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
@@ -19,7 +19,7 @@ export default function UserAdminForm() {
             zipCode: Number(event.target.zipCode.value),
         }
 
-        await fetch(webUrl + "/admin/addNewUser", {
+        await fetch(webUrl + "/userAdmin/addNewUser", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
