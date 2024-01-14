@@ -1,108 +1,110 @@
-< />!DOCTYPE html>
+<DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <title>Build your beer</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!--    <link rel="stylesheet" href="styles.css" />-->
+
+<link rel="stylesheet" href="formStyle.css"/>
+<script src="puzzle" href="placeholder.js"></script>
 <!--    <script src="" href=""></script>-->
 <!--    <script src="" href=""></script>-->
-<!--    <script src="" href=""></script>-->
-    < />!--    //The above Pending script file creation.
-    example script most likely <script> fetchPunkAPI("name of .js file w fetch function);
-                                       async function getPunkAPI(file) { let } myBeerObject = await fetch(file);
-                                       let y = await myBeerObject.text();
-                                       document.getElementById("demo").innerHTML = y;
-                                       }
+    <script>
 </script>
-    </body>
-</html>
-
--->
-
 </head><body>
 
-<h1>What can I get for you?</h1>
+<header>
+<h1>Proprietary Brew Form</h1>
+</header>
+<br>
 
-<div id="" data-testid="">
-    API id inserted here. id names to be filled in later.
-</div>
-
-<div id="">
-
-</div>
-
-
-
-    <label>Name
-        <input type="text" name="customer_name" required>
-    </></label>
-    <label>Phone </label><label>
-    <input type="tel" name="phone_number">
-</></label>
-    <p>
-        <label>Email
-            <input type="email" name="email_address">
-        </></label>
-    </p>
 
     <fieldset>
-        <legend>In what type of barrels do you like your brewski to be brewed?</legend>
-        <p><label> <input type="radio" name="frenchOak" required value="French Oak">  </></label></p>
-        <p><label> <input type="radio" name="AmericanOak" required value="American Oak">  </></label></p>
-        <p><label> <input type="radio" name="Cedar" required value="Cedar">  </></label></p>
-    </fieldset>
+        <legend>How strong of a beer are ya lookin' to make?</legend>
 
+        <div>
+        <input type="radio" name="Wolfenstein" required value="easy"><label>Can I play, Daddy?</label>
+        </div>
+        <div>
+        <input type="radio" name="Wolfenstein" required value="medium"><label>Bring 'em on!</label>
+        </div>
+        <div>
+        <input type="radio" name="Wolfenstein" required value="hard"><label>I am Death incarnate!</label>
+        </div>
+     </fieldset>
+
+<br>
     <fieldset>
-        <legend>What type of flavor notes do you prefer?</legend>
-        <p><label> <input type="checkbox" name="extras" value="fruity"> Fruity </></label></p>
-        <p><label> <input type="checkbox" name="extras" value="malty"> Malty </></label></p>
-        <p><label> <input type="checkbox" name="extras" value="sour"> Sour </></label></p>
-        <p><label> <input type="checkbox" name="extras" value="sweet"> Sweet </></label></p>
-        <p><label> <input type="checkbox" name="extras" value="bitter"> Bitter </></label></p>
-        <p><label> <input type="checkbox" name="extras" value="hoppy"> Hoppy </></label></p>
-        <p><label> <input type="checkbox" name="extras" value="floral"> Floral </></label></p>
+        <legend>Preferred flavor notes</legend>
+
+        <div>
+         <input type="checkbox" id="fruity" name="extras" value="fruity"><label for="fruity">Fruity</label>
+         </div>
+           <div>
+         <input type="checkbox" id="malty" name="extras" value="malty"><label for="malty">Malty</label>
+           </div>
+        <div>
+         <input type="checkbox" id="sour"  name="extras" value="sour"><label for="sour">Sour</label>
+        </div>
+        <div>
+         <input type="checkbox" id="sweet" name="extras" value="sweet"><label for="sweet">Sweet</label>
+        </div>
+        <div>
+         <input type="checkbox" id="bitter" name="extras" value="bitter"><label for="bitter">Bitter</label>
+        </div>
+        <div>
+
+         <input type="checkbox" id="hoppy" name="extras" value="hoppy"><label for="hoppy">Hoppy</label>
+        </div>
+        <div>
+        <label> <input type="checkbox" name="extras" value="floral"> Floral</label>
+        </div>
+        <div>
+        <input type="button" value="Submit" onclick="getSelectedCheckboxes()">
     </fieldset>
+<br>
 
-    <p>
-        <label>Local Date and Time
-            <input type="datetime-local" name="imbibe_time" required>
-        </></label>
-    </p>
 
-    <p>
-        <label>
-            <select id="barrelType" name="barrelType">
-                <option value="" selected="selected">Select One</option>
-                <option value="frenchOak">French Oak</option>
-                <option value="americanOak">American Oak</option>
-                <option value="cedar">Cedar</option>
-            </select>
-        </label>
-    </p>
+     <label>
+         <fieldset>
+             <legend>Barrel Type</legend>
+         <select id="barrelType" name="barrelType">
+             <option value="" name="selected">Select One</option>
+             <option value="frenchOak">French Oak</option>
+             <option value="americanOak">American Oak</option>
+             <option value="cedar">Cedar</option>
+         </select></fieldset>
+     </label>
 
-    <p>
-        <label>Where was the last place you had a beer?
+<br>
+<br>
+<label>Which one of these is the Pumpkin Spice Latte of beers?</label>
+
+
+<br><br>
+     <label>Where was the last place you had a beer?
             <input type="text" name="recentPlace" required list="locations">
-        </></label>
+
 
         <datalist id="locations">
             <option value="At home">
             <option value="The beach">
             <option value="In a cave">
         </datalist>
-    </p>
+<p></p>
 
-    <p>
-        <label>If animals could talk, which would be the rudest? Enter below
-            <textarea name="comments" maxlength="500"></textarea>
-        </label>
-    </p>
+<br>
+<fieldset>
+<legend>If animals could talk, which would be the rudest? Enter below<legend>
+    <br>
+        <label for="comments"></label>
+<textarea id="comments" name="userComments" rows="4"></textarea>
+        <fieldset>
 
-    <p><div class="animatedBox"><button id="loading-button">Build my Beer!</button>
-    <script src="buttonloader.js"></script></div></p>
 
-</form>
 </body>
-</html>
+
+<div class="animatedBox"><button id="loading-button">Build my Beer!</button>
+    <script src="buttonloader.js"></script></div></html>
+

@@ -2,14 +2,11 @@
 
 import React from 'react';
 
-
-
-
-export default function MenuItemForm(props: any) {
+export default function CreateBeer(props: any) {
 
     const webUrl: string = "http://localhost:8080"
 
-    const CreateBeer = async(event: any) => {
+    const formSubmit = async(event: any) => {
             event.preventDefault();
             console.log("Submitted")
             }
@@ -22,7 +19,7 @@ export default function MenuItemForm(props: any) {
             note3: String(event.target.note3.value),
         }
 
-        await fetch(webUrl + "/beercreated", { //beercreated
+        await fetch(webUrl + "/beercreated", { //beercreated??
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -46,32 +43,29 @@ export default function MenuItemForm(props: any) {
     return(
         <div>
 <link rel="stylesheet" href="formStyle.css" />
-<form onSubmit={handleSubmit}>
+<form id="brewForm" onSubmit={formSubmit}> //name of form is createbeer?
 //        <!--<script src="" href=""></script>-->
         <h1>Create your beer!</h1>
+            <fieldset>
+                        //<h1> username </h1>
+                        //will be auto-populated assuming user is logged in. will add html for this later
 
-                           <fieldset>
-                               <legend>In what type of barrels do you like your brewski to be brewed?</legend>
-                               <p><label> <input type="radio" name="frenchOak" required value="French Oak">  </></label></p>
-                               <p><label> <input type="radio" name="AmericanOak" required value="American Oak">  </></label></p>
-                               <p><label> <input type="radio" name="Cedar" required value="Cedar">  </></label></p>
-                           </fieldset>
+                        <h1>What are your flavor preferences?</h1>
 
-                           <fieldset>
-                               <legend>What type of flavor notes do you prefer?</legend>
-                               <label> <input type="checkbox" name="extras" value="fruity"> Fruity </></label>
-                               <label> <input type="checkbox" name="extras" value="malty"> Malty </></label>
-                               <label> <input type="checkbox" name="extras" value="sour"> Sour </></label>
-                               <label> <input type="checkbox" name="extras" value="sweet"> Sweet </></label>
-                               <label> <input type="checkbox" name="extras" value="bitter"> Bitter </></label>
-                               <label> <input type="checkbox" name="extras" value="hoppy"> Hoppy </></label>
-                               <label> <input type="checkbox" name="extras" value="floral"> Floral </></label>
-                           </fieldset>
-                           
-                               <label>Local Date and Time
-                                   <input type="datetime-local" name="imbibe_time" required>
-                               </></label>
-                           </p>
+                           <input type="checkbox" name="extras" value="fruity"> Fruity </>
+                           <input type="checkbox" name="extras" value="malty"> Malty </>
+                           <input type="checkbox" name="extras" value="sour"> Sour </>
+                           <input type="checkbox" name="extras" value="sweet"> Sweet </>
+                           <input type="checkbox" name="extras" value="bitter"> Bitter </>
+                           <input type="checkbox" name="extras" value="hoppy"> Hoppy </>
+                           <input type="checkbox" name="extras" value="floral"> Floral </>
+                           <input type="button" value="Submit" onclick="getSelectedCheckboxes()">
+
+
+                               In what type of barrels do you like your brewski to be made?
+                               <input type="radio" name="frenchOak" required value="French Oak">  </></label></p>
+                               <input type="radio" name="AmericanOak" required value="American Oak">  </></label></p>
+                               <input type="radio" name="Cedar" required value="Cedar">  </></label></p>
 
                            <p>
                                <label>

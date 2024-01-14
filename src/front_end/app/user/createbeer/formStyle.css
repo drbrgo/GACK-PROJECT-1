@@ -1,10 +1,16 @@
+header {
+
+}
+
 body {
     background-color: darkslategrey;
     color: azure;
     font-size: 1.1em;
+    margin: 75px;
 }
-p {
+legend {
     color: coral;
+    margin: 5px 0;
 }
 #intro {
     font-size: 1.3em;
@@ -28,4 +34,11 @@ p {
   100% {
     outline: 20px solid gold;
   }
+
+
+comments {
+    width: 300px;
+    padding: 25px;
+    background-color: lightblue;
 }
+

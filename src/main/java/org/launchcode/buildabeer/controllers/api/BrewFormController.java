@@ -1,18 +1,11 @@
 package org.launchcode.buildabeer.controllers.api;
 
 
-
-import org.launchcode.buildabeer.models.Beer;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-
 //There may be changes to name of variables, classes, methods, etc. as we further harmonize the project
 
 //@Controller
 //@RequestMapping
-public class FormController1 {
+public class BrewFormController {
 
     //@GetMapping
 //    public String displayBuildBeerForm(){

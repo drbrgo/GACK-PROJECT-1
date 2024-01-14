@@ -1,0 +1,61 @@
+<form id="myForm">
+
+    <!-- Personal Information Section -->
+    <fieldset>
+        <legend>Personal Information</legend>
+
+        <!-- Text Input for Name -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="userName" required>
+
+        <!-- Email Input -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="userEmail" required>
+    </fieldset>
+
+    <!-- Flavor Preferences Section -->
+    <fieldset>
+        <legend>Flavor Preferences</legend>
+
+        <!-- Checkboxes for Flavor Notes -->
+        <label>Flavor Notes:</label>
+        <div>
+            <input type="checkbox" id="fruity" name="flavorNotes" value="fruity">
+            <label for="fruity">Fruity</label>
+        </div>
+        <div>
+            <input type="checkbox" id="bitter" name="flavorNotes" value="bitter">
+            <label for="bitter">Bitter</label>
+        </div>
+        <!-- Add more checkboxes as needed -->
+    </fieldset>
+
+    <!-- Beverage Preferences Section -->
+    <fieldset>
+        <legend>Beverage Preferences</legend>
+
+        <!-- Radio Buttons for Beverage Type -->
+        <label>Beverage Type:</label>
+        <div>
+            <input type="radio" id="beer" name="beverageType" value="beer">
+            <label for="beer">Beer</label>
+        </div>
+        <div>
+            <input type="radio" id="wine" name="beverageType" value="wine">
+            <label for="wine">Wine</label>
+        </div>
+        <!-- Add more radio buttons as needed -->
+    </fieldset>
+
+    <!-- Comments Section -->
+    <fieldset>
+        <legend>Additional Comments</legend>
+
+        <!-- Textarea for Comments -->
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="userComments" rows="4"></textarea>
+    </fieldset>
+
+    <!-- Submit Button -->
+    <input type="submit" value="Submit">
+</form>
