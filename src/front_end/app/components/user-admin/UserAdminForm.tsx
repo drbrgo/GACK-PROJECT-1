@@ -8,15 +8,11 @@ export default function UserAdminForm() {
         event.preventDefault();
 
         const data = {
-            firstName: String(event.target.firstName.value),
-            lastName: String(event.target.lastName.value),
+            name: String(event.target.userName.value),
+            password: String(event.target.password.value),
             birthdate: Number(event.target.birthdate.value),
             phoneNumber: Number(event.target.phoneNumber.value),
             emailAddress: String(event.target.emailAddress.value),
-            streetAddress: String(event.target.streetAddress.value),
-            city: String(event.target.city.value),
-            state: String(event.target.state.value),
-            zipCode: Number(event.target.zipCode.value),
         }
 
         await fetch(webUrl + "/userAdmin/addNewUser", {
@@ -34,15 +30,15 @@ export default function UserAdminForm() {
     return (
         <div>
             <form onSubmit = {handleSubmit}>
-                <h1> Create/Edit Profile </h1>
-                <h5>First Name: </h5>
-                <div>
-                <input type="text" autoComplete="off" id="firstName" required minLength={3} maxLength={25}/>
+                <h1> Create/Edit Profile </h1>       
+                <div>        
+                <h5>Name: </h5>
+                <input type="text" autoComplete="off" id="name" required minLength={3} maxLength={25}/>
                 </div>
 
                 <div>
-                <h5>Last Name: </h5>
-                <input type="text" autoComplete="off" id="lastName" required minLength={3} maxLength={25}/> 
+                <h5>Password: </h5>
+                <input type="text" autoComplete="off" id="password" required minLength={3} maxLength={25}/> 
                 </div>
 
                 <div>
@@ -53,34 +49,12 @@ export default function UserAdminForm() {
                 <div>
                 <h5>PhoneNumber: </h5>
                 <input type="text" autoComplete="off" id="phoneNumber" required minLength={10} maxLength={10}/>
-                </div>                   
-
+                </div>            
+                
                 <div>
                 <h5>Email Address: </h5>
                 <input type="text" autoComplete="off" id="emailAddress" required minLength={3} maxLength={25}/>
-                </div>     
-                
-                <div>
-                <h5>Street Address </h5>
-                <input type="text" autoComplete="off" id="streetAddress" required minLength={1} maxLength={20}/>
-                </div>
-                
-                <div>
-                <h5>City: </h5>
-                <input type="text" autoComplete="off" id="city" required minLength={3} maxLength={15}/>
-                </div>
-                
-                <div>
-                <h5>State: </h5>
-                <input type="text" autoComplete="off" id="state" required minLength={2} maxLength={15}/>
-                </div>
-                
-                <div>
-                <h5>Zip Code: </h5>
-                <input type="text" autoComplete="off" id="zipCode" required minLength={5} maxLength={10}/>
-                </div>
-
-
+                </div>   
                 <button type="submit">Submit</button>
 
             </form>

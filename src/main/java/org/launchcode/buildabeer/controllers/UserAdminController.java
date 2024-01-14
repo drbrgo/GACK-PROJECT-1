@@ -22,10 +22,11 @@ public class UserAdminController {
     @PostMapping("/addNewUser")
     public ResponseEntity<?> addNewUser(@RequestBody UserAdminDTO userAdminDTO) {
 
-        UserAdmin newProfile = new UserAdmin(userAdminDTO.getFirstName(), userAdminDTO.getLastName(), userAdminDTO.getBirthdate(), userAdminDTO.getPhoneNumber(), userAdminDTO.getEmailAddress(), userAdminDTO.getStreetAddress(), userAdminDTO.getCity(), userAdminDTO.getState(), userAdminDTO.getZipCode());
+        UserAdmin newProfile = new UserAdmin(userAdminDTO.getName(), userAdminDTO.getBirthdate(), userAdminDTO.getPhoneNumber(), userAdminDTO.getEmailAddress(), userAdminDTO.getPassword());
         //set createProfileEntity
         userAdminRepository.save(newProfile);
         return new ResponseEntity<>(userAdminDTO, HttpStatus.OK);
     }
 
 }
+
