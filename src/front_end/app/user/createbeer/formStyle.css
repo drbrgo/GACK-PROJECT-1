@@ -23,7 +23,7 @@ legend {
 .animatedBox {
   width: 100px;
   padding: 10px;
-  margin: 20px;
+  margin: 10px;
   text-align: center;
   font: 24px sans-serif;
   color: white;
@@ -37,7 +37,7 @@ legend {
   }
 
 
-comments {
+commentBox {
     width: 300px;
     padding: 25px;
     background-color: lightblue;
