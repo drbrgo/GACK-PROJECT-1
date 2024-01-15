@@ -1,6 +1,6 @@
 'use client';
 
-const BeerNameGenerator = () => {
+const BeerNameGenerator = (props: any) => {
 
         const webUrl = "http://localhost:8080/" 
 
@@ -25,15 +25,7 @@ const BeerNameGenerator = () => {
             })
 //////////////////////////////////////////////////////////
 
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     }, 
-        //     body: JSON.stringify(data),
-        // }).then((response) => response.json()).then(data => {
-        //     console.log(data);
-          
-        // })
+
 
         }
 
@@ -42,7 +34,7 @@ const BeerNameGenerator = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <h3>Enter 1 taste word</h3>
+                    <h3>Enter 1 taste word for a list of recommended beers</h3>
                     <input type="text" autoComplete="off" id="taste"  required minLength={1} maxLength={40}></input>
                 </div>
                 <button type="submit">Submit</button> 

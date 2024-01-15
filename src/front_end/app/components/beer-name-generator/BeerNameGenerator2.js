@@ -2,9 +2,10 @@
 import React, { useState } from 'react';
 
 
-const BeerNameGenerator2 = () => {
+const BeerNameGenerator2 = (props) => {
   // manage input values
   const [taste, setTaste] = useState('');
+  const [beer, setBeer] = useState('');
   
   // manage error message
   const [errorMessage, setErrorMessage] = useState('');
@@ -32,20 +33,15 @@ const BeerNameGenerator2 = () => {
         throw new Error(`Whoops, still doesn't fetch.`);
       }
 
-      if (response.ok) {
-        console.log(data);
-
-        // setCookie('username', data.username, {
-        //   httpOnly: false,
-        //   path: '/',
-        // });
-        // router.push('/user/profile');
+      console.log(data);  
         
+      const responseData = await response.json()
+    //   .then(responseData => {
+    //     props.setBeers(responseData);
+    //   })
+      console.log(responseData);
         
-    }
-
-      console.log("request data:", data);
-      
+      //reset input field and error message
       setTaste('');
       setErrorMessage('');
 
