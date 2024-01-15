@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 const BeerNameGenerator2 = (props) => {
   // manage input values
   const [taste, setTaste] = useState('');
+  const [abv, setAbv] = useState('');
   const [beer, setBeer] = useState('');
 
   //manage output values
@@ -13,6 +14,7 @@ const BeerNameGenerator2 = (props) => {
   // manage error message
   const [errorMessage, setErrorMessage] = useState('');
 
+  //this post handler takes an abv, searches the api with it. then takes the keyword and searches the description of each beer returned
   const webUrl = "http://localhost:8080/api/generate"; 
 
   const handleSubmit = async (event) => {
@@ -20,7 +22,10 @@ const BeerNameGenerator2 = (props) => {
 
     const data = {
       taste: event.target.taste.value,
+      abv: event.target.abv.value,
       };
+
+      console.log(data);
 
     try {
       const response = await fetch(webUrl, {
@@ -47,6 +52,7 @@ const BeerNameGenerator2 = (props) => {
         
       //reset input field and error message
       setTaste('');
+      setAbv('');
       setErrorMessage('');
 
       //handle error
@@ -59,7 +65,7 @@ const BeerNameGenerator2 = (props) => {
   return (
     <div className="flex justify-center">
       <form onSubmit={handleSubmit}>
-        <h3>Enter one taste word</h3>
+        <h3>Enter one taste word and your preferred ABV</h3>
         {/* error message only displayes if present */}
         {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
         <div className="container">
@@ -77,6 +83,22 @@ const BeerNameGenerator2 = (props) => {
             </div>
           </div>
         </div>
+        <div className="container">
+          <div className="row">
+            <div className="form-item col-4">
+              <label>ABV of choice: </label>
+              {/* value and onChange make inputs controlled components */}
+              <input
+                type="text"
+                autoComplete="off"
+                id="abv"
+                value={abv}
+                onChange={(event) => setAbv(event.target.value)}
+              />
+            </div>
+          </div>
+        </div>
+
         <button type="submit">Fetch!</button>
       </form>
       {matchingBeers && (

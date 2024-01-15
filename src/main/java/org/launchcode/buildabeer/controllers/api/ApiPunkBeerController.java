@@ -4,14 +4,12 @@ package org.launchcode.buildabeer.controllers.api;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.launchcode.buildabeer.data.BeerRepository;
 import org.launchcode.buildabeer.data.UserRepository;
-import org.launchcode.buildabeer.models.Beer;
 import org.launchcode.buildabeer.models.dto.ApiDTO;
 import org.launchcode.buildabeer.models.dto.ApiDummyDTO;
-import org.launchcode.buildabeer.services.ApiService;
+import org.launchcode.buildabeer.services.ApiServiceAbv;
+import org.launchcode.buildabeer.services.ApiServiceFood;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -19,7 +17,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 //@RestController
@@ -36,7 +33,10 @@ public class ApiPunkBeerController {
 //        private RestTemplate restTemplate;
 
         @Autowired
-        private ApiService apiService;
+        private ApiServiceAbv apiServiceAbv;
+
+        @Autowired
+        private ApiServiceFood apiServiceFood;
 
         @Autowired
         private UserRepository userRepository;
@@ -45,12 +45,12 @@ public class ApiPunkBeerController {
         private BeerRepository beerRepository;
 
         //returns all beers at the url
-//        @GetMapping("/data")
-//        public ResponseEntity<List<ApiDTO>> fetchDataFromExternalAPI() {
-//            String apiUrl = "https://api.punkapi.com/v2/beers?abv_lt=3";
-//            List<ApiDTO> beers = apiService.getBeers();
-//            return ResponseEntity.ok(beers);
-//        }
+        @GetMapping("/dataf")
+        public ResponseEntity<List<ApiDTO>> fetchDataFromExternalAPI() {
+            //String apiUrl = "https://api.punkapi.com/v2/beers?abv_gt=3";
+            List<ApiDTO> beers = apiServiceFood.getBeers("dog");
+            return ResponseEntity.ok(beers);
+        }
 
     //returns beer at specific index
 //    @GetMapping("/data")
@@ -61,11 +61,12 @@ public class ApiPunkBeerController {
 //        return ResponseEntity.ok(beer);
 //    }
 
+    //returns beer by keyword - limited to first page of beers under 3%
       @PostMapping ("/generate")
       public ResponseEntity<?> beerGenerator (@RequestBody ApiDummyDTO apiDummyDTO) {
 
           //declare variables
-          List<ApiDTO> allBeers = apiService.getBeers();
+          List<ApiDTO> allBeers = apiServiceAbv.getBeers(apiDummyDTO.getAbv());
           String taste = apiDummyDTO.getTaste();
           System.out.println(taste);
 
@@ -85,7 +86,7 @@ public class ApiPunkBeerController {
              // loop to print the name of each beer returned by the api
               for (int i = 0; i < matchingBeers.size(); i++ ) {
               System.out.println(matchingBeers.get(i).getName());
-              jsonObject.put(String.valueOf(i), matchingBeers.get(i).getName());
+              jsonObject.put(String.valueOf(i+1), matchingBeers.get(i).getName());
               }
 
               //test it
@@ -136,7 +137,7 @@ public class ApiPunkBeerController {
     private String taste = "backbone";
         @GetMapping("/data")
         public ResponseEntity<List<ApiDTO>> getBeersByTaste(@RequestParam String taste) {
-            List<ApiDTO> allBeers = apiService.getBeers();
+            List<ApiDTO> allBeers = apiServiceAbv.getBeers(3F);
 
             List<ApiDTO> matchingBeers = allBeers.stream()
                     .filter(beer -> beer.getDescription().toLowerCase().contains(taste.toLowerCase()))
@@ -146,11 +147,11 @@ public class ApiPunkBeerController {
         }
 
 //to return a list of beer names only
-//        @GetMapping("/beerNames")
-//        public ResponseEntity<List<String>> getBeerNames() {
-//            List<ApiDTO> allBeers = apiService.getBeers();
-//
-//            List<String> beerNames = allBeers.stream()
+////        @GetMapping("/beerNames")
+////        public ResponseEntity<List<String>> getBeerNames() {
+////            List<ApiDTO> allBeers = apiService.getBeers();
+////
+////            List<String> beerNames = allBeers.stream()
 //                    .map(ApiDTO::getName)
 //                    .collect(Collectors.toList());
 //
