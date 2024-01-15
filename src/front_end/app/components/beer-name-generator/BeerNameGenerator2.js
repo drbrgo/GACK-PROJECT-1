@@ -6,6 +6,9 @@ const BeerNameGenerator2 = (props) => {
   // manage input values
   const [taste, setTaste] = useState('');
   const [beer, setBeer] = useState('');
+
+  //manage output values
+  const [matchingBeers, setMatchingBeers] = useState(null);
   
   // manage error message
   const [errorMessage, setErrorMessage] = useState('');
@@ -40,6 +43,7 @@ const BeerNameGenerator2 = (props) => {
     //     props.setBeers(responseData);
     //   })
       console.log(responseData);
+      setMatchingBeers(responseData); 
         
       //reset input field and error message
       setTaste('');
@@ -61,7 +65,7 @@ const BeerNameGenerator2 = (props) => {
         <div className="container">
           <div className="row">
             <div className="form-item col-4">
-              <label>Word of flavor</label>
+              <label>Word of flavor: </label>
               {/* value and onChange make inputs controlled components */}
               <input
                 type="text"
@@ -75,6 +79,17 @@ const BeerNameGenerator2 = (props) => {
         </div>
         <button type="submit">Fetch!</button>
       </form>
+      {matchingBeers && (
+        <div>
+          <h3>Other beers you may enjoy:</h3>
+          <ul>
+        {Object.values(matchingBeers).map((value, index) => (
+          <li key={index}>{value}</li>
+        ))}
+      </ul>
+          {/* <pre>{JSON.stringify(matchingBeers, null, 2)}</pre> this uses JSON format to render the values. not ideal!*/}
+        </div>
+      )}
     </div>
   );
 };
