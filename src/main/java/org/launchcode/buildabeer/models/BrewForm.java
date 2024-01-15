@@ -7,7 +7,9 @@ import jakarta.validation.constraints.NotNull;
 public class BrewForm extends AbstractEntity {
 
 
-    private String username;
+   private int formID;
+
+   private String username;
 
     @NotNull
     private String wolfenstein;
@@ -24,7 +26,7 @@ public class BrewForm extends AbstractEntity {
     @NotNull
     private String userComments;
 
-    public BrewForm(String username, String wolfenstein, String barrelType, int basic, String recentPlace, String userComments) {
+    public BrewForm() {
         this.username = username;
         this.wolfenstein = wolfenstein;
         this.barrelType = barrelType;

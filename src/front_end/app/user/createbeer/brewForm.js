@@ -9,11 +9,13 @@ export default function CreateBeer(props: any) {
     const formSubmit = async(event: any) => {
             event.preventDefault();
             console.log("Submitted")
-            }
+
+    const checkboxValues = getSelectedCheckboxes(event);
 
         const featureData = {
             username: String(event.target.username.value),
             wolfenstein: String(event.target.wolfenstein.value),
+            flavorNotes: List(event.targent.flavorNotes.checkboxValues),
             barrelType: String(event.target.barrelType.value),
             basic: IsNum(event.target.basic.value),
             recentPlace: String(event.target.recentPlace.value),
@@ -31,6 +33,7 @@ export default function CreateBeer(props: any) {
 
             event.target.username.value = ""
             event.target.wolfenstein.value = ""
+            event.target.flavorNotes.value = ""
             event.target.barrelType.value = ""
             event.target.basic.value = ""
             event.target.recentPlace.value = ""
@@ -43,7 +46,7 @@ export default function CreateBeer(props: any) {
 
     return(
         <div>
-<link rel="stylesheet" href="formStyle.css" />
+//<link rel="stylesheet" href="formStyle.css" />
 <form id="brewForm" onSubmit={formSubmit}> //name of form is createbeer?
 //        <<h1>Proprietary Brew Form</h1>
           </head>
@@ -71,25 +74,25 @@ export default function CreateBeer(props: any) {
               <fieldset>
                   <legend>Preferred flavor notes</legend>
                   <div>
-                   <input type="checkbox" id="fruity" name="extras" value="fruity" onclick="getSelectedCheckboxes()"><label for="fruity">Fruity</label>
+                   <input type="checkbox" id="fruity" name="flavorNotes" value="fruity" onclick="getSelectedCheckboxes()"><label for="fruity">Fruity</label>
                    </div>
                      <div>
-                   <input type="checkbox" id="malty" name="extras" value="malty" onclick="getSelectedCheckboxes()"><label for="malty">Malty</label>
+                   <input type="checkbox" id="malty" name="flavorNotes" value="malty" onclick="getSelectedCheckboxes()"><label for="malty">Malty</label>
                      </div>
                   <div>
-                   <input type="checkbox" id="sour"  name="extras" value="sour" onclick="getSelectedCheckboxes()"><label for="sour">Sour</label>
+                   <input type="checkbox" id="sour"  name="flavorNotes" value="sour" onclick="getSelectedCheckboxes()"><label for="sour">Sour</label>
                   </div>
                   <div>
-                   <input type="checkbox" id="sweet" name="extras" value="sweet" onclick="getSelectedCheckboxes()"><label for="sweet">Sweet</label>
+                   <input type="checkbox" id="sweet" name="flavorNotes" value="sweet" onclick="getSelectedCheckboxes()"><label for="sweet">Sweet</label>
                   </div>
                   <div>
-                   <input type="checkbox" id="bitter" name="extras" value="bitter" onclick="getSelectedCheckboxes()"><label for="bitter">Bitter</label>
+                   <input type="checkbox" id="bitter" name="flavorNotes" value="bitter" onclick="getSelectedCheckboxes()"><label for="bitter">Bitter</label>
                   </div>
                   <div>
-                   <input type="checkbox" id="hoppy" name="extras" value="hoppy" onclick="getSelectedCheckboxes()"><label for="hoppy">Hoppy</label>
+                   <input type="checkbox" id="hoppy" name="flavorNotes" value="hoppy" onclick="getSelectedCheckboxes()"><label for="hoppy">Hoppy</label>
                   </div>
                   <div>
-                  <label> <input type="checkbox" name="extras" value="floral" onclick="getSelectedCheckboxes()">Floral</label>
+                  <label> <input type="checkbox" name="flavorNotes" value="floral" onclick="getSelectedCheckboxes()">Floral</label>
                   </div>
                   </fieldset>
           <br>
