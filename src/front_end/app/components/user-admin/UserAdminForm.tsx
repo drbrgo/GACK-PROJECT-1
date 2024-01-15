@@ -8,7 +8,7 @@ export default function UserAdminForm() {
         event.preventDefault();
 
         const data = {
-            name: String(event.target.userName.value),
+            name: String(event.target.name.value),
             password: String(event.target.password.value),
             birthdate: Number(event.target.birthdate.value),
             phoneNumber: Number(event.target.phoneNumber.value),
