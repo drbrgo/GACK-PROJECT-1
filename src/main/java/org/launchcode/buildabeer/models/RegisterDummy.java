@@ -11,12 +11,14 @@ public class RegisterDummy extends AbstractEntity{
     private String pwHash;
 
     public RegisterDummy(String username, String password) {
+        super();
         this.username = username;
         this.pwHash = encoder.encode(password);
     }
 
 
     public RegisterDummy() {
+        super();
     }
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

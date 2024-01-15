@@ -1,0 +1,54 @@
+//This script will loop through flavorNotes checkbox responses, so that only selected checkboxes values are included in the form submission.
+//
+
+
+//Extra UI feature: Puzzle Capcha script, where a user has to drag a piece of an image to complete the rest of the image displayed in that page/container
+//<script>
+//  function dragstartHandler(ev) {
+//    // Add the target element's id to the data transfer object
+//    ev.dataTransfer.setData("text/plain", ev.target.id);
+//  }
+//
+//  window.addEventListener("DOMContentLoaded", () => {
+//    // Get the element by id
+//    const element = document.getElementById("p1");
+//    // Add the ondragstart event listener
+//    element.addEventListener("dragstart", dragstartHandler);
+//  });
+//</script>
+
+//<p id="p1" draggable="true">This element is draggable.</p>
+
+//let shouldMove = false
+//  const captcha = document.querySelector('#captcha')
+//  const handle = document.querySelector('#handle')
+//  const button = document.querySelector('#handle span')
+//
+//  button.addEventListener('mousedown', (e) => {
+//    shouldMove = true
+//  })
+//
+//  window.addEventListener('mousemove', (e) => {
+//    if (shouldMove) {
+//      const offsetLeft = handle.getBoundingClientRect().left
+//      const buttonWidth = button.getBoundingClientRect().width
+//
+//      captcha.style.setProperty('--moved', `${e.clientX - offsetLeft - buttonWidth / 2}px`)
+//    }
+//  })
+//
+//  window.addEventListener('mouseup', (e) => {
+//    if (shouldMove) {
+//      const finalOffset = e.clientX - handle.getBoundingClientRect().left
+//
+//      if (finalOffset >= 430 && finalOffset <= 450) {
+//        // pass
+//        captcha.classList.add('passed')
+//      } else {
+//        // failed
+//        captcha.style.setProperty('--moved', '0px')
+//      }
+//
+//      shouldMove = false
+//    }
+//  })

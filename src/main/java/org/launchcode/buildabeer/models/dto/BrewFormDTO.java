@@ -2,14 +2,39 @@ package org.launchcode.buildabeer.models.dto;
 
 
 import jakarta.validation.constraints.NotNull;
+import org.launchcode.buildabeer.models.BrewForm;
+
+import java.util.List;
 
 public class BrewFormDTO {
 
-    private String username;
-    private String wolfenstein;
-    private String barrelType;
-    private int basic;
-    private String recentPlace;
-    private String userComments;
-
+//
+//    public BrewForm convertToEntity() {
+//        brewForm = new BrewForm();
+//
+//        //SQL schema...
+//
+//        @NotNull
+//        private String username;
+//
+//        @NotNull
+//        private String wolfenstein;
+//
+//        @NotNull
+//        private String barrelType;
+//
+//        @NotNull
+//        private List<String> flavorNotes;
+//
+//        @NotNull
+//        private int basic;
+//
+//        @NotNull
+//        private String recentPlace;
+//
+//        @NotNull
+//        private String userComments;
+//
+//
+//        return null; //not sure
 }

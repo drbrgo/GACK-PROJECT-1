@@ -12,9 +12,12 @@ public class ApiItem extends AbstractEntity {
     @NotNull
     private Double abv;
 
-    public ApiItem() {}
+    public ApiItem() {
+        super();
+    }
 
     public ApiItem(String name, String tastingNotes, Double abv) {
+        super();
         this.name = name;
         this.tastingNotes = tastingNotes;
         this.abv = abv;

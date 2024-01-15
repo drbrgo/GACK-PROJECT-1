@@ -1,7 +1,6 @@
 package org.launchcode.buildabeer.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -19,9 +18,12 @@ public class Beer extends AbstractEntity{
     @NotNull
     private Double abv;
 
-    public Beer() {}
+    public Beer() {
+        super();
+    }
 
     public Beer(String name, String tastingNotes, Double abv) {
+        super();
         this.name = name;
         this.tastingNotes = tastingNotes;
         this.abv = abv;

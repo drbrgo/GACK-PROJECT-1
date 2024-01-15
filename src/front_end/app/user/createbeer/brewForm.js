@@ -8,11 +8,12 @@ export default function CreateBeer(props: any) {
 
     const formSubmit = async(event: any) => {
             event.preventDefault();
-            console.log("Submitted")
+            console.log("Ayoooooooo!")
 
     const checkboxValues = getSelectedCheckboxes(event);
 
-        const featureData = {
+
+        const formData = {
             username: String(event.target.username.value),
             wolfenstein: String(event.target.wolfenstein.value),
             flavorNotes: List(event.targent.flavorNotes.checkboxValues),
@@ -29,7 +30,7 @@ export default function CreateBeer(props: any) {
             },
             body: JSON.stringify(data),
         }).then((response) => response.json()).then((featureData: BeerCreated[]) => {
-            props.setBeerCreated(featureData);
+            props.setBeerCreated(formData);
 
             event.target.username.value = ""
             event.target.wolfenstein.value = ""

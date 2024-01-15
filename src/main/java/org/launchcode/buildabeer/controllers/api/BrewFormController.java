@@ -20,18 +20,9 @@ import java.util.List;
 public class BrewFormController {
 
 
-    //Present for database operations (will remove ones not needed as I work further)
+    //Present for database operations
     @Autowired
     BrewFormRepository brewFormRepository;
-
-    @Autowired
-    private FridgeRepository fridgeRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private BeerRepository beerRepository;
 
     //the GET request pointing to Drew's user cookie extract and display the username in the first input of the form. Work in progress, method/path variable names may change
     @GetMapping
@@ -66,7 +57,7 @@ public class BrewFormController {
         //Not sure if back-end validation logic goes here. Will update. If not, then I will use this to create a "Form submitted successfully" message and animation (not part of mvp, something extra for later).
 
         //Return view,
-        return "redirect:/viewform
+        return "redirect:/viewform";;
         }
     }
 
