@@ -1,10 +1,10 @@
-import FridgeAdmin from "@/app/components/fridge-admin/FridgeAdmin"
+import React from 'react';
 
-export default function fridgeAdmin(){
+export default function FridgeAdmin(){
     return(
     <div>
     <p>This is a User's 'fridge admin' page</p>
 
-    <FridgeAdmin />
+
     </div>)
 }
