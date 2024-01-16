@@ -1,11 +1,55 @@
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+    background-color: darkslategrey;
+    color: azure;
+    font-size: 1.1em;
+    margin: 100
+    px;
 }
 
-#captcha {
+
+legend {
+    color: coral;
+    margin: 5px 0;
+}
+#intro {
+    font-size: 1.3em;
+}
+.colorful {
+    color: orange;
+}
+
+.animatedBox {
+  width: 100px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  font: 24px sans-serif;
+  color: white;
+  background: yellowgreen;
+  outline: 0px solid black;
+  animation: myAnimation 3s linear 1s 3 alternate forwards;
+}
+@keyframes myAnimation {
+  100% {
+    outline: 20px solid gold;
+  }
+
+commentBox {
+    width: 300px;
+    padding: 25px;
+    background-color: lightblue;
+}
+
+/*captchaStyle {
+                 display: flex;
+                 justify-content: center;
+                 align-items: center;
+                 min-height: 100vh;
+
+}*/
+
+
+/*#captcha {
   --width: 400px;
   --height: 260px;
   --puzzle-width: 80px;
@@ -17,7 +61,7 @@ body {
   width: var(--width);
   height: var(--height);
   border-radius: 4px;
-  background-image: url(https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2700&q=80);
+  background-image: url(Photo by cottonbro studio from Pexels: https://www.pexels.com/photo/man-in-coveralls-drinking-beer-3951401/);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -35,16 +79,16 @@ body {
   background-position: inherit;
 
   clip-path: inset(
-    calc( (var(--height) - var(--puzzle-height)) / 2 ) /* 90px */
-    var(--puzzle-width) /* 90px */
-    calc( (var(--height) - var(--puzzle-height)) / 2 ) /* 90px */
-    calc( var(--width) - var(--puzzle-width) * 2 ) /* 230px */
+    calc( (var(--height) - var(--puzzle-height)) / 2 ) *//* 90px *//*
+    var(--puzzle-width) *//* 90px *//*
+    calc( (var(--height) - var(--puzzle-height)) / 2 ) *//* 90px *//*
+    calc( var(--width) - var(--puzzle-width) * 2 ) *//* 230px *//*
   );
   -webkit-clip-path: inset(
-    calc( (var(--height) - var(--puzzle-height)) / 2 ) /* 90px */
-    var(--puzzle-width) /* 90px */
-    calc( (var(--height) - var(--puzzle-height)) / 2 ) /* 90px */
-    calc( var(--width) - var(--puzzle-width) * 2 ) /* 230px */
+    calc( (var(--height) - var(--puzzle-height)) / 2 ) *//* 90px *//*
+    var(--puzzle-width) *//* 90px *//*
+    calc( (var(--height) - var(--puzzle-height)) / 2 ) *//* 90px *//*
+    calc( var(--width) - var(--puzzle-width) * 2 ) *//* 230px *//*
   );
 }
 
@@ -107,5 +151,4 @@ body {
 #captcha.passed::before,
 #captcha.passed::after,
 #captcha.passed #handle {
-  opacity: 0;
-}
+  opacity: 0;*/

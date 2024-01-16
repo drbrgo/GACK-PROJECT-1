@@ -8,33 +8,26 @@ import java.util.List;
 
 public class BrewFormDTO {
 
-//
-//    public BrewForm convertToEntity() {
-//        brewForm = new BrewForm();
-//
-//        //SQL schema...
-//
-//        @NotNull
-//        private String username;
-//
-//        @NotNull
-//        private String wolfenstein;
-//
-//        @NotNull
-//        private String barrelType;
-//
-//        @NotNull
-//        private List<String> flavorNotes;
-//
-//        @NotNull
-//        private int basic;
-//
-//        @NotNull
-//        private String recentPlace;
-//
-//        @NotNull
-//        private String userComments;
-//
-//
-//        return null; //not sure
-}
+
+    public void convertToEntity() {
+        BrewForm brewForm = new BrewForm();
+
+        //SQL schema...
+
+        @NotNull String username;
+
+        @NotNull String wolfenstein;
+
+        @NotNull String barrelType;
+
+        @NotNull List<String> flavorNotes;
+
+        @NotNull int basic;
+
+        @NotNull String recentPlace;
+
+        @NotNull String userComments;
+
+
+
+}}

@@ -1,13 +1,17 @@
 package org.launchcode.buildabeer.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.context.annotation.EnableMBeanExport;
 
 @Entity
 public class BrewForm extends AbstractEntity {
 
-
-    private int formID;
+    @OneToOne
+    @JoinColumn(name = "results_id")
+    p
 
     private String username;
 
@@ -34,6 +38,10 @@ public class BrewForm extends AbstractEntity {
         this.basic = basic;
         this.recentPlace = recentPlace;
         this.userComments = userComments;
+    }
+
+    public BrewForm() {
+
     }
 //unsure whether getter and setters are needed here...i'll look into it
 
