@@ -23,8 +23,14 @@ export default function UserAdminForm(props: any) {
             body: JSON.stringify(data),
         }).then((response) => response.json()).then(data => {
             props.setProfiles(oldData => [...oldData, data]);
-        })
 
+            event.target.name.value=""
+            event.target.password.value=""
+            event.target.birthdate.value=""
+            event.target.phoneNumber.value=""
+            event.target.emailAddress.value=""
+    
+        })        
     }
 
     return (
@@ -55,7 +61,7 @@ export default function UserAdminForm(props: any) {
                 <h5>Email Address: </h5>
                 <input type="text" autoComplete="off" id="emailAddress" required minLength={3} maxLength={25}/>
                 </div>   
-                <button className="bg-blue-500/80 p-2 rounded-md" type="submit">Submit</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     )

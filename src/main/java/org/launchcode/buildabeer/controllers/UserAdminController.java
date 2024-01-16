@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 @CrossOrigin
 @RequestMapping(value = "/userAdmin")
@@ -19,13 +21,23 @@ public class UserAdminController {
     @PostMapping("/addNewUser")
     public ResponseEntity<?> addNewUser(@RequestBody UserAdminDTO userAdminDTO) {
 
-        UserAdmin newProfile = new UserAdmin(userAdminDTO.getId(), userAdminDTO.getName(), userAdminDTO.getBirthdate(), userAdminDTO.getPhoneNumber(), userAdminDTO.getEmailAddress(), userAdminDTO.getPassword());
+        UserAdmin newProfile = new UserAdmin(userAdminDTO.getName(), userAdminDTO.getBirthdate(), userAdminDTO.getPhoneNumber(), userAdminDTO.getEmailAddress(), userAdminDTO.getPassword());
         //set createProfileEntity
         userAdminRepository.save(newProfile);
         return new ResponseEntity<>(userAdminDTO, HttpStatus.OK);
     }
     @GetMapping("/getUsers")
     public ResponseEntity<?> getUserObjects() {
+        return new ResponseEntity<>(userAdminRepository.findAll(), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/removeProfile/{id}")
+    public ResponseEntity<?> removeProfile(@PathVariable Long id) {
+        Optional<UserAdmin> removeProfile = userAdminRepository.findById(id);
+
+        if(removeProfile.isPresent()) {
+            userAdminRepository.delete(removeProfile.get());
+        }
         return new ResponseEntity<>(userAdminRepository.findAll(), HttpStatus.OK);
     }
 

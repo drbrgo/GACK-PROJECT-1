@@ -23,6 +23,9 @@ public class CreateProfile {
         this.emailAddress = emailAddress;
         this.password = password;
     }
+
+    //removed long id from constructor. the id will be assigned when it is set inside the database
+
     public CreateProfile (){
         //no arg constructor
     }

@@ -80,6 +80,7 @@ export default function FridgeDisplay(props: any){
                         <td>{props.beer.tastingNotes}</td>
                         <td> <button onClick={() => props.removeBeer(props.beer.id)}className='bg-red-500/80 p-2 rd-md' type='button'>Delete</button></td>
                         <td> <button onClick={() => setBeer(prev => !prev)}className='bg-blue-500/80 p-2 rd-md' type='button'>Edit</button></td>
+                        <td><button onClick={() => props.favoriteBeer(props.beer.id)} type='button'>Favorite</button> </td>
                     </tr>
                     </tbody>
                     </table>

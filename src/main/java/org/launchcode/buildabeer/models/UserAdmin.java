@@ -28,23 +28,7 @@ public class UserAdmin {
         this.emailAddress = emailAddress;
         this.password = password;
     }
-
-    public UserAdmin(Long id, String name, int birthdate, int phoneNumber, String emailAddress, String password) {
-        this.id = id;
-        this.name = name;
-        this.birthdate = birthdate;
-        this.phoneNumber = phoneNumber;
-        this.emailAddress = emailAddress;
-        this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    //removed long id from constructor. the id will be assigned when it is set inside the database
 
     public String getName() {
         return name;

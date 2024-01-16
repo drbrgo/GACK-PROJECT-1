@@ -40,16 +40,18 @@ interface Profiles {
             <p> display active profile</p>
         </div>
         
-        <div className="">
+        <div>
         <UserAdminForm 
         setProfiles= {setProfiles} />
-        <p>Add new user</p>
-        <p>Show new user being added</p>
+        <p>Add new user profile</p>
+        <p>Show profile being added</p>
         </div>
 
         <div>
             <UserAdminEditDisplay 
-            profiles={profiles} />
+            profiles={profiles}
+            setProfiles= {setProfiles} 
+            />
         </div>
     </div>
 

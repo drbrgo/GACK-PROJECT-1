@@ -1,28 +1,36 @@
 'use client'
 import { useEffect} from "react"
-
-
 import UserAdminCard from "./UserAdminCard"
 
 export default function UserAdminEditDisplay(props: any) {
 
+    const webUrl: string = "http://localhost:8080"
+
+    const removeProfile = (profileId: number) => {
+        fetch(webUrl + '/userAdmin/removeProfile/' + profileId, {
+            method: "DELETE"
+      }).then((response) => response.json()).then(data => {
+        props.setProfiles(data);
+      })
+    }
+
     useEffect (()=>{
-console.log(props.profiles)
+//console.log(props.profiles)
 },[])
 
-    const allProfiles = props.profiles.map((profile: any) => {
-        console.log(profile)
-        return (
-            <div key={profile.id}>
-                 <UserAdminCard 
-                 profile={profile} />
-            </div>
+const allProfiles = props.profiles.map((profile: any) => {
+    return (
+        <UserAdminCard 
+        key={profile.id}>
+        profile={profile} 
+        removeProfile={removeProfile}
+        />
            
         )
     })
 
     return (
-        <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2">
+        <div>
         {allProfiles}
         </div>
     )

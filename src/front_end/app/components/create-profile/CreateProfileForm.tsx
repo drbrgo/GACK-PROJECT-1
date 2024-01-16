@@ -11,11 +11,11 @@ export default function CreateProfileForm() {
 
         //object is being sent to the backend, inputs that have been filled in
         const data = { 
-            Name: String(event.target.name.value.length),
-            password: String(event.target.password.value.length),
-            birthdate: Number(event.target.birthdate.value.length),
-            phoneNumber: Number(event.target.phoneNumber.value.length),
-            emailAddress: String(event.target.emailAddress.value.length),
+            name: String(event.target.name.value),
+            password: String(event.target.password.value),
+            birthdate: Number(event.target.birthdate.value),
+            phoneNumber: Number(event.target.phoneNumber.value),
+            emailAddress: String(event.target.emailAddress.value),
         }
         await fetch(webUrl + "/createProfile/createNewProfile", {
             method: 'POST',
