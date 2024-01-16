@@ -1,19 +1,22 @@
 package org.launchcode.buildabeer.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.context.annotation.EnableMBeanExport;
+
+import java.util.List;
 
 @Entity
-public class BrewForm extends AbstractEntity {
+public class BrewForm extends AbstractEntity implements BrewFormInterface {
 
-    @OneToOne
-    @JoinColumn(name = "results_id")
-    p
+//    @OneToOne
+//    @JoinColumn(name = "results_id")
 
-    private String username;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "results_id", nullable = false)
+    private Long results_id;
+
+    private String loginName;
 
     @NotNull
     private String wolfenstein;
@@ -30,28 +33,19 @@ public class BrewForm extends AbstractEntity {
     @NotNull
     private String userComments;
 
-    public BrewForm(String username, String wolfenstein, String barrelType, int basic, String recentPlace,
-                    String userComments) {
-        this.username = username;
-        this.wolfenstein = wolfenstein;
-        this.barrelType = barrelType;
-        this.basic = basic;
-        this.recentPlace = recentPlace;
-        this.userComments = userComments;
-    }
-
     public BrewForm() {
+        super();
 
     }
-//unsure whether getter and setters are needed here...i'll look into it
 
-    public String getUsername() {
-        return username;
+    //unsure whether getter and setters are needed here...i'll look into it
+@Override
+   public String getLoginName() {
+        return loginName;
     }
 
-//    public void setUsername(String username) {
-//        this.username = username;
-//    }
+    public void setLoginName(String loginName) {
+    }
 
     public String getWolfenstein() {
         return wolfenstein;
@@ -92,4 +86,8 @@ public class BrewForm extends AbstractEntity {
     public void setUserComments(String userComments) {
         this.userComments = userComments;
     }
+
+    public void setFlavorNotes(List<String> flavorNotes) {
+    }
+
 }

@@ -22,6 +22,12 @@ public class User extends AbstractEntity {
         super();
     }
 
+//    @Override
+    public void setUserName(String username) {
+
+        this.username = username;
+    }
+
     public User(String username, String password) {
         super();
         this.username = username;

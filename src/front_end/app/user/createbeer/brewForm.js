@@ -16,7 +16,7 @@ export default function CreateBeer(props: any) {
         const formData = {
             username: String(event.target.username.value),
             wolfenstein: String(event.target.wolfenstein.value),
-            flavorNotes: List(event.targent.flavorNotes.checkboxValues),
+            flavorNotes: String(event.targent.flavorNotes.checkboxValues),
             barrelType: String(event.target.barrelType.value),
             basic: IsNum(event.target.basic.value),
             recentPlace: String(event.target.recentPlace.value),

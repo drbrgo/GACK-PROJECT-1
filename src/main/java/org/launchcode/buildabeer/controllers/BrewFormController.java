@@ -1,17 +1,19 @@
 package org.launchcode.buildabeer.controllers;
 
 import org.launchcode.buildabeer.data.BeerRepository;
+import org.launchcode.buildabeer.data.BrewFormRepository;
 import org.launchcode.buildabeer.data.FridgeRepository;
 import org.launchcode.buildabeer.data.UserRepository;
-import org.launchcode.buildabeer.models.Fridge;
+import org.launchcode.buildabeer.models.BrewForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Optional;
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @Controller
@@ -23,7 +25,6 @@ public class BrewFormController {
     @Autowired
     public BrewFormRepository brewFormRepository;
 
-
     //Present for database operations
     @Autowired
     public FridgeRepository fridgeRepository;
@@ -33,6 +34,14 @@ public class BrewFormController {
 
     @Autowired
     public BeerRepository beerRepository;
+    private String username;
+    private String wolfenstein;
+    private String barrelType;
+    private List<String> flavorNotes;
+    private int basic;
+    private String recentPlace;
+    private String userComments;
+    private Model model;
 
 
     //the GET request pointing to Drew's user cookie extract and display the username in the first input of the form.
@@ -51,6 +60,14 @@ public class BrewFormController {
                               @RequestParam String barrelType, @RequestParam List<String> flavorNotes,
                               @RequestParam int basic, @RequestParam String recentPlace,
                               @RequestParam String userComments, Model model) {
+        this.username = username;
+        this.wolfenstein = wolfenstein;
+        this.barrelType = barrelType;
+        this.flavorNotes = flavorNotes;
+        this.basic = basic;
+        this.recentPlace = recentPlace;
+        this.userComments = userComments;
+        this.model = model;
 
 
         // Major note: Will see if the ID can be generated in MySQL at form submission within a response table with
@@ -58,9 +75,8 @@ public class BrewFormController {
 
 
         //method for creating new brewForm instance
-        BrewForm brewForm;
-        brewForm = new BrewForm();
-        brewForm.setUserName(username); //unsure if I would set this, my form will auto-populate, since I am
+        BrewForm brewForm = new BrewForm();
+        brewForm.setLoginName(username); //unsure if I would set this, my form will auto-populate, since I am
         // retreiving the username/id from the user cookie, but its value is currently set to be collected from the
         // form, thus forming part of the form data object.
         brewForm.setWolfenstein(wolfenstein);
@@ -72,7 +88,7 @@ public class BrewFormController {
         brewForm.setUserComments(userComments);
 
         //Save instance to the repository
-        brewFormRepository.save(brewForm);
+        getBrewFormRepository().save(brewForm);
 
 
 
@@ -84,6 +100,14 @@ public class BrewFormController {
         //Return view,
         return "redirect:/confirmation-page";
 
+    }
+
+    public BrewFormRepository getBrewFormRepository() {
+        return brewFormRepository;
+    }
+
+    public void setBrewFormRepository(BrewFormRepository brewFormRepository) {
+        this.brewFormRepository = brewFormRepository;
     }
 }
 
