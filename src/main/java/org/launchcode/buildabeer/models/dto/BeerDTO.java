@@ -1,15 +1,11 @@
-package org.launchcode.buildabeer.models;
+package org.launchcode.buildabeer.models.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
+import org.launchcode.buildabeer.models.Fridge;
 
-@Entity
-public class Beer extends AbstractEntity{
+public class BeerDTO {
 
-    @ManyToOne
-    @JoinColumn(name = "fridge_id")
+    @NotNull
     private Fridge fridge;
 
     @NotNull
@@ -21,16 +17,17 @@ public class Beer extends AbstractEntity{
     @NotNull
     private Double abv;
 
-    public Beer() {}
 
-    public Beer(String name, String tastingNotes, Double abv) {
-        this.name = name;
-        this.tastingNotes = tastingNotes;
-        this.abv = abv;
+    public BeerDTO() {}
+
+    public Fridge getFridge() {
+        return fridge;
     }
 
-    //might not need setters for anything other than name. we'll see how Marleny creates the beer
-    //object with data from the form
+    public void setFridge(Fridge fridge) {
+        this.fridge = fridge;
+    }
+
     public String getName() {
         return name;
     }
