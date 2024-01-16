@@ -12,9 +12,9 @@ import java.util.Optional;
 
 @Repository
 public interface FridgeRepository extends CrudRepository<Fridge, Integer> {
-    @Query( "SELECT beer.name, beer.abv, beer.tasting_notes FROM beer \n" +
-            "JOIN fridge ON fridge_id= fridge.id\n" +
-            "JOIN `user` ON fridge.user_id= `user`.id;\n" +
-            " WHERE user.username= :username ")
-    List<Beer> findBeersByUsername(@Param("username") String username);
+//    @Query( "SELECT beer.name, beer.abv, beer.tasting_notes FROM beer \n" +
+//            "JOIN fridge ON fridge_id= fridge.id\n" +
+//            "JOIN `user` ON fridge.user_id= `user`.id;\n" +
+//            " WHERE user.username= :username ")
+//    List<Beer> findBeersByUsername(@Param("username") String username);
 }

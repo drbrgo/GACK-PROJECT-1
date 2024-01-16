@@ -53,17 +53,17 @@ public class FridgeController {
     }
 
 
-    @CrossOrigin
-    @GetMapping("/getBeers/{username}")
-    public ResponseEntity<?> getBeerObjectsByUsername(@PathVariable String username){
+//    @CrossOrigin
+//    @GetMapping("/getBeers/{username}")
+//    public ResponseEntity<?> getBeerObjectsByUsername(@PathVariable String username){
 
 //    Optional<Beer> getBeerObjectsByUsername = fridgeRepository.findBeersByUsername(username);
 //    if (getBeerObjectsByUsername.isPresent()){
 //        fridgeRepository.findBeersByUsername()
 //        }
-        return new ResponseEntity<>(fridgeRepository.findBeersByUsername(username), HttpStatus.OK);
-
-    }
+//        return new ResponseEntity<>(fridgeRepository.findBeersByUsername(username), HttpStatus.OK);
+//
+//    }
 
     @CrossOrigin
     @DeleteMapping("/removeBeer/{id}")
