@@ -29,6 +29,23 @@ public class UserAdmin {
         this.password = password;
     }
 
+    public UserAdmin(Long id, String name, int birthdate, int phoneNumber, String emailAddress, String password) {
+        this.id = id;
+        this.name = name;
+        this.birthdate = birthdate;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
+        this.password = password;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

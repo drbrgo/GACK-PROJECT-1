@@ -1,6 +1,6 @@
 'use client'
 
-export default function UserAdminForm() {
+export default function UserAdminForm(props: any) {
 
     const webUrl: string = "http://localhost:8080"
 
@@ -22,13 +22,13 @@ export default function UserAdminForm() {
             },
             body: JSON.stringify(data),
         }).then((response) => response.json()).then(data => {
-            console.log(data);
+            props.setProfiles(oldData => [...oldData, data]);
         })
 
     }
 
     return (
-        <div>
+        <div className="flex justify-center">
             <form onSubmit = {handleSubmit}>
                 <h1> Create/Edit Profile </h1>       
                 <div>        
@@ -55,8 +55,7 @@ export default function UserAdminForm() {
                 <h5>Email Address: </h5>
                 <input type="text" autoComplete="off" id="emailAddress" required minLength={3} maxLength={25}/>
                 </div>   
-                <button type="submit">Submit</button>
-
+                <button className="bg-blue-500/80 p-2 rounded-md" type="submit">Submit</button>
             </form>
         </div>
     )

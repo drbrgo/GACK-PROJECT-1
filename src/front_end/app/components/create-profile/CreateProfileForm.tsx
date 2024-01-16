@@ -29,6 +29,7 @@ export default function CreateProfileForm() {
 //POST request working. server is receiving the object entered in form.
 
     }
+//action ="user/profile"
 
     return (
         <div>
@@ -60,10 +61,6 @@ export default function CreateProfileForm() {
                 </div>     
 
                 <button type="submit">Submit</button> 
-
-                <div className="message">
-                    <div className="success" id="success">You have successfully created a profile!</div>
-                </div>
             </form>
             
             <p> Already Registered?<br /><a href="/LoginForm">Login</a>
