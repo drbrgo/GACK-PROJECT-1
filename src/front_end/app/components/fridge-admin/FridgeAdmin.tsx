@@ -6,7 +6,9 @@ interface Beer {
     id : number,
     name: string,
     tastingNotes: string,
-    abv: number
+    abv: number,
+    favorite: boolean
+
 }
 
 export default function FridgeAdmin(props: any){

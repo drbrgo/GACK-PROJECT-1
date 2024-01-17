@@ -6,7 +6,8 @@ interface Beer {
     id : number,
     name: string,
     tastingNotes: string,
-    abv: number
+    abv: number,
+    favorite: boolean
 }
 export default function FridgeDisplay(props: any){
     
@@ -22,7 +23,10 @@ export default function FridgeDisplay(props: any){
                 name: String(event.target.name.value),
                 abv: Number(event.target.abv.value),
                 tastingNotes: String(event.target.tastingNotes.value),
+                isfavorite: Boolean(event.target.isFavorite.checked),
             }
+
+            console.log(data)
 
             fetch(webUrl + "/user/fridge/updateBeer/" + props.beer.id, {
             method: "PUT",
@@ -78,9 +82,11 @@ export default function FridgeDisplay(props: any){
                         <td>{props.beer.name}</td>
                         <td>{props.beer.abv}</td>
                         <td>{props.beer.tastingNotes}</td>
+                        <td>{props.beer.favorite}</td>
+
                         <td> <button onClick={() => props.removeBeer(props.beer.id)}className='bg-red-500/80 p-2 rd-md' type='button'>Delete</button></td>
                         <td> <button onClick={() => setBeer(prev => !prev)}className='bg-blue-500/80 p-2 rd-md' type='button'>Edit</button></td>
-                        <td><button onClick={() => props.favoriteBeer(props.beer.id)} type='button'>Favorite</button> </td>
+                        <td>Favorite<input type ="checkbox" id="favorite" /> </td>
                     </tr>
                     </tbody>
                     </table>

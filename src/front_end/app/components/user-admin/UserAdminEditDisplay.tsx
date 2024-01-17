@@ -15,22 +15,22 @@ export default function UserAdminEditDisplay(props: any) {
     }
 
     useEffect (()=>{
-//console.log(props.profiles)
 },[])
 
 const allProfiles = props.profiles.map((profile: any) => {
     return (
-        <UserAdminCard 
-        key={profile.id}>
+    <UserAdminCard
+        key={profile.id}
         profile={profile} 
         removeProfile={removeProfile}
+
         />
            
         )
     })
 
     return (
-        <div>
+        <div className="everyone">
         {allProfiles}
         </div>
     )
