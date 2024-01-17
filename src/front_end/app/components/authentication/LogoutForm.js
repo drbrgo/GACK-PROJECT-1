@@ -18,17 +18,19 @@ const LogoutForm = () => {
   
   const [logoutError, setLogoutError] = useState(null);
 
+  const [buildAnotherError, setBuildAnotherError] = useState(null);
+
   const router = useRouter();
 
 
   //test router--it works! need to import from next/navigation!
-  const testRouter = async () => {
-    try {
-       router.push('/');
-  } catch (error) {
-    console.log("router error");
-  }
-};
+//   const testRouter = async () => {
+//     try {
+//        router.push('/');
+//   } catch (error) {
+//     console.log("router error");
+//   }
+// };
 
 
   const handleLogout = async () => {
@@ -42,6 +44,15 @@ const LogoutForm = () => {
     } catch (error) {
       console.error('Logout error:', error);
       setLogoutError('An error occurred during logout');
+    }
+  };
+
+  const buildAnother = async () => {
+    try {
+      router.push('/user/createbeer');
+    } catch (error) {
+      console.error('Redirection error:', error);
+      setBuildAnotherError('Perhaps it is time to go after all... ')
     }
   };
 
@@ -71,8 +82,14 @@ const LogoutForm = () => {
 
   return (
     <div>
-      <button onClick={handleLogout}>Logout</button>
+      <div>
+      <button onClick={handleLogout}>Yes, get me out of here!</button>
       {logoutError && <p style={{ color: 'red' }}>{logoutError}</p>}
+      </div>
+      <div>
+      <button onClick={buildAnother}>No! Let me build another beer!</button>
+      {buildAnotherError && <p style={{ color: 'red' }}>{buildAnotherError}</p>}
+      </div>
     </div>
   );
 };

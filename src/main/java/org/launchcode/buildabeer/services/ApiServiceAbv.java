@@ -34,7 +34,7 @@ public class ApiServiceAbv {
         private String apiUrl = "https://api.punkapi.com/v2/beers?abv_gt=";
 
         public List<ApiDTO> getBeers(Float abv) {
-            ResponseEntity<ApiDTO[]> response = restTemplate.getForEntity(apiUrl + abv, ApiDTO[].class);
+            ResponseEntity<ApiDTO[]> response = restTemplate.getForEntity(apiUrl + abv + "&per_page=80", ApiDTO[].class);
             return Arrays.asList(response.getBody());
         }
     }

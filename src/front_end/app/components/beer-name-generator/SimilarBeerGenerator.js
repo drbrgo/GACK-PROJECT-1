@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 
-const BeerNameGenerator2 = (props) => {
+const SimilarBeerGenerator = (props) => {
   // manage input values
   const [taste, setTaste] = useState('');
   const [abv, setAbv] = useState('');
@@ -116,4 +116,4 @@ const BeerNameGenerator2 = (props) => {
   );
 };
 
-export default BeerNameGenerator2;
+export default SimilarBeerGenerator;

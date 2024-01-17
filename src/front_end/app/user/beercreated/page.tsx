@@ -2,7 +2,8 @@
 
 import React from 'react';
 import BeerNameGenerator from '../../components/beer-name-generator/BeerNameGenerator';
-import BeerNameGenerator2 from '../../components/beer-name-generator/BeerNameGenerator2';
+import SimilarBeerGenerator from '../../components/beer-name-generator/SimilarBeerGenerator';
+import BeerGenerator from '../../components/beer-name-generator/BeerNameGenerator'
 import { useState, useEffect } from "react";
 
 interface similarBeers {
@@ -20,7 +21,8 @@ const BeerCreated = () => {
     return(
         <div>
             <p>This is the beer is created page!</p>
-            <BeerNameGenerator2 
+            <BeerGenerator/>
+            <SimilarBeerGenerator 
             similarBeers={setSimilarBeers}/>
         </div>
     )
