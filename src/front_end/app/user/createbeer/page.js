@@ -49,7 +49,7 @@ const CreateBeer = (props: any) => {
                     <label for="username">Welcome!</label>
                               <input type="text" id="username" name="username" value={getCookie().username} readonly><br>
                     <fieldset>
-                                           <legend>Barrel Type</legend>
+                                          <legend>Barrel Type</legend>
                                        <select id="barrelType" name="barrelType">
                                            <option value="" name="selected">Select One</option>
                                            <option value="frenchOak">French Oak</option>
