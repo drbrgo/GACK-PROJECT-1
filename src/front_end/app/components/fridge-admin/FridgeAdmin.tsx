@@ -1,6 +1,7 @@
 'use client'
 import React from "react";
 import FridgeDisplay from "./FridgeDisplay";
+import { getCookies } from 'cookies-next';
 
 interface Beer {
     id : number,

@@ -1,12 +1,17 @@
 package org.launchcode.buildabeer.models.dto;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import org.launchcode.buildabeer.models.Fridge;
 
+
 public class BeerDTO {
 
+
     @NotNull
-    private Fridge fridge;
+    private int fridgeId;
 
     @NotNull
     private String name;
@@ -20,12 +25,12 @@ public class BeerDTO {
 
     public BeerDTO() {}
 
-    public Fridge getFridge() {
-        return fridge;
+    public int getFridgeId() {
+        return fridgeId;
     }
 
-    public void setFridge(Fridge fridge) {
-        this.fridge = fridge;
+    public void setFridgeId(int fridgeId) {
+        this.fridgeId = fridgeId;
     }
 
     public String getName() {
