@@ -87,10 +87,6 @@ public class HomeController {
                    // "or headers"); it was due to headers -- cannot redirect from backend
             System.out.println(session.getId());
 
-            //use httpheaders to redirect to profile page
-            /*HttpHeaders headers = new HttpHeaders();
-            headers.add("Location", "/user/profile");
-            return new ResponseEntity<>(headers, HttpStatus.FOUND);*/
 
             HttpHeaders headers = new HttpHeaders();
 //            headers.add("Set-Cookie", "JSESSIONID=" + session.getId());
@@ -98,7 +94,6 @@ public class HomeController {
             //"; HttpOnly; SameSite=None; Secure
             headers.add("User-ID", theUser.getUsername());
 
-            //return ResponseEntity.ok().headers(headers).build();
 
             return new ResponseEntity<>(theUser, HttpStatus.OK);
 
@@ -123,5 +118,11 @@ public class HomeController {
 //        }
 //
 //    }
+    //use httpheaders to redirect to profile page
+            /*HttpHeaders headers = new HttpHeaders();
+            headers.add("Location", "/user/profile");
+            return new ResponseEntity<>(headers, HttpStatus.FOUND);*/
+    //return ResponseEntity.ok().headers(headers).build();
 
-    }
+
+}

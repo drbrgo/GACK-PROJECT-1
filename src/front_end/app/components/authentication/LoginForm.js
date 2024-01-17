@@ -60,7 +60,7 @@ const LoginForm = (props) => {
           httpOnly: false,
           path: '/',
         });
-        router.push('/user/profile');
+        router.push('/user/profiledummy');
         //window.location.href="/user/profile"; doesn't work to redirect
         //can't use the below because 'use client' statement
         //cookies.set('username', data.username);
