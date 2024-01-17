@@ -38,7 +38,7 @@ const SimilarBeerGenerator = (props) => {
 
       if (!response.ok) {
         // checking if response status is not OK (as in a 4-- or 5-- response status code)
-        throw new Error(`Whoops, still doesn't fetch.`);
+        throw new Error(`Please make sure you have entered valid data in both fields and try again!`);
       }
 
       console.log(data);  
@@ -58,7 +58,7 @@ const SimilarBeerGenerator = (props) => {
       //handle error
     } catch (error) {
       setErrorMessage(error.message);
-      console.error('Beer name generation error: ', error);
+      console.error('Beer list generation error: ', error);
     }
   };
 

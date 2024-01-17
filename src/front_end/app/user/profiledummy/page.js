@@ -9,7 +9,7 @@ const ProfilePageDummy = () => {
         <div>
             <p>This is the user profile page!</p>
             {/* <NavBarDummy /> we'll see if it works without it and the answer is still no*/}
-            <LogoutForm />
+            {/* <LogoutForm /> has moved to the user/logout page*/}
         </div>
     )
 }

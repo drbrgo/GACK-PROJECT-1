@@ -26,13 +26,28 @@ const BeerGenerator = () => {
         const responseData = await response.json();
         
        console.log(responseData);
+
+       setRandomBeerName(responseData);
+
+
     } ;
 
     return (
         <div>
         <p>Generated beer name please </p>
         <button onClick={handleSubmit}>Generate!</button>
+        {randomBeerName && (
+        <div>
+          <h3>Your new brew has a glorious name!</h3>
+          <ul>
+        {Object.values(randomBeerName).map((value, index) => (
+          <li key={index}  style={{ display: 'inline', margin: '0 2px'}}>{value}</li>
+        ))}
+      </ul>
+          {/* <pre>{JSON.stringify(matchingBeers, null, 2)}</pre> this uses JSON format to render the values. not ideal!*/}
         </div>
+      )}
+    </div>
     )
 
 }

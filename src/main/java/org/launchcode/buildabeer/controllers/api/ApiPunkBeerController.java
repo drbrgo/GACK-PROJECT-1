@@ -91,6 +91,10 @@ public class ApiPunkBeerController {
               // map to represent json object
               Map<String, Object> jsonObject = new HashMap<>();
 
+              //null check
+              if(matchingBeers.size()<1) {
+                  jsonObject.put(String.valueOf(1), "Sorry! We can't find any beers that match these criteria!");
+              }
              // loop to print the name of each beer returned by the api
               for (int i = 0; i < matchingBeers.size(); i++ ) {
               System.out.println(matchingBeers.get(i).getName());
@@ -100,8 +104,10 @@ public class ApiPunkBeerController {
               //test it
               System.out.println(jsonObject);
 
+
               // convert map to json string using objectmapper and return it
               String jsonString = objectMapper.writeValueAsString(jsonObject);
+
               return ResponseEntity.ok(jsonString);
 
           } catch (JsonProcessingException e) {
