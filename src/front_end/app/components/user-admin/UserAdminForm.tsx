@@ -1,41 +1,37 @@
 'use client'
 
-import React from "react";
-
-export default function CreateProfileForm() {
+export default function UserAdminForm(props: any) {
 
     const webUrl: string = "http://localhost:8080"
 
     const handleSubmit = async (event: any) => {
-        event.preventDefault(); //prevents the form from autosubmitting
+        event.preventDefault();
 
-        //object is being sent to the backend, inputs that have been filled in
-        const data = { 
-            Name: String(event.target.name.value.length),
-            password: String(event.target.password.value.length),
-            birthdate: Number(event.target.birthdate.value.length),
-            phoneNumber: Number(event.target.phoneNumber.value.length),
-            emailAddress: String(event.target.emailAddress.value.length),
+        const data = {
+            name: String(event.target.name.value),
+            password: String(event.target.password.value),
+            birthdate: Number(event.target.birthdate.value),
+            phoneNumber: Number(event.target.phoneNumber.value),
+            emailAddress: String(event.target.emailAddress.value),
         }
-        await fetch(webUrl + "/createProfile/createNewProfile", {
+
+        await fetch(webUrl + "/userAdmin/addNewUser", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data),
         }).then((response) => response.json()).then(data => {
-            console.log(data);
+            props.setProfiles(oldData => [...oldData, data]);
         })
-//POST request working. server is receiving the object entered in form.
 
     }
-//action ="user/profile"
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}> 
-            <h3>Create An Account To Become A Beer Enthusiast!</h3>
-            <div>
+        <div className="flex justify-center">
+            <form onSubmit = {handleSubmit}>
+                <h1> Create/Edit Profile </h1>       
+                <div>        
                 <h5>Name: </h5>
                 <input type="text" autoComplete="off" id="name" required minLength={3} maxLength={25}/>
                 </div>
@@ -53,19 +49,14 @@ export default function CreateProfileForm() {
                 <div>
                 <h5>PhoneNumber: </h5>
                 <input type="text" autoComplete="off" id="phoneNumber" required minLength={10} maxLength={10}/>
-                </div>                   
-
+                </div>            
+                
                 <div>
                 <h5>Email Address: </h5>
                 <input type="text" autoComplete="off" id="emailAddress" required minLength={3} maxLength={25}/>
-                </div>     
-
-                <button type="submit">Submit</button> 
+                </div>   
+                <button className="bg-blue-500/80 p-2 rounded-md" type="submit">Submit</button>
             </form>
-            
-            <p> Already Registered?<br /><a href="/LoginForm">Login</a>
-            </p>
         </div>
     )
-     //login link is not working 
 }

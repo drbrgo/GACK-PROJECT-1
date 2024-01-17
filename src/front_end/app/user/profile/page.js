@@ -7,7 +7,8 @@ const ProfilePage = () => {
     return(
         <div>
             <p>This is the user profile page!</p>
-            <NavBarDummy />
+            <p>Welcome Beer Enthusiast</p>
+
         </div>
     )
 }
