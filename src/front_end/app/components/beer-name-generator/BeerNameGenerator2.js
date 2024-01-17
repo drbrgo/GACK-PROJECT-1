@@ -2,13 +2,19 @@
 import React, { useState } from 'react';
 
 
-const BeerNameGenerator2 = () => {
+const BeerNameGenerator2 = (props) => {
   // manage input values
   const [taste, setTaste] = useState('');
+  const [abv, setAbv] = useState('');
+  const [beer, setBeer] = useState('');
+
+  //manage output values
+  const [matchingBeers, setMatchingBeers] = useState(null);
   
   // manage error message
   const [errorMessage, setErrorMessage] = useState('');
 
+  //this post handler takes an abv, searches the api with it. then takes the keyword and searches the description of each beer returned
   const webUrl = "http://localhost:8080/api/generate"; 
 
   const handleSubmit = async (event) => {
@@ -16,7 +22,10 @@ const BeerNameGenerator2 = () => {
 
     const data = {
       taste: event.target.taste.value,
+      abv: event.target.abv.value,
       };
+
+      console.log(data);
 
     try {
       const response = await fetch(webUrl, {
@@ -32,21 +41,18 @@ const BeerNameGenerator2 = () => {
         throw new Error(`Whoops, still doesn't fetch.`);
       }
 
-      if (response.ok) {
-        console.log(data);
-
-        // setCookie('username', data.username, {
-        //   httpOnly: false,
-        //   path: '/',
-        // });
-        // router.push('/user/profile');
+      console.log(data);  
         
+      const responseData = await response.json()
+    //   .then(responseData => {
+    //     props.setBeers(responseData);
+    //   })
+      console.log(responseData);
+      setMatchingBeers(responseData); 
         
-    }
-
-      console.log("request data:", data);
-      
+      //reset input field and error message
       setTaste('');
+      setAbv('');
       setErrorMessage('');
 
       //handle error
@@ -59,13 +65,13 @@ const BeerNameGenerator2 = () => {
   return (
     <div className="flex justify-center">
       <form onSubmit={handleSubmit}>
-        <h3>Enter one taste word</h3>
+        <h3>Enter one taste word and your preferred ABV</h3>
         {/* error message only displayes if present */}
         {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
         <div className="container">
           <div className="row">
             <div className="form-item col-4">
-              <label>Word of flavor</label>
+              <label>Word of flavor: </label>
               {/* value and onChange make inputs controlled components */}
               <input
                 type="text"
@@ -77,8 +83,35 @@ const BeerNameGenerator2 = () => {
             </div>
           </div>
         </div>
+        <div className="container">
+          <div className="row">
+            <div className="form-item col-4">
+              <label>ABV of choice: </label>
+              {/* value and onChange make inputs controlled components */}
+              <input
+                type="text"
+                autoComplete="off"
+                id="abv"
+                value={abv}
+                onChange={(event) => setAbv(event.target.value)}
+              />
+            </div>
+          </div>
+        </div>
+
         <button type="submit">Fetch!</button>
       </form>
+      {matchingBeers && (
+        <div>
+          <h3>Other beers you may enjoy:</h3>
+          <ul>
+        {Object.values(matchingBeers).map((value, index) => (
+          <li key={index}>{value}</li>
+        ))}
+      </ul>
+          {/* <pre>{JSON.stringify(matchingBeers, null, 2)}</pre> this uses JSON format to render the values. not ideal!*/}
+        </div>
+      )}
     </div>
   );
 };

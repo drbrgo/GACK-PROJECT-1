@@ -4,7 +4,7 @@ import NavBarDummy from '../../components/authentication/NavBarDummy';
 import React from 'react';
 import LogoutForm from '../../components/authentication/LogoutForm';
 
-const ProfilePage = () => {
+const ProfilePageDummy = () => {
     return(
         <div>
             <p>This is the user profile page!</p>
@@ -14,4 +14,4 @@ const ProfilePage = () => {
     )
 }
 
-export default ProfilePage;
+export default ProfilePageDummy;
