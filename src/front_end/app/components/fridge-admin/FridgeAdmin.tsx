@@ -1,19 +1,28 @@
 'use client'
 import React from "react";
 import FridgeDisplay from "./FridgeDisplay";
+
+interface Beer {
+    id : number,
+    name: string,
+    tastingNotes: string,
+    abv: number
+}
+
 export default function FridgeAdmin(props: any){
 
     const webUrl = "http://localhost:8080"
 
+    
     const removeBeer = (beerId: number) => {
         fetch(webUrl + '/user/fridge/removeBeer/' + beerId, {
             method: "DELETE",
-        }).then((response) => response.json()).then(data => {
+        }).then((response) => response.json()).then((data: Beer[]) => {
             props.setBeers(data);
         })
     }
 
-    const allBeers = props.beers.map((beer: any) => {
+    const allBeers = props.beers.map((beer: Beer) => {
         return( 
             < FridgeDisplay 
             key={beer.id}

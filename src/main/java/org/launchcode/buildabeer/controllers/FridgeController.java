@@ -7,6 +7,7 @@ import org.launchcode.buildabeer.models.Beer;
 import org.launchcode.buildabeer.models.Fridge;
 import org.launchcode.buildabeer.models.dto.BeerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -51,13 +52,25 @@ public class FridgeController {
         return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
     }
 
+
+//    @CrossOrigin
+//    @GetMapping("/getBeers/{username}")
+//    public ResponseEntity<?> getBeerObjectsByUsername(@PathVariable String username){
+
+//    Optional<Beer> getBeerObjectsByUsername = fridgeRepository.findBeersByUsername(username);
+//    if (getBeerObjectsByUsername.isPresent()){
+//        fridgeRepository.findBeersByUsername()
+//        }
+//        return new ResponseEntity<>(fridgeRepository.findBeersByUsername(username), HttpStatus.OK);
+//
+//    }
+
     @CrossOrigin
     @DeleteMapping("/removeBeer/{id}")
     public ResponseEntity<?> removeBeer(@PathVariable int id){
         Optional<Beer> removeBeer = beerRepository.findById(id);
 
         if(removeBeer.isPresent()){
-            System.out.println("beer is present");
             beerRepository.delete(removeBeer.get());
         }
         return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);

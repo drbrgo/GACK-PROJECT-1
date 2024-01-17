@@ -13,9 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.launchcode.buildabeer.data.UserRepository;
+import java.util.Optional;
 
 @Controller
 @CrossOrigin (origins = "http://localhost:3000")
+
 public class HomeController {
     @Autowired
     private UserRepository userRepository;

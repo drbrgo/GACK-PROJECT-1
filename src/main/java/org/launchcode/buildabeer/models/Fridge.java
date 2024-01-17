@@ -14,7 +14,7 @@ public class Fridge extends AbstractEntity{
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
+    @OneToMany(mappedBy = "fridge")
     private List<Beer> beers;
 
     public Fridge(){}
