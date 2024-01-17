@@ -27,16 +27,17 @@ export default function fridgeAdmin(){
         getBeers()
     },[])
     return(
-        <><NavBarCustom/>
     <div>
-    <p>This is a User's 'fridge admin' page</p>
-        
+        <div>
+        <p>This is a User's 'fridge admin' page</p>
+            
         </div>
         <div>
-    <FridgeAdmin 
-    beers={beers}
-    setBeers={setBeers}
-    />
+        <FridgeAdmin 
+        beers={beers}
+        setBeers={setBeers}
+        />
+        </div>
     </div>
-    </>)
+    )
 }
