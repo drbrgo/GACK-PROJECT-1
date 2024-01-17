@@ -2,7 +2,7 @@
 
 import { getCookies } from 'cookies-next';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function CreateBeer(props: any) {
 
