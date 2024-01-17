@@ -17,6 +17,15 @@ public class BeerDTO {
     @NotNull
     private Double abv;
 
+    @NotNull
+    private String wolfenstein;
+
+    @NotNull
+    private int barrelType;
+
+    @NotNull
+    private String basic;
+
 
     public BeerDTO() {}
 
@@ -50,5 +59,29 @@ public class BeerDTO {
 
     public void setAbv(Double abv) {
         this.abv = abv;
+    }
+
+    public String getWolfenstein() {
+        return wolfenstein;
+    }
+
+    public void setWolfenstein(String wolfenstein) {
+        this.wolfenstein = wolfenstein;
+    }
+
+    public int getBarrelType() {
+        return barrelType;
+    }
+
+    public void setBarrelType(int barrelType) {
+        this.barrelType = barrelType;
+    }
+
+    public String getBasic() {
+        return basic;
+    }
+
+    public void setBasic(String basic) {
+        this.basic = basic;
     }
 }
