@@ -23,10 +23,8 @@ export default function FridgeDisplay(props: any){
                 name: String(event.target.name.value),
                 abv: Number(event.target.abv.value),
                 tastingNotes: String(event.target.tastingNotes.value),
-                isfavorite: Boolean(event.target.isFavorite.checked),
+                favorite: Boolean(event.target.favorite.checked),
             }
-
-            console.log(data)
 
             fetch(webUrl + "/user/fridge/updateBeer/" + props.beer.id, {
             method: "PUT",

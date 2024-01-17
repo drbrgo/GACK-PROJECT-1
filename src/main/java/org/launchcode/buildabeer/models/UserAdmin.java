@@ -21,14 +21,24 @@ public class UserAdmin {
         //no arg constructor
     }
 
-    public UserAdmin(String name, int birthdate, int phoneNumber, String emailAddress, String password) {
+    public UserAdmin(Long id, String name, int birthdate, int phoneNumber, String emailAddress, String password) {
+        this.id = id;
         this.name = name;
         this.birthdate = birthdate;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
         this.password = password;
     }
-    //removed long id from constructor. the id will be assigned when it is set inside the database
+    //removed long id from constructor. the id will be assigned when it is set inside the database? not working, added it back
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

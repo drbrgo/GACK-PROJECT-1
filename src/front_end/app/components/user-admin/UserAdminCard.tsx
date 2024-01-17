@@ -2,15 +2,17 @@ export default function UserAdminCard(props: any) {
 
     return (
         <div>
-            <p>Id: {props.profile.id}</p>
-            <p>Name: {props.profile.name}</p>
-            <p>Password: {props.profile.password}</p>
-            <p>Birthdate: {props.profile.birthdate}</p>
-            <p>Phone Number: {props.profile.phoneNumber}</p>
-            <p>Email Address: {props.profile.emailAddress}</p>
-            <button onClick={() => props.removeProfile(props.profile.id)}>Delete</button>    
+            <p>Id: {props.userprofile.id}</p>
+            <p>Name: {props.userprofile.name}</p>
+            <p>Password: {props.userprofile.password}</p>
+            <p>Birthdate: {props.userprofile.birthdate}</p>
+            <p>Phone Number: {props.userprofile.phoneNumber}</p>
+            <p>Email Address: {props.userprofile.emailAddress}</p>
+            <button onClick={() => props.editUser(props.userprofile.id)}>Edit</button>    
+            <button onClick={() => props.removeUser(props.userprofile.id)}>Delete</button>    
         </div>
 
     )
-    //stopped here
-}
+
+    //set this as its own component so it can be a series of cards with a special tag once fully set up...will need css styling for that
+} 

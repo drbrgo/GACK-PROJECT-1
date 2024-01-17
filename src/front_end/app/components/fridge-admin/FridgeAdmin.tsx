@@ -31,7 +31,7 @@ export default function FridgeAdmin(props: any){
             beer={beer}
             removeBeer={removeBeer}
             setBeers={props.setBeers}
-            favoriteBeer={props.favoriteBeer}
+            favoriteBeer={props.favoriteBeer.checked ? "true" : "false"}
             />
          )
     })

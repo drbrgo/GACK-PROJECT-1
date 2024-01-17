@@ -5,13 +5,13 @@ import UserAdminEditDisplay from "../../components/user-admin/UserAdminEditDispl
 import { useState, useEffect } from "react";
 
 
-interface Profiles {
-        id: Number,
-        name: String,
-        password: String,
-        birthdate: Number,
-        phoneNumber: Number,
-        emailAddress: String,
+interface UserProfile {
+        id: number,
+        name: string,
+        password: string,
+        birthdate: number,
+        phoneNumber: number,
+        emailAddress: string,
         }
 
 
@@ -19,38 +19,36 @@ interface Profiles {
 
     const webUrl: string = 'http://localhost:8080'
 
-    const [profiles, setProfiles] = useState<Profiles[]>([])
+    const [UserProfiles, setUserProfiles] = useState<UserProfile[]>([])
 
     useEffect(function() {
-        const getProfiles = async() => {
-            await fetch(webUrl + '/userAdmin/getUsers')
+        const getUserProfiles = async() => {
+            await fetch(webUrl + '/userAdmin/getUserProfiles')
             .then(response => response.json())
             .then(data => {
-                setProfiles(data);
+                setUserProfiles(data);
             })    
         }
-        getProfiles()
+        getUserProfiles()
     }, [])
 
     return (
         <div>
-        <p>This is the admin user profile page!</p>
-
         <div>
-            <p> display active profile</p>
+        <p>This is the admin user profile page!</p>
+        <p>Admin can create and delete new user profile</p>
         </div>
         
         <div>
         <UserAdminForm 
-        setProfiles= {setProfiles} />
-        <p>Add new user profile</p>
+        setUserProfiles= {setUserProfiles} />
         <p>Show profile being added</p>
         </div>
 
         <div>
             <UserAdminEditDisplay 
-            profiles={profiles}
-            setProfiles= {setProfiles} 
+            userProfiles={UserProfiles}
+            setUserProfiles= {setUserProfiles} 
             />
         </div>
     </div>

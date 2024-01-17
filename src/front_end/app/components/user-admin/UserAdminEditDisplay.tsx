@@ -6,32 +6,35 @@ export default function UserAdminEditDisplay(props: any) {
 
     const webUrl: string = "http://localhost:8080"
 
-    const removeProfile = (profileId: number) => {
-        fetch(webUrl + '/userAdmin/removeProfile/' + profileId, {
+    const removeUser = (userId: number) => {
+        fetch(webUrl + '/userAdmin/removeUser/' + userId, {
             method: "DELETE"
       }).then((response) => response.json()).then(data => {
-        props.setProfiles(data);
+        props.setUserProfiles(data);
       })
     }
 
     useEffect (()=>{
 },[])
 
-const allProfiles = props.profiles.map((profile: any) => {
-    return (
-    <UserAdminCard
-        key={profile.id}
-        profile={profile} 
-        removeProfile={removeProfile}
+ 
+    const allUserProfiles = props.userProfiles.map((userprofile: any) => {
+        return (
+         <UserAdminCard
+          key={userprofile.id}
+            userprofile={userprofile} 
+            removeUser={removeUser}
+    
+        />              
+            )
+        })
 
-        />
-           
-        )
-    })
 
     return (
-        <div className="everyone">
-        {allProfiles}
+        <div >
+        {allUserProfiles}
         </div>
     )
+
+    
 }

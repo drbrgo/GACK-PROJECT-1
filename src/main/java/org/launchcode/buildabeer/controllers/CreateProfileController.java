@@ -20,7 +20,7 @@ public class CreateProfileController {
     @PostMapping("/createNewProfile")
     public ResponseEntity<?> createNewProfile(@RequestBody CreateProfileDTO createProfileDTO) {
 
-        CreateProfile newProfile = new CreateProfile(createProfileDTO.getName(), createProfileDTO.getBirthdate(), createProfileDTO.getPhoneNumber(), createProfileDTO.getEmailAddress(), createProfileDTO.getPassword());
+        CreateProfile newProfile = new CreateProfile(createProfileDTO.getId(), createProfileDTO.getName(), createProfileDTO.getBirthdate(), createProfileDTO.getPhoneNumber(), createProfileDTO.getEmailAddress(), createProfileDTO.getPassword());
         //set createProfileEntity
         createProfileRepository.save(newProfile);
         return new ResponseEntity<>(createProfileDTO, HttpStatus.OK);

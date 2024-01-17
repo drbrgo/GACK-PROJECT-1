@@ -11,6 +11,7 @@ export default function CreateProfileForm() {
 
         //object is being sent to the backend, inputs that have been filled in
         const data = { 
+            id: Number(event.target.id.value),
             name: String(event.target.name.value),
             password: String(event.target.password.value),
             birthdate: Number(event.target.birthdate.value),

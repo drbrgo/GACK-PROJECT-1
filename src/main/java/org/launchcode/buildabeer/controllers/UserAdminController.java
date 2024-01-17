@@ -21,22 +21,22 @@ public class UserAdminController {
     @PostMapping("/addNewUser")
     public ResponseEntity<?> addNewUser(@RequestBody UserAdminDTO userAdminDTO) {
 
-        UserAdmin newProfile = new UserAdmin(userAdminDTO.getName(), userAdminDTO.getBirthdate(), userAdminDTO.getPhoneNumber(), userAdminDTO.getEmailAddress(), userAdminDTO.getPassword());
+        UserAdmin newProfile = new UserAdmin(userAdminDTO.getId(), userAdminDTO.getName(), userAdminDTO.getBirthdate(), userAdminDTO.getPhoneNumber(), userAdminDTO.getEmailAddress(), userAdminDTO.getPassword());
         //set createProfileEntity
         userAdminRepository.save(newProfile);
         return new ResponseEntity<>(userAdminDTO, HttpStatus.OK);
     }
-    @GetMapping("/getUsers")
-    public ResponseEntity<?> getUserObjects() {
+    @GetMapping("/getUserProfiles")
+    public ResponseEntity<?> getUserProfileObjects() {
         return new ResponseEntity<>(userAdminRepository.findAll(), HttpStatus.OK);
     }
 
-    @DeleteMapping("/removeProfile/{id}")
-    public ResponseEntity<?> removeProfile(@PathVariable Long id) {
-        Optional<UserAdmin> removeProfile = userAdminRepository.findById(id);
+    @DeleteMapping("/removeUser/{id}")
+    public ResponseEntity<?> removeUser(@PathVariable Long id) {
+        Optional<UserAdmin> removeUserProfile = userAdminRepository.findById(id);
 
-        if(removeProfile.isPresent()) {
-            userAdminRepository.delete(removeProfile.get());
+        if(removeUserProfile.isPresent()) {
+            userAdminRepository.delete(removeUserProfile.get());
         }
         return new ResponseEntity<>(userAdminRepository.findAll(), HttpStatus.OK);
     }

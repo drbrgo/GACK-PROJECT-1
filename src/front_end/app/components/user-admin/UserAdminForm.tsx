@@ -22,7 +22,7 @@ export default function UserAdminForm(props: any) {
             },
             body: JSON.stringify(data),
         }).then((response) => response.json()).then(data => {
-            props.setProfiles(oldData => [...oldData, data]);
+            props.setUserProfiles(oldData => [...oldData, data]);
 
             event.target.name.value=""
             event.target.password.value=""
@@ -36,7 +36,7 @@ export default function UserAdminForm(props: any) {
     return (
         <div className="flex justify-center">
             <form onSubmit = {handleSubmit}>
-                <h1> Create/Edit Profile </h1>       
+                <h1> Create/Delete User Profile </h1>       
                 <div>        
                 <h5>Name: </h5>
                 <input type="text" autoComplete="off" id="name" required minLength={3} maxLength={25}/>

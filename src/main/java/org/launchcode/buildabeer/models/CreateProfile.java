@@ -16,7 +16,8 @@ public class CreateProfile {
     private String emailAddress;
     private String password;
 
-    public CreateProfile(String name, int birthdate, int phoneNumber, String emailAddress, String password) {
+    public CreateProfile(Long id, String name, int birthdate, int phoneNumber, String emailAddress, String password) {
+        this.id = id;
         this.name = name;
         this.birthdate = birthdate;
         this.phoneNumber = phoneNumber;
@@ -24,10 +25,19 @@ public class CreateProfile {
         this.password = password;
     }
 
-    //removed long id from constructor. the id will be assigned when it is set inside the database
+    //removed long id from constructor. the id will be assigned when it is set inside the database?
 
     public CreateProfile (){
         //no arg constructor
+    }
+
+
+    public Long getIdd() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
