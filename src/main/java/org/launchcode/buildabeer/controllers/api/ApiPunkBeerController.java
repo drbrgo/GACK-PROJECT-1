@@ -1,53 +1,43 @@
 package org.launchcode.buildabeer.controllers.api;
 
 
+import org.launchcode.buildabeer.data.BeerRepository;
+import org.launchcode.buildabeer.data.UserRepository;
+import org.launchcode.buildabeer.models.Beer;
 import org.launchcode.buildabeer.models.dto.ApiDTO;
+import org.launchcode.buildabeer.models.dto.ApiDummyDTO;
 import org.launchcode.buildabeer.services.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+//@RestController
 @RestController
-@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000/")
+@RequestMapping(value = "/api")
 public class ApiPunkBeerController {
 
     //@RequestMapping("/{userId}") or something of the like to specify which list of beers we'll be calling to
     //find the most recent one and use its data to make a name
 
-    //this was from java coder yt --
-//    public List<ApiItem> getapiItem(Double abv) {
-//
-//        RestTemplate restTemplate = new RestTemplate();
-//
-//        List<Beer> beers = Arrays.asList(
-//                new Beer("1", "tastingnotes", 5.24),
-//                new Beer("2", "difftastingnotes", 3.5)
-//                );
-//
-//
-//           List<ApiItem> returned= beers.stream().map(beer-> {
-//                Beer beerApi = restTemplate.getForObject("https://api.punkapi.com/v2/beers?abv_lt=" + beer.getAbv(),
-//                        Beer.class);
-//                return new ApiItem(beerApi.getName(), beerApi.getTastingNotes(), beerApi.getAbv());
-//            })
-//                    .collect(Collectors.toList());
-//        System.out.println(returned);
-//            return returned;
-//        }
-
-    //let's try this one instead
 
 //        @Autowired
 //        private RestTemplate restTemplate;
 
         @Autowired
         private ApiService apiService;
+
+        @Autowired
+        private UserRepository userRepository;
+
+        @Autowired
+        private BeerRepository beerRepository;
 
         //returns all beers at the url
 //        @GetMapping("/data")
@@ -65,6 +55,36 @@ public class ApiPunkBeerController {
 //        ApiDTO beer = beers.isEmpty() ? null : beers.get(0);
 //        return ResponseEntity.ok(beer);
 //    }
+
+      @PostMapping ("/generate")
+      public ResponseEntity<?> beerGenerator (@RequestBody ApiDummyDTO apiDummyDTO) {
+          System.out.println(apiDummyDTO);
+          //return new ResponseEntity<>(apiDummyDTO.getTaste(), HttpStatus.OK);
+          List<ApiDTO> allBeers = apiService.getBeers();
+          taste = apiDummyDTO.getTaste();
+          System.out.println(taste);
+
+          //Optional<Beer> beerGenerator =
+
+          List<ApiDTO> matchingBeers = allBeers.stream()
+                  .filter(beer -> beer.getDescription().toLowerCase().contains(taste.toLowerCase()))
+                  .collect(Collectors.toList());
+
+          String generatedName = matchingBeers.get(1).getName();
+
+          System.out.println(generatedName);
+          //loop to print the name of each beer returned by the api
+          for (int i = 0; i < matchingBeers.size(); i++ ) {
+              System.out.println(matchingBeers.get(i).getName());
+          }
+          //return new ResponseEntity<>(generatedName, HttpStatus.OK);
+          //return ResponseEntity.ok(generatedName);
+
+          //returns string in proper JSON format
+          return ResponseEntity.ok("{\"beername\":\"" + generatedName + "\"}");
+
+
+    }
 
 //returns beers that match request param
     private String taste = "backbone";
