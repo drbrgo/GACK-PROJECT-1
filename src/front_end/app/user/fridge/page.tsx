@@ -3,6 +3,8 @@ import FridgeAdmin from "../../components/fridge-admin/FridgeAdmin";
 import { useState, useEffect } from "react";
 import React from "react";
 import NavBarCustom  from '../../components/NavBarCustom';
+import CheckForLoggedIn from "../../components/authentication/CheckForLoggedIn";
+
     interface Beer {
         id : number,
         name: string,
@@ -30,7 +32,9 @@ export default function fridgeAdmin(){
     },[])
     return(
     <div>
+        <CheckForLoggedIn>
         <div>
+        
         <p>This is a User's 'fridge admin' page</p>
             
         </div>
@@ -40,6 +44,7 @@ export default function fridgeAdmin(){
         setBeers={setBeers}
         />
         </div>
+        </CheckForLoggedIn>
     </div>
     )
 }

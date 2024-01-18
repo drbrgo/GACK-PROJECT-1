@@ -11,7 +11,7 @@ export default function Home() {
       <div>
         {/* old version of navbar deprecated. new version is kept in layout.js */}
       {/* <p>Nav bar <button type="admin"><a href="/user/admin"> Admin</a></button> <button type="myfridge"><a href="/fridge/adminfridge">My Fridge</a></button><button type="myfriendsfridge"><a href="/fridge"> My Friends Fridge</a></button></p> */}
-      <p>Home page!</p>
+
       <LoginForm />
       <p class="mt-5">Tired of the same old stuff, are you? <a href="/createprofile">Register here.</a></p>
       </div>

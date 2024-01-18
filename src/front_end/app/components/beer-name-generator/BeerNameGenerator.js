@@ -34,16 +34,18 @@ const BeerGenerator = () => {
 
     return (
         <div>
-        <p>Generated beer name please </p>
+        <p>We don't just build beers around here. We also build some of the best beer names out there. Hit the button below to generate a novel name for your
+          new brew.</p>
         <button onClick={handleSubmit}>Generate!</button>
         {randomBeerName && (
         <div>
-          <h3>Your new brew has a glorious name!</h3>
+          <h3>Your new brew shall be known as...</h3>
           <ul>
         {Object.values(randomBeerName).map((value, index) => (
           <li key={index}  style={{ display: 'inline', margin: '0 2px'}}>{value}</li>
         ))}
       </ul>
+      <h4>Feel free to rename it by clicking the button again, or by editing it in your <a href = '/user/fridge'>fridge</a>.</h4>
           {/* <pre>{JSON.stringify(matchingBeers, null, 2)}</pre> this uses JSON format to render the values. not ideal!*/}
         </div>
       )}

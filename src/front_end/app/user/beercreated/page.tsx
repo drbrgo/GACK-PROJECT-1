@@ -5,6 +5,7 @@ import BeerNameGenerator from '../../components/beer-name-generator/BeerNameGene
 import SimilarBeerGenerator from '../../components/beer-name-generator/SimilarBeerGenerator';
 import BeerGenerator from '../../components/beer-name-generator/BeerNameGenerator'
 import { useState, useEffect } from "react";
+import CheckForLoggedIn from '../../components/authentication/CheckForLoggedIn';
 
 interface similarBeers {
     index: number,
@@ -20,10 +21,12 @@ const BeerCreated = () => {
 
     return(
         <div>
+            <CheckForLoggedIn>
             <p>This is the beer is created page!</p>
             <BeerGenerator/>
             <SimilarBeerGenerator 
             similarBeers={setSimilarBeers}/>
+            </CheckForLoggedIn>
         </div>
     )
 }

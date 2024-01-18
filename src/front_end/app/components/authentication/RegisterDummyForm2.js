@@ -15,11 +15,14 @@ export default function RegisterDummyForm2() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [verifyPassword, setVerifyPassword] = useState('');
+    const [birthdate, setBirthdate] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [emailAddress, setEmailAddress] = useState('');
 
     //manage error message 
     const [errorMessage, setErrorMessage] = useState('');
 
-    //
+    //manage redirection
     const router = useRouter();
 
 
@@ -27,9 +30,12 @@ export default function RegisterDummyForm2() {
         event.preventDefault();
 
         const data = {
-            username: event.target.username.value,
-            password: event.target.password.value,
-            verifyPassword: event.target.verifyPassword.value
+            username: String(event.target.username.value),
+            password: String(event.target.password.value),
+            verifyPassword: String(event.target.verifyPassword.value),
+            birthdate: Number(event.target.birthdate.value),
+            phoneNumber: Number(event.target.phoneNumber.value),
+            emailAddress: String(event.target.emailAddress.value)
         }
 
         console.log(data);
@@ -72,6 +78,9 @@ export default function RegisterDummyForm2() {
         setUsername('');
         setPassword('');
         setVerifyPassword('');
+        setBirthdate('');
+        setPhoneNumber('');
+        setEmailAddress('');
         setErrorMessage('');
 
 
@@ -91,7 +100,7 @@ export default function RegisterDummyForm2() {
                 {/* error message only displayes if present */}
                 {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
                 <div>
-                    <h1>Username</h1>
+                    <h5>Username: </h5>
                     
                     <input
                          type="text"
@@ -103,7 +112,7 @@ export default function RegisterDummyForm2() {
                     />
                 </div>
                 <div>
-                    <h1>Password</h1>
+                    <h5>Password: </h5>
                     <input
                         type="password"
                         autoComplete="off"
@@ -114,7 +123,7 @@ export default function RegisterDummyForm2() {
                     />
                 </div>
                 <div>
-                    <h1>Verify Password</h1>
+                    <h5>Verify Password: </h5>
                     <input
                         type="password"
                         autoComplete="off"
@@ -124,6 +133,40 @@ export default function RegisterDummyForm2() {
                         required minLength={2}
                     />
                 </div>
+                <div>
+                <h5>Birthdate: </h5>
+                    <input
+                        type="date"
+                        autoComplete="off"
+                        id="birthdate"
+                        value={birthdate}
+                        onChange={(event) => setBirthdate(event.target.value)}
+                        required minLength={2}
+                    />
+                </div>
+                <div>
+                <h5>Phone Number: </h5>
+                    <input
+                        type="number"
+                        autoComplete="off"
+                        id="phoneNumber"
+                        value={phoneNumber}
+                        onChange={(event) => setPhoneNumber(event.target.value)}
+                        required minLength={10} maxLength={10}                    />
+                </div>
+                <div>
+                <h5>Email Address: </h5>
+                    <input
+                        type="email"
+                        autoComplete="off"
+                        id="emailAddress"
+                        value={emailAddress}
+                        onChange={(event) => setEmailAddress(event.target.value)}
+                        
+                    />
+                </div>
+
+                
 
 
             <button type="submit">Dummy</button>

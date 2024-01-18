@@ -88,7 +88,7 @@ const LoginForm = (props) => {
   return (
     <div className="flex justify-center">
       <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        {/* <h1>Login</h1> */}
         {/* error message only displayes if present */}
         {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
         <div className="container">

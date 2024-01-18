@@ -65,7 +65,8 @@ const SimilarBeerGenerator = (props) => {
   return (
     <div className="flex justify-center">
       <form onSubmit={handleSubmit}>
-        <h3>Enter one taste word and your preferred ABV</h3>
+        <h3>Don't feel like putting in the elbow grease to make another? We've got you covered with our beer recommender below!</h3>
+        <h4>Just enter one taste word and your preferred minimum ABV:</h4>
         {/* error message only displayes if present */}
         {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
         <div className="container">
