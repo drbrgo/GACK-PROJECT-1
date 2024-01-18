@@ -34,7 +34,7 @@ export default function CreateProfileForm() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}> 
+            <form onSubmit={handleSubmit} >            
             <h3>Create An Account To Become A Beer Enthusiast!</h3>
             <div>
                 <h5>Name: </h5>
@@ -61,9 +61,9 @@ export default function CreateProfileForm() {
                 <input type="text" autoComplete="off" id="emailAddress" required minLength={3} maxLength={25}/>
                 </div>     
 
-                <button type="submit">Submit</button> 
-            </form>
-            
+                <button type="submit" >Submit</button>          
+            </form> 
+
             <p> Already Registered?<br /><a href="/LoginForm">Login</a>
             </p>
         </div>
