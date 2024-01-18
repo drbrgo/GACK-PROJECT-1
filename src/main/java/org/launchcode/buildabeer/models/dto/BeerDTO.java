@@ -27,10 +27,12 @@ public class BeerDTO {
 
     private Boolean favorite;
 
+    private String username;
+
     //public BeerDTO() {}
 
 
-    public BeerDTO(Fridge fridge, String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, Boolean favorite) {
+    public BeerDTO(Fridge fridge, String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, Boolean favorite, String username) {
         this.fridge = fridge;
         this.name = name;
         this.tastingNotes = tastingNotes;
@@ -40,6 +42,7 @@ public class BeerDTO {
         this.sockColor = sockColor;
         this.listNumber = listNumber;
         this.favorite = favorite;
+        this.username = username;
     }
 
     public Fridge getFridge() {
@@ -112,5 +115,9 @@ public class BeerDTO {
 
     public void setFavorite(Boolean favorite) {
         this.favorite = favorite;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }
