@@ -3,7 +3,7 @@
 import UserAdminForm from "../../components/user-admin/UserAdminForm";
 import UserAdminEditDisplay from "../../components/user-admin/UserAdminEditDisplay";
 import { useState, useEffect } from "react";
-import CheckForLoggedIn from "../../components/authentication/CheckForLoggedIn";
+import CheckForAdmin from "../../components/authentication/CheckForAdmin";
 
 interface UserProfile {
         id: number,
@@ -33,7 +33,7 @@ interface UserProfile {
     }, [])
 
     return (
-        <CheckForLoggedIn>
+        <CheckForAdmin>
         <div>
 
         <div>
@@ -54,7 +54,7 @@ interface UserProfile {
             />
         </div>
     </div>
-    </CheckForLoggedIn>
+    </CheckForAdmin>
 
     )
 

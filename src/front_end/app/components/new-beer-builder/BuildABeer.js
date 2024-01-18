@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import CheckForLoggedIn from '../authentication/CheckForLoggedIn';
+import { getCookies } from 'cookies-next';
 
 export default function BuildABeer () {
     const webUrl = "http://localhost:8080";
@@ -18,12 +19,16 @@ export default function BuildABeer () {
     const [sockColor, setSockColor] = useState('');
     const [listNumber, setListNumber] = useState('');
     const [favorite, setFavorite] = useState('');
+    const [username, setUsername] = useState('');
 
     //manage error message 
     const [errorMessage, setErrorMessage] = useState('');
 
     //manage redirection
     const router = useRouter();
+
+    //get username from cookie
+    const usernameCookie = getCookies().username;
 
 
     const handleSubmit = async (event) => {
@@ -38,7 +43,8 @@ export default function BuildABeer () {
             readingMaterial: event.target.readingMaterial.value,
             sockColor: event.target.sockColor.value,
             listNumber: event.target.listNumber.value,
-            favorite: false
+            favorite: false,
+            username: usernameCookie,
         }
 
         console.log(data);

@@ -2,26 +2,30 @@ package org.launchcode.buildabeer.controllers.api;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.servlet.http.HttpServletRequest;
 import org.launchcode.buildabeer.data.BeerRepository;
 import org.launchcode.buildabeer.data.UserRepository;
 import org.launchcode.buildabeer.models.Beer;
 import org.launchcode.buildabeer.models.ProprietaryBeerName;
+import org.launchcode.buildabeer.models.User;
 import org.launchcode.buildabeer.models.dto.ApiDTO;
 import org.launchcode.buildabeer.models.dto.ApiDummyDTO;
+import org.launchcode.buildabeer.models.dto.BeerDTO;
+import org.launchcode.buildabeer.models.dto.LoginDTO;
 import org.launchcode.buildabeer.services.ApiServiceAbv;
 import org.launchcode.buildabeer.services.ApiServiceFood;
 import org.launchcode.buildabeer.services.ApiServiceRandom;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 //@RestController
@@ -51,6 +55,8 @@ public class ApiPunkBeerController {
 
         @Autowired
         private BeerRepository beerRepository;
+
+
 
         //returns all beers at the url
         @GetMapping("/dataf")
@@ -172,18 +178,32 @@ public class ApiPunkBeerController {
 //            return ResponseEntity.ok(beerNames);
 //        }
 
-    @GetMapping("/random")
-    public ResponseEntity<?> getRandomBeer() {
-            //find beer with largest id (newest beer)
-        Iterable<Beer> allUserBeers = beerRepository.findAll();
+    @PostMapping("/random")
+    public ResponseEntity<?> createNewProfile(@RequestBody LoginDTO loginDTO,
+                                              Errors errors,
+                                              HttpServletRequest request) {
 
-        Beer newestBeer = allUserBeers.iterator().next();
+        User thisUser = new User(loginDTO.getUsername(), loginDTO.getPassword());
+        String username = thisUser.getUsername();
+//
 
-        if (allUserBeers == null) {
+        //old way, without checking for beers matching username
+//        @GetMapping("/random")
+//    public ResponseEntity<?> getRandomBeer() {
+        //Iterable<Beer> allUserBeers = beerRepository.findAll();
+
+        //new way, checking for beers that match username first
+        Iterable<Beer> thisUserBeers = beerRepository.findByUsername(username);
+
+
+
+        Beer newestBeer = thisUserBeers.iterator().next();
+
+        if (thisUserBeers == null) {
             return null;
         } else {
 
-            for (Beer beer : allUserBeers) {
+            for (Beer beer : thisUserBeers) {
                 if (beer.getId() > newestBeer.getId()) {
                     newestBeer = beer;
                 }
