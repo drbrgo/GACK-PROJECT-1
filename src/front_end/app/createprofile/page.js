@@ -7,6 +7,7 @@ const CreateProfile = () => {
         <div>
             <p>This is the create a profile page!</p>
             <CreateProfileForm/>
+            
         </div>
  )
     }

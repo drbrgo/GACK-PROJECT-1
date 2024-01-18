@@ -1,5 +1,14 @@
 'use client'
 
+interface UserProfile {
+    id: number,
+    name: string,
+    password: string,
+    birthdate: number,
+    phoneNumber: number,
+    emailAddress: string,
+    }
+
 export default function UserAdminForm(props: any) {
 
     const webUrl: string = "http://localhost:8080"
@@ -21,7 +30,7 @@ export default function UserAdminForm(props: any) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data),
-        }).then((response) => response.json()).then(data => {
+        }).then((response) => response.json()).then((data: UserProfile[]) => {
             props.setUserProfiles(oldData => [...oldData, data]);
 
             event.target.name.value=""
