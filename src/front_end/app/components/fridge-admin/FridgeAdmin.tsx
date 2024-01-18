@@ -6,7 +6,9 @@ interface Beer {
     id : number,
     name: string,
     tastingNotes: string,
-    abv: number
+    abv: number,
+    favorite: boolean
+
 }
 
 export default function FridgeAdmin(props: any){
@@ -29,6 +31,7 @@ export default function FridgeAdmin(props: any){
             beer={beer}
             removeBeer={removeBeer}
             setBeers={props.setBeers}
+            //favorite={props.favorite.checked ? "true" : "false"}
             />
          )
     })
