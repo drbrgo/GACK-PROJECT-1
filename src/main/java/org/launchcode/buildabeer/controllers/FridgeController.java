@@ -85,6 +85,7 @@ public class FridgeController {
             updateBeer.get().setName(beerDTO.getName());
             updateBeer.get().setAbv(beerDTO.getAbv());
             updateBeer.get().setTastingNotes(beerDTO.getTastingNotes());
+            updateBeer.get().setFavorite(beerDTO.getFavorite());
             beerRepository.save(updateBeer.get());
         }
 

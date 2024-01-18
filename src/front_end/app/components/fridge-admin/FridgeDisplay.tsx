@@ -6,7 +6,8 @@ interface Beer {
     id : number,
     name: string,
     tastingNotes: string,
-    abv: number
+    abv: number,
+    favorite: boolean
 }
 export default function FridgeDisplay(props: any){
     
@@ -22,6 +23,7 @@ export default function FridgeDisplay(props: any){
                 name: String(event.target.name.value),
                 abv: Number(event.target.abv.value),
                 tastingNotes: String(event.target.tastingNotes.value),
+                favorite: Boolean(event.target.favorite.value),
             }
 
             fetch(webUrl + "/user/fridge/updateBeer/" + props.beer.id, {
@@ -56,6 +58,11 @@ export default function FridgeDisplay(props: any){
                             <h2>Tasting Notes: </h2>
                             <input type="text" autoComplete="off" id="tastingNotes" defaultValue={props.beer.tastingNotes} required minLength={4} maxLength={80}></input>
                         </div>
+                        <div>
+                            <h2>Favorite?</h2>
+                            <input type="checkbox" id="favorite" name="favorite" defaultChecked={props.beer.favorite} />
+                            <label htmlFor="favorite"> Favorite</label><br></br>
+                        </div>
                         <button className="bg-green-500/80 p-2 rounded-md" type="submit">Submit</button>
                         <button className="bg-red-500/80 p-2 rounded-md" onClick={() => setBeer(prev => !prev)}>Cancel</button>
                     </form>
@@ -78,8 +85,11 @@ export default function FridgeDisplay(props: any){
                         <td>{props.beer.name}</td>
                         <td>{props.beer.abv}</td>
                         <td>{props.beer.tastingNotes}</td>
+                        <td>{props.beer.favorite}</td>
+
                         <td> <button onClick={() => props.removeBeer(props.beer.id)}className='bg-red-500/80 p-2 rd-md' type='button'>Delete</button></td>
                         <td> <button onClick={() => setBeer(prev => !prev)}className='bg-blue-500/80 p-2 rd-md' type='button'>Edit</button></td>
+                        {/* <td>Favorite<input type ="checkbox" id="favorite" /> </td> */}
                     </tr>
                     </tbody>
                     </table>

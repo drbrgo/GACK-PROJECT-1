@@ -1,50 +1,48 @@
 package org.launchcode.buildabeer.models.dto;
 
+import java.util.Date;
+
 public class CreateProfileDTO {
-    private Long id;
     private String name;
-    private int birthdate;
-    private int phoneNumber;
-    private String emailAddress;
+
     private String password;
+
+    private String verifyPassword;
+
+    private Date birthdate;
+    private Long phoneNumber;
+    private String emailAddress;
+
+    public CreateProfileDTO(String name, String password, String verifyPassword, Date birthdate, Long phoneNumber, String emailAddress) {
+        this.name = name;
+        this.password = password;
+        this.verifyPassword = verifyPassword;
+        this.birthdate = birthdate;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
+    }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(int birthdate) {
-        this.birthdate = birthdate;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getVerifyPassword() {
+        return verifyPassword;
+    }
+
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public Long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
     }
 }

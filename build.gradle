@@ -19,14 +19,28 @@ dependencies {
 //We'll need to uncomment these once we have created a mySQL schema and attached it to the project. See text here: https://education.launchcode.org/java-web-dev-curriculum/intro-orm-mapping/reading/orm/index.html
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'mysql:mysql-connector-java:8.0.32'
+	//adding in spring security for jwt use --maybe later. just going to use session for now
+//	implementation 'org.springframework.boot:spring-boot-starter-security'
+	//implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
+//	implementation 'io.jsonwebtoken:jjwt-api'
+//	implementation 'io.jsonwebtoken:jjwt-impl'
+
+
 
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation('org.springframework.security:spring-security-crypto:5.5.8')
-	//implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	implementation 'org.springframework.boot:spring-boot-starter-json'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.0'
+
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//more spring security dependencies
+	testImplementation 'org.springframework.security:spring-security-test'
+
 }
 
 tasks.named('test') {

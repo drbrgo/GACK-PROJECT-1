@@ -8,10 +8,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Entity
 public class User extends AbstractEntity {
 
-    @NotNull
+    //@NotNull
     private String username;
 
-    @NotNull
+    //@NotNull
     private String pwHash;
 
 
