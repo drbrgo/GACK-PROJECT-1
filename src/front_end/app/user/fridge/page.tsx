@@ -2,7 +2,7 @@
 import FridgeAdmin from "../../components/fridge-admin/FridgeAdmin";
 import { useState, useEffect } from "react";
 import React from "react";
-import NavBarCustom  from '../../components/NavBarCustom';
+import NavBarCustom from "../../components/NavBarCustom";
 import { getCookies } from 'cookies-next';
 
     interface Beer {
@@ -17,9 +17,11 @@ export default function fridgeAdmin(){
 
     const [beers, setBeers] = useState<Beer[]>([])
 
+    
     // const username = getCookies().username
-    //delete below line, only needed for testing:
-    const username= "testername"
+    // delete below line, only needed for testing:
+    const username= "testername"   
+   
 
     useEffect(function(){
         const getBeers = async() => {
@@ -33,12 +35,14 @@ export default function fridgeAdmin(){
         getBeers()
     },[])
     return(
+        
         <><NavBarCustom/>
-    <div>
+    <div >
     <p>This is a User's 'fridge admin' page</p>
         
         </div>
         <div>
+
     <FridgeAdmin 
     beers={beers}
     setBeers={setBeers}

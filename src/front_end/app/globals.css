@@ -136,6 +136,12 @@ a {
 }
 
 /* Style the search box inside the navigation bar */
+.topnav button[type=submit]{
+  float: right;
+  padding: 6px;
+  margin-right: 16px;
+  margin-top: 8px;
+}
 .topnav input[type=text] {
   float: right;
   padding: 6px;
@@ -144,6 +150,7 @@ a {
   margin-right: 16px;
   font-size: 17px;
 }
+
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 600px) {
   .topnav a, .topnav input[type=text] {
