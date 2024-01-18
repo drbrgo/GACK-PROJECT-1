@@ -2,6 +2,8 @@ package org.launchcode.buildabeer.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.launchcode.buildabeer.data.CreateProfileRepository;
+import org.launchcode.buildabeer.models.CreateProfile;
 import org.launchcode.buildabeer.models.User;
 import org.launchcode.buildabeer.models.dto.LoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ import java.util.Optional;
 public class HomeController {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CreateProfileRepository createProfileRepository;
 
 //for use without react frontend
 //    @GetMapping
@@ -67,7 +72,7 @@ public class HomeController {
         //User theUser = new User (loginDTO.getUsername(), loginDTO.getPassword());
 
         //Look up user in database using username they provided in the form
-        User theUser = userRepository.findByUsername(loginDTO.getUsername());
+        CreateProfile theUser = createProfileRepository.findByName(loginDTO.getUsername());
 
         // Get the password the user supplied in the form
         String password = loginDTO.getPassword();
@@ -94,7 +99,7 @@ public class HomeController {
 //            headers.add("Set-Cookie", "JSESSIONID=" + session.getId());
             //headers.add("Set-Cookie", "username=" + session.getAttribute(theUser.getUsername()));
             //"; HttpOnly; SameSite=None; Secure
-            headers.add("User-ID", theUser.getUsername());
+            headers.add("User-ID", theUser.getName());
 
 
             return new ResponseEntity<>(theUser, HttpStatus.OK);

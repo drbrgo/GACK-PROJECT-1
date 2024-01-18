@@ -21,17 +21,29 @@ public class Beer extends AbstractEntity{
     @NotNull
     private Double abv;
 
-    public boolean favorite;
+    private String setting;
+
+    private String readingMaterial;
+
+    private String sockColor;
+
+    private Integer listNumber;
+
+    private boolean favorite;
 
     public Beer() {}
 
 
-    public Beer(String name, String tastingNotes, Double abv, Boolean favorite) {
+    public Beer(Fridge fridge, String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, boolean favorite) {
+        this.fridge = fridge;
         this.name = name;
         this.tastingNotes = tastingNotes;
         this.abv = abv;
+        this.setting = setting;
+        this.readingMaterial = readingMaterial;
+        this.sockColor = sockColor;
+        this.listNumber = listNumber;
         this.favorite = favorite;
-
     }
 
     //might not need setters for anything other than name. we'll see how Marleny creates the beer
@@ -66,5 +78,45 @@ public class Beer extends AbstractEntity{
 
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
+    }
+
+    public Fridge getFridge() {
+        return fridge;
+    }
+
+    public void setFridge(Fridge fridge) {
+        this.fridge = fridge;
+    }
+
+    public String getSetting() {
+        return setting;
+    }
+
+    public void setSetting(String setting) {
+        this.setting = setting;
+    }
+
+    public String getReadingMaterial() {
+        return readingMaterial;
+    }
+
+    public void setReadingMaterial(String readingMaterial) {
+        this.readingMaterial = readingMaterial;
+    }
+
+    public String getSockColor() {
+        return sockColor;
+    }
+
+    public void setSockColor(String sockColor) {
+        this.sockColor = sockColor;
+    }
+
+    public Integer getListNumber() {
+        return listNumber;
+    }
+
+    public void setListNumber(Integer listNumber) {
+        this.listNumber = listNumber;
     }
 }

@@ -162,6 +162,7 @@ export default function CreateProfileForm() {
                         id="emailAddress"
                         value={emailAddress}
                         onChange={(event) => setEmailAddress(event.target.value)}
+                        required minLength={5} maxLength={100}
                         
                     />
                 </div>   
