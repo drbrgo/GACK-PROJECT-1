@@ -41,5 +41,21 @@ public class UserAdminController {
         return new ResponseEntity<>(userAdminRepository.findAll(), HttpStatus.OK);
     }
 
+    @PutMapping("updateUser/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody UserAdminDTO userAdminDTO) {
+
+        Optional<UserAdmin> updateUserProfile =userAdminRepository.findById(id);
+        if (updateUserProfile.isPresent()) {
+            updateUserProfile.get().setName((userAdminDTO.getName()));
+            updateUserProfile.get().setPassword((userAdminDTO.getPassword()));
+            updateUserProfile.get().setBirthdate((userAdminDTO.getBirthdate()));
+            updateUserProfile.get().setPhoneNumber((userAdminDTO.getPhoneNumber()));
+            updateUserProfile.get().setEmailAddress((userAdminDTO.getEmailAddress()));
+            userAdminRepository.save(updateUserProfile.get());
+        }
+
+        return new ResponseEntity<>(userAdminRepository.findAll(), HttpStatus.OK);
+    }
+
 }
 

@@ -34,9 +34,9 @@ export default function UserAdminForm(props: any) {
     }
 
     return (
-        <div className="flex justify-center">
+        <div>
             <form onSubmit = {handleSubmit}>
-                <h1> Create/Delete User Profile </h1>       
+                <h1> Create User Profile </h1>       
                 <div>        
                 <h5>Name: </h5>
                 <input type="text" autoComplete="off" id="name" required minLength={3} maxLength={25}/>

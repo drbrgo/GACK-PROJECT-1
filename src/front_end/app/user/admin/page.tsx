@@ -23,7 +23,7 @@ interface UserProfile {
 
     useEffect(function() {
         const getUserProfiles = async() => {
-            await fetch(webUrl + '/userAdmin/getUserProfiles')
+            await fetch(webUrl + "/userAdmin/getUserProfiles")
             .then(response => response.json())
             .then(data => {
                 setUserProfiles(data);
@@ -36,7 +36,7 @@ interface UserProfile {
         <div>
         <div>
         <p>This is the admin user profile page!</p>
-        <p>Admin can create and delete new user profile</p>
+        <p>Admin Create New User Profile</p>
         </div>
         
         <div>

@@ -21,7 +21,9 @@ public class BuildABeerApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/user/fridge-javaconfig").allowedOrigins("http://localhost:3000");
+				registry.addMapping("/user/admin-javaconfig").allowedOrigins("http://localhost:3000");
 			}
+
 		};
 	}
 
