@@ -39,7 +39,7 @@ public class BeerDTO {
         this.readingMaterial = readingMaterial;
         this.sockColor = sockColor;
         this.listNumber = listNumber;
-        this.favorite = false;
+        this.favorite = favorite;
     }
 
     public Fridge getFridge() {
