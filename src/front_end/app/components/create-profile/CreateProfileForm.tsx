@@ -1,6 +1,7 @@
 'use client'
 
 import React from "react";
+import LoginForm from "../LoginForm";
 
 export default function CreateProfileForm() {
 
@@ -64,9 +65,8 @@ export default function CreateProfileForm() {
                 <button type="submit" >Submit</button>          
             </form> 
 
-            <p> Already Registered?<br /><a href="/LoginForm">Login</a>
+            <p> Already Registered?<br /><a href="http://localhost:3000">Login</a>
             </p>
         </div>
     )
-     //login link is not working 
 }
