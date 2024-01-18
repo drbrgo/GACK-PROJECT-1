@@ -210,6 +210,12 @@ public class ApiPunkBeerController {
             }
         }
         System.out.println(newestBeer.getId());
+
+        Integer value = newestBeer.getId();
+
+        if(value == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
 /////
 
         //int proprietaryIndex = newestBeer.getName().length();
