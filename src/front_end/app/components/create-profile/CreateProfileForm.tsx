@@ -11,11 +11,12 @@ export default function CreateProfileForm() {
 
         //object is being sent to the backend, inputs that have been filled in
         const data = { 
-            Name: String(event.target.name.value.length),
-            password: String(event.target.password.value.length),
-            birthdate: Number(event.target.birthdate.value.length),
-            phoneNumber: Number(event.target.phoneNumber.value.length),
-            emailAddress: String(event.target.emailAddress.value.length),
+            id: Number(event.target.id.value),
+            name: String(event.target.name.value),
+            password: String(event.target.password.value),
+            birthdate: Number(event.target.birthdate.value),
+            phoneNumber: Number(event.target.phoneNumber.value),
+            emailAddress: String(event.target.emailAddress.value),
         }
         await fetch(webUrl + "/createProfile/createNewProfile", {
             method: 'POST',
@@ -33,7 +34,7 @@ export default function CreateProfileForm() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}> 
+            <form onSubmit={handleSubmit} >            
             <h3>Create An Account To Become A Beer Enthusiast!</h3>
             <div>
                 <h5>Name: </h5>
@@ -60,9 +61,9 @@ export default function CreateProfileForm() {
                 <input type="text" autoComplete="off" id="emailAddress" required minLength={3} maxLength={25}/>
                 </div>     
 
-                <button type="submit">Submit</button> 
-            </form>
-            
+                <button type="submit" >Submit</button>          
+            </form> 
+
             <p> Already Registered?<br /><a href="/LoginForm">Login</a>
             </p>
         </div>

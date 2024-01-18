@@ -9,8 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(value = "/userAdmin")
 public class UserAdminController {
 
@@ -24,8 +26,34 @@ public class UserAdminController {
         userAdminRepository.save(newProfile);
         return new ResponseEntity<>(userAdminDTO, HttpStatus.OK);
     }
-    @GetMapping("/getUsers")
-    public ResponseEntity<?> getUserObjects() {
+    @GetMapping("/getUserProfiles")
+    public ResponseEntity<?> getUserProfileObjects() {
+        return new ResponseEntity<>(userAdminRepository.findAll(), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/removeUser/{id}")
+    public ResponseEntity<?> removeUser(@PathVariable Long id) {
+        Optional<UserAdmin> removeUserProfile = userAdminRepository.findById(id);
+
+        if(removeUserProfile.isPresent()) {
+            userAdminRepository.delete(removeUserProfile.get());
+        }
+        return new ResponseEntity<>(userAdminRepository.findAll(), HttpStatus.OK);
+    }
+
+    @PutMapping("updateUser/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody UserAdminDTO userAdminDTO) {
+
+        Optional<UserAdmin> updateUserProfile =userAdminRepository.findById(id);
+        if (updateUserProfile.isPresent()) {
+            updateUserProfile.get().setName((userAdminDTO.getName()));
+            updateUserProfile.get().setPassword((userAdminDTO.getPassword()));
+            updateUserProfile.get().setBirthdate((userAdminDTO.getBirthdate()));
+            updateUserProfile.get().setPhoneNumber((userAdminDTO.getPhoneNumber()));
+            updateUserProfile.get().setEmailAddress((userAdminDTO.getEmailAddress()));
+            userAdminRepository.save(updateUserProfile.get());
+        }
+
         return new ResponseEntity<>(userAdminRepository.findAll(), HttpStatus.OK);
     }
 
