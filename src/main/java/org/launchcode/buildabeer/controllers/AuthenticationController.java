@@ -65,28 +65,29 @@ public class AuthenticationController {
         // Look up user in database using username they provided in the form
         User existingUser = userRepository.findByUsername(dummyRegistrationDTO.getUsername());
 
+        //create password variables for match check
+        String password = dummyRegistrationDTO.getPassword();
+        String verifyPassword = dummyRegistrationDTO.getVerifyPassword();
+
         // Send user back to form if username already exists
         if (existingUser != null) {
             errors.rejectValue("username", "username.alreadyExists", "A user with that username already exists");
-            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("username already in use");
-        }
-
-        // Send user back to form if passwords didn't match NOT WORKING!!!!
-        String password = dummyRegistrationDTO.getPassword();
-        String verifyPassword = dummyRegistrationDTO.getVerifyPassword();
-        if (!password.equals(verifyPassword)) {
+            System.out.println("username already in use");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(dummyRegistrationDTO);
+            //send user back to form if passwords didn't match NOT WORKING!
+        } else if (!password.equals(verifyPassword)){
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
             System.out.println("passwords don't match");
-            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("passwords don't match");
+             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(dummyRegistrationDTO);
+        } else {
+            // OTHERWISE, save new username and hashed password in database
+            User newUser = new User(dummyRegistrationDTO.getUsername(), dummyRegistrationDTO.getPassword());
+            userRepository.save(newUser);
+
+            //without front end, we would set user in a session and redirect to profile page
+
+            return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
         }
-
-        // OTHERWISE, save new username and hashed password in database, start a new session, and redirect to home page
-        User newUser = new User(dummyRegistrationDTO.getUsername(), dummyRegistrationDTO.getPassword());
-        userRepository.save(newUser);
-
-        //set user in session and redirect to profile page
-
-        return new ResponseEntity<>(userRepository.findAll(), HttpStatus.FOUND);
     }
 
     @PostMapping("/logout")
