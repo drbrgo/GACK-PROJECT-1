@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { getCookies } from 'cookies-next';
+
 
 const BeerGenerator = () => {
     //manage input values
@@ -12,15 +14,23 @@ const BeerGenerator = () => {
     //this get handler retrieves a random beer from the api
     const webUrl = "http://localhost:8080/api/random";
 
+    //get username from cookie
+    const usernameCookie = getCookies().username;
+
+    const data = {
+      username: usernameCookie,
+      password: "placeholder",
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         const response = await fetch(webUrl, {
-            method: 'GET',
+            method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            // body: JSON.stringify(''),
+            body: JSON.stringify(data),
         });
     
         const responseData = await response.json();
