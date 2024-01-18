@@ -3,7 +3,7 @@
 import UserAdminForm from "../../components/user-admin/UserAdminForm";
 import UserAdminEditDisplay from "../../components/user-admin/UserAdminEditDisplay";
 import { useState, useEffect } from "react";
-
+import CheckForLoggedIn from "../../components/authentication/CheckForLoggedIn";
 
 interface UserProfile {
         id: number,
@@ -33,7 +33,9 @@ interface UserProfile {
     }, [])
 
     return (
+        <CheckForLoggedIn>
         <div>
+
         <div>
         <p>This is the admin user profile page!</p>
         <p>Admin Create New User Profile</p>
@@ -52,6 +54,7 @@ interface UserProfile {
             />
         </div>
     </div>
+    </CheckForLoggedIn>
 
     )
 
