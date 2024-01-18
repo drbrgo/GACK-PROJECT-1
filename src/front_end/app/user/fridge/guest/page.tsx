@@ -28,7 +28,7 @@ export default function fridgeAdminGuest (){
    
         setFormData(formData)
         console.log(formData)
-        router.push('http://localhost:3000/user/fridge/guest/' + formData)
+       
 
     useEffect(function(){
         const getBeers = async() => {
@@ -38,6 +38,7 @@ export default function fridgeAdminGuest (){
             .then(data => {
                 console.log(data); 
                 setBeers(data)
+               
             })
         }
         getBeers()

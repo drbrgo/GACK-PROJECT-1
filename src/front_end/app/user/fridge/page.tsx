@@ -21,7 +21,7 @@ export default function fridgeAdmin(){
     // const username = getCookies().username
     // delete below line, only needed for testing:
     const username= "testername"   
-   
+    
 
     useEffect(function(){
         const getBeers = async() => {

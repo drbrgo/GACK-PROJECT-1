@@ -33,10 +33,7 @@ export default function NavBarCustom (props) {
             <a href='http://localhost:3000/user/createbeer'>Create a Beer</a>
             <a href="http://localhost:3000/user/fridge">My Fridge</a>
             <a href='http://localhost:3000/user/logout'>Logout</a>
-        <form id="form" onSubmit={fridgeAdminGuest}>
-        <input type="text" placeholder="Type username to find fridge" id="formData"/>
-        <button type="submit">Search</button>
-        </form>
+            {/* //<FridgeSearch /> */}
         </div>
     
     )
