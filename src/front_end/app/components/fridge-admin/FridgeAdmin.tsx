@@ -34,27 +34,6 @@ export default function FridgeAdmin(props: any){
          )
     })
 
-    const handleSubmit = async(event) => {
-        event.preventDefault();
-        
-        const data={
-            // Will this need to be where we edit beers? Delete beers here? 
-        }
-        // window.addEventListener("load", function() {
-        //     fetch(webUrl + "/admin/" + fridgeId).then(function(response){
-        //         console.log(response);
-        //     });
-        // });
-      
-        // await fetch(webUrl + "/fridge/{fridgeid}", {
-        //     method: "GET", 
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify(data),
-        // })
-
-    }
     return(
 
         <div>

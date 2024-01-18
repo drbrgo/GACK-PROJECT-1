@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BeerRepository extends JpaRepository<Beer, Integer> {
-    @Query( value = "SELECT beer.name, beer.abv, beer.tasting_notes, beer.id FROM beer \n" +
-            "JOIN fridge ON fridge.id= beer.fridge_id\n" +
+public interface BeerRepository extends CrudRepository<Beer, Integer> {
+    @Query( value = "SELECT beer.* FROM beer \n" +
+            "JOIN fridge ON beer.fridge_id = fridge.id \n" +
             "JOIN `user` ON fridge.user_id= `user`.id\n" +
             " WHERE user.username= :username ", nativeQuery = true)
     List<Beer> findBeersByUsername(@Param("username") String username);

@@ -12,6 +12,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface FridgeRepository extends CrudRepository<Fridge, Integer> {
+public interface FridgeRepository extends JpaRepository<Fridge, Integer> {
 
 }

@@ -11,7 +11,7 @@ public class BeerDTO {
 
 
     @NotNull
-    private int fridgeId;
+    private Fridge fridge;
 
     @NotNull
     private String name;
@@ -25,12 +25,12 @@ public class BeerDTO {
 
     public BeerDTO() {}
 
-    public int getFridgeId() {
-        return fridgeId;
+    public Fridge getFridge() {
+        return fridge;
     }
 
-    public void setFridgeId(int fridgeId) {
-        this.fridgeId = fridgeId;
+    public void setFridge(Fridge fridge) {
+        this.fridge = fridge;
     }
 
     public String getName() {

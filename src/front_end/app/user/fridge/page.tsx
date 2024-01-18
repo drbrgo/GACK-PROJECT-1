@@ -3,6 +3,8 @@ import FridgeAdmin from "../../components/fridge-admin/FridgeAdmin";
 import { useState, useEffect } from "react";
 import React from "react";
 import NavBarCustom  from '../../components/NavBarCustom';
+import { getCookies } from 'cookies-next';
+
     interface Beer {
         id : number,
         name: string,
@@ -15,9 +17,13 @@ export default function fridgeAdmin(){
 
     const [beers, setBeers] = useState<Beer[]>([])
 
+    // const username = getCookies().username
+    //delete below line, only needed for testing:
+    const username= "testername"
+
     useEffect(function(){
         const getBeers = async() => {
-            await fetch(webUrl + '/user/fridge/getBeers')
+            await fetch(webUrl + '/user/fridge/getBeers/' + username)
             .then(response => response.json())
             .then(data => {
                 console.log(data); 

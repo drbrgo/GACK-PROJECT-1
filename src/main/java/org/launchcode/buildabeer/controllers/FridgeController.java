@@ -46,11 +46,11 @@ public class FridgeController {
 //        }
 //    }
 
-    @CrossOrigin
-    @GetMapping("/getBeers")
-    public ResponseEntity<?> getBeerObjects() {
-        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
-    }
+//    @CrossOrigin
+//    @GetMapping("/getBeers")
+//    public ResponseEntity<?> getBeerObjects() {
+//        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
+//    }
 
 
     @CrossOrigin
@@ -61,8 +61,8 @@ public class FridgeController {
 //    if (getBeerObjectsByUsername.isPresent()){
 //        fridgeRepository.findAllById()
 //        }
-        var beers= beerRepository.findBeersByUsername(username);
-        System.out.println();
+//        var beers= beerRepository.findBeersByUsername(username);
+//        System.out.println();
         return new ResponseEntity<>(beerRepository.findBeersByUsername(username), HttpStatus.OK);
 
     }
