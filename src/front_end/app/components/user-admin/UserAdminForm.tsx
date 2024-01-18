@@ -22,15 +22,21 @@ export default function UserAdminForm(props: any) {
             },
             body: JSON.stringify(data),
         }).then((response) => response.json()).then(data => {
-            props.setProfiles(oldData => [...oldData, data]);
-        })
+            props.setUserProfiles(oldData => [...oldData, data]);
 
+            event.target.name.value=""
+            event.target.password.value=""
+            event.target.birthdate.value=""
+            event.target.phoneNumber.value=""
+            event.target.emailAddress.value=""
+    
+        })        
     }
 
     return (
-        <div className="flex justify-center">
+        <div>
             <form onSubmit = {handleSubmit}>
-                <h1> Create/Edit Profile </h1>       
+                <h1> Create User Profile </h1>       
                 <div>        
                 <h5>Name: </h5>
                 <input type="text" autoComplete="off" id="name" required minLength={3} maxLength={25}/>
@@ -55,7 +61,7 @@ export default function UserAdminForm(props: any) {
                 <h5>Email Address: </h5>
                 <input type="text" autoComplete="off" id="emailAddress" required minLength={3} maxLength={25}/>
                 </div>   
-                <button className="bg-blue-500/80 p-2 rounded-md" type="submit">Submit</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     )

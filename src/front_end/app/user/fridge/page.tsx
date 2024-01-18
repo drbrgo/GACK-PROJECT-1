@@ -7,7 +7,9 @@ import NavBarCustom  from '../../components/NavBarCustom';
         id : number,
         name: string,
         tastingNotes: string,
-        abv: number
+        abv: number,
+        favorite: boolean
+
     }
 export default function fridgeAdmin(){
 
