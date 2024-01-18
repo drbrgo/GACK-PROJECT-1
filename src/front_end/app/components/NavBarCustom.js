@@ -20,6 +20,7 @@ export default function Header () {
             <a href='http://localhost:3000/user/createbeer'>Create a Beer</a>
             <a href="http://localhost:3000/user/fridge">My Fridge</a>
             <a href='http://localhost:3000/user/logout'>Logout</a>
+            <a href='http://localhost:3000/user/admin'> Admin</a>
             <input type='text' placeholder="Type username to find fridge"/>
         </div>
     
