@@ -1,3 +1,5 @@
+'use client'
+
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -14,10 +16,11 @@ export default function Header () {
     }
     return (
         <div className='topnav'>
-            <h1>THIS IS THE HEADER FOR ALL PAGES</h1>
+            <h2>Thirsty? Let's build a beer together</h2>
             <a href='http://localhost:3000/user/createbeer'>Create a Beer</a>
             <a href="http://localhost:3000/user/fridge">My Fridge</a>
             <a href='http://localhost:3000/user/logout'>Logout</a>
+            <a href='http://localhost:3000/user/admin'> Admin</a>
             <input type='text' placeholder="Type username to find fridge"/>
         </div>
     

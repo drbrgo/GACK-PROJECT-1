@@ -4,12 +4,15 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { setCookie } from 'cookies-next';
 
-export default function CreateProfileForm() {
 
-    const webUrl: string = "http://localhost:8080"
 
-    //manage input values
-    const [name, setName] = useState('');
+export default function RegisterDummyForm2() {
+
+    const webUrl = "http://localhost:8080";
+
+
+//manage input values
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [verifyPassword, setVerifyPassword] = useState('');
     const [birthdate, setBirthdate] = useState('');
@@ -22,12 +25,12 @@ export default function CreateProfileForm() {
     //manage redirection
     const router = useRouter();
 
-    const handleSubmit = async (event: any) => {
-        event.preventDefault(); //prevents the form from autosubmitting
 
-        //object is being sent to the backend, inputs that have been filled in
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
         const data = {
-            name: String(event.target.name.value),
+            username: String(event.target.username.value),
             password: String(event.target.password.value),
             verifyPassword: String(event.target.verifyPassword.value),
             birthdate: Number(event.target.birthdate.value),
@@ -37,44 +40,42 @@ export default function CreateProfileForm() {
 
         console.log(data);
 
-        try{
-        const response = await fetch(webUrl + "/createProfile/createNewProfile", {
+       try{
+        const response = await fetch(webUrl + "/registerdummy", {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json" 
             },
             body: JSON.stringify(data),
-         })
-        //.then((response) => response.json()).then(data => {
+        })
+        // .then((response) => response.json()).then(data => {
         //     console.log(data);
-        // })
-//POST request working. server is receiving the object entered in form.
-
+        //})
         const responseData = await response.json();
 
         console.log(responseData);
 
         if (response.status == 400) {
-            // checking if response status is not OK (as in a 400 response status code)
+            // checking if response status is not OK (as in a 4-- or 5-- response status code)
             throw new Error(`Your passwords don't match.`);
-        }
+          }
 
         if (response.status == 409) {
-            // checking if response status is CONFLIFT (as in a 409 response status code)
+            // checking if response status is not OK (as in a 4-- or 5-- response status code)
             throw new Error(`Username already taken.`);
-        }
-        
+          }
+          
         if (response.ok) {
             //log response body and redirect to profile page
         console.log(response.body);
-        setCookie('username', data.name, {
+        setCookie('username', data.username, {
             httpOnly: false,
             path: '/',
-        });
+          });
         router.push('/user/profiledummy');
         }
-
-        setName('');
+        
+        setUsername('');
         setPassword('');
         setVerifyPassword('');
         setBirthdate('');
@@ -83,20 +84,19 @@ export default function CreateProfileForm() {
         setErrorMessage('');
 
 
-        } catch (error) {
+    } catch (error) {
         // checking if response status is not OK (as in a 4-- or 5-- response status code)--will need to update for username taken error AND pw no match error
         //throw new Error(`Make sure your passwords match and maybe try a different username`);
         setErrorMessage(error.message);
         console.error('Registration Error:', error);
-        }
-
+      }
     }
-//action ="user/profile"
+
 
     return (
         <div>
-            <form onSubmit={handleSubmit} >            
-            <h3>Create An Account To Become A Beer Enthusiast!</h3>
+            <form onSubmit={handleSubmit}>
+                <h1>create new dummy profile</h1>
                 {/* error message only displayes if present */}
                 {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
                 <div>
@@ -105,9 +105,9 @@ export default function CreateProfileForm() {
                     <input
                          type="text"
                          autoComplete="off"
-                         id="name"
-                         value={name}
-                         onChange={(event) => setName(event.target.value)}
+                         id="username"
+                         value={username}
+                         onChange={(event) => setUsername(event.target.value)}
                         required minLength={2}
                     />
                 </div>
@@ -162,17 +162,18 @@ export default function CreateProfileForm() {
                         id="emailAddress"
                         value={emailAddress}
                         onChange={(event) => setEmailAddress(event.target.value)}
-                        required minLength={5} maxLength={100}
                         
                     />
-                </div>   
+                </div>
 
-                <button type="submit" >Submit</button>          
-            </form>
+                
 
-            <p> Already Registered?<br /><a href="/">Login</a>
-            </p>
-        </div>
+
+            <button type="submit">Dummy</button>
+      </form>
+    </div>
+
+                
+            
     )
-     //login link now works 
 }
