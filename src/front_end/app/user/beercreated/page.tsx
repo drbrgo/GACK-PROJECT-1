@@ -22,7 +22,7 @@ const BeerCreated = () => {
     return(
         <div>
             <CheckForLoggedIn>
-            <p>This is the beer is created page!</p>
+            {/* <p>This is the beer is created page!</p> */}
             <BeerGenerator/>
             <SimilarBeerGenerator 
             similarBeers={setSimilarBeers}/>
