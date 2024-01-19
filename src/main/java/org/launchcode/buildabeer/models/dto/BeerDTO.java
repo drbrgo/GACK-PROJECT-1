@@ -29,10 +29,13 @@ public class BeerDTO {
 
     private String username;
 
+    private Integer userId;
+
     //public BeerDTO() {}
 
 
-    public BeerDTO(Fridge fridge, String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, Boolean favorite, String username) {
+    public BeerDTO(Fridge fridge, String name, String tastingNotes, Double abv, String setting,
+                   String readingMaterial, String sockColor, Integer listNumber, Boolean favorite, String username, Integer userId) {
         this.fridge = fridge;
         this.name = name;
         this.tastingNotes = tastingNotes;
@@ -43,6 +46,7 @@ public class BeerDTO {
         this.listNumber = listNumber;
         this.favorite = favorite;
         this.username = username;
+        this.userId = userId;
     }
 
     public Fridge getFridge() {
@@ -119,5 +123,9 @@ public class BeerDTO {
 
     public String getUsername() {
         return username;
+    }
+
+    public Integer getUserId() {
+        return userId;
     }
 }

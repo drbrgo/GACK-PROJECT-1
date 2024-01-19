@@ -33,10 +33,12 @@ public class Beer extends AbstractEntity{
 
     private String username;
 
+    private Integer userId;
+
     public Beer() {}
 
 
-    public Beer(Fridge fridge, String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, boolean favorite, String username) {
+    public Beer(Fridge fridge, String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, boolean favorite, String username, Integer userId) {
         this.fridge = fridge;
         this.name = name;
         this.tastingNotes = tastingNotes;
@@ -47,6 +49,7 @@ public class Beer extends AbstractEntity{
         this.listNumber = listNumber;
         this.favorite = favorite;
         this.username = username;
+        this.userId = userId;
     }
 
     //might not need setters for anything other than name. we'll see how Marleny creates the beer
@@ -129,5 +132,13 @@ public class Beer extends AbstractEntity{
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }
