@@ -22,8 +22,11 @@ const BeerGenerator = () => {
       password: "placeholder",
     }
 
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
+        
+        try{
 
         const response = await fetch(webUrl, {
             method: 'POST',
@@ -32,12 +35,26 @@ const BeerGenerator = () => {
             },
             body: JSON.stringify(data),
         });
+
+        if(!response.ok) {
+          // checking if response status is not OK (as in a 4-- or 5-- response status code)
+        throw new Error(`You cannot name what you have not yet built.`)
+        }
     
         const responseData = await response.json();
         
        console.log(responseData);
 
        setRandomBeerName(responseData);
+
+       //reset error message
+       setErrorMessage('');
+
+      } catch (error) {
+        setErrorMessage(error.message);
+      console.error('Beer name error. No beers associated with this user found: ', error);
+
+      }
 
 
     } ;
@@ -46,6 +63,7 @@ const BeerGenerator = () => {
         <div>
         <p>We don't just build beers around here. We also build some of the best beer names out there. Hit the button below to generate a novel name for your
           new brew.</p>
+          {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
         <button onClick={handleSubmit}>Generate!</button>
         {randomBeerName && (
         <div>
