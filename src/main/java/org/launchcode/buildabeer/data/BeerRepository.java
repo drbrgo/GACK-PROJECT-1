@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface BeerRepository extends CrudRepository<Beer, Integer> {
     @Query( value = "SELECT beer.* FROM beer \n" +
-            "JOIN fridge ON beer.fridge_id = fridge.id \n" +
-            "JOIN `user` ON fridge.user_id= `user`.id\n" +
-            " WHERE user.username= :username ", nativeQuery = true)
+            "JOIN create_profile ON user_id= create_profile.id\n" +
+            "WHERE beer.username= :username", nativeQuery = true)
     List<Beer> findBeersByUsername(@Param("username") String username);
+    Iterable<Beer> findByUsername(String username);
 }

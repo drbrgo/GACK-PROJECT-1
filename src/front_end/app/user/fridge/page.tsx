@@ -22,9 +22,9 @@ export default function fridgeAdmin(){
     const [beers, setBeers] = useState<Beer[]>([])
 
     
-    // const username = getCookies().username
-    // delete below line, only needed for testing:
-    const username= "testername"   
+    const username = getCookies().username
+    // // delete below line, only needed for testing:
+    // const username= "testername"   
     
 
     useEffect(function(){
