@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/components/NavBarCustom.js"  ],
+, "app/user/createbeer/page.js"  ],
   "exclude": [
     "node_modules"
   ]

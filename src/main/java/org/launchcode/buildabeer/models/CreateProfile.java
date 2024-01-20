@@ -1,30 +1,32 @@
 package org.launchcode.buildabeer.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.Date;
+
 
 @Entity
-public class CreateProfile {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Generated Value defines primary key attributes for database. Generated Identity indicates primary keys for the entity using the database identity column.
-    private Long id;
+public class CreateProfile extends AbstractEntity {
     private String name;
-    private int birthdate;
-    private int phoneNumber;
-    private String emailAddress;
-    private String password;
 
-    public CreateProfile(String name, int birthdate, int phoneNumber, String emailAddress, String password) {
+    private String pwHash;
+    private Date birthdate;
+    private Long phoneNumber;
+    private String emailAddress;
+
+    @OneToOne
+    private Fridge fridge;
+
+    public CreateProfile() {
+    }
+
+    public CreateProfile(String name, String password, Date birthdate, Long phoneNumber, String emailAddress) {
         this.name = name;
+        this.pwHash = encoder.encode(password);
         this.birthdate = birthdate;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
-        this.password = password;
-    }
-    public CreateProfile (){
-        //no arg constructor
     }
 
     public String getName() {
@@ -35,19 +37,19 @@ public class CreateProfile {
         this.name = name;
     }
 
-    public int getBirthdate() {
+    public Date getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(int birthdate) {
+    public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
     }
 
-    public int getPhoneNumber() {
+    public Long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -59,11 +61,14 @@ public class CreateProfile {
         this.emailAddress = emailAddress;
     }
 
-    public String getPassword() {
-        return password;
+    // Static method to use the bcrypt dependency for encoding
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    // Instance method to use the bcrypt multi-step matcher (.equals is not enough)
+    public boolean isMatchingPassword(String password) {
+        return encoder.matches(password, pwHash);
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
+
+

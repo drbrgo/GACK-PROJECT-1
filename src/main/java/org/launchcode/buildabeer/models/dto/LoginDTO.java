@@ -6,14 +6,14 @@ import jakarta.validation.constraints.Size;
 
 public class LoginDTO {
 
-    @NotNull(message = "Username is required")
-    @NotBlank(message = "Username is required")
+//    @NotNull(message = "Username is required")
+//    @NotBlank(message = "Username is required")
     //@Size(min = 3, max = 30, message = "Username must be 3-30 characters long.") commenting out in the interest of
     //security through obscurity. This parameter should be in account creation only imo.
     private String username;
 
-    @NotNull(message = "Password is required")
-    @NotBlank(message = "Password is required")
+//    @NotNull(message = "Password is required")
+//    @NotBlank(message = "Password is required")
     //@Size(min = 8, message = "Password must be at least 8 characters long") commenting out in the interest of
     //security through obscurity. This parameter should be in account creation only imo.
     private String password;
