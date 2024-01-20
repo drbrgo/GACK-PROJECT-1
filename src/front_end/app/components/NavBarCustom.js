@@ -10,21 +10,6 @@ export default function NavBarCustom (props) {
 
     const webUrl = "http://localhost:8080"
 
-   
-
-    interface Beer {
-        id : number,
-        name: string,
-        tastingNotes: string,
-        abv: number
-    }
-//Not sure whether we will need to use a href for the navbar or useRouter.
-    // const handleSubmit = (event) =>{
-    //     event.preventDefault();
-    //     router.push(webUrl+ '/user/fridge/');
-    // }
-
-    const [beers, setBeers] = useState<Beer[]>([])
 
     
     return (
@@ -33,7 +18,7 @@ export default function NavBarCustom (props) {
             <a href='http://localhost:3000/user/createbeer'>Create a Beer</a>
             <a href="http://localhost:3000/user/fridge">My Fridge</a>
             <a href='http://localhost:3000/user/logout'>Logout</a>
-            {/* //<FridgeSearch /> */}
+            <FridgeSearch />
         </div>
     
     )
