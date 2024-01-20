@@ -1,19 +1,9 @@
 'use client'
 
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-
 export default function Header () {
 
     const webUrl = "http://localhost:8080"
 
-    const router = useRouter();
-//Not sure whether we will need to use a href for the navbar or useRouter.
-    const handleSubmit = (event) =>{
-        event.preventDefault();
-        router.push(webUrl+ '/user/fridge/');
-
-    }
     return (
         <div className='topnav'>
             <h2>Thirsty? Let's build a beer together</h2>

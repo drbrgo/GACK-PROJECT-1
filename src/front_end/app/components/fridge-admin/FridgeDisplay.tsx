@@ -16,6 +16,7 @@ export default function FridgeDisplay(props: any){
         //useState<boolean>(false) is used below in ternary operator to determine whether or not we are in a state of editing the beer.
         const [beer, setBeer] = useState<boolean>(false);
 
+        //PUT request to EDIT beers
         const handleSubmit = (event: any) =>{
             event.preventDefault();
 

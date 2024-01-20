@@ -15,7 +15,7 @@ export default function FridgeAdmin(props: any){
 
     const webUrl = "http://localhost:8080"
 
-    
+    //PUT request to DELETE beers
     const removeBeer = (beerId: number) => {
         fetch(webUrl + '/user/fridge/removeBeer/' + beerId, {
             method: "DELETE",
@@ -23,7 +23,7 @@ export default function FridgeAdmin(props: any){
             props.setBeers(data);
         })
     }
-
+    // Maps beers to allBeers 
     const allBeers = props.beers.map((beer: Beer) => {
         return( 
             < FridgeDisplay 
@@ -36,27 +36,6 @@ export default function FridgeAdmin(props: any){
          )
     })
 
-    const handleSubmit = async(event) => {
-        event.preventDefault();
-        
-        const data={
-            // Will this need to be where we edit beers? Delete beers here? 
-        }
-        // window.addEventListener("load", function() {
-        //     fetch(webUrl + "/admin/" + fridgeId).then(function(response){
-        //         console.log(response);
-        //     });
-        // });
-      
-        // await fetch(webUrl + "/fridge/{fridgeid}", {
-        //     method: "GET", 
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify(data),
-        // })
-
-    }
     return(
 
         <div>

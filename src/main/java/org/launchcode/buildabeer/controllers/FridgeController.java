@@ -30,21 +30,6 @@ public class FridgeController {
     @Autowired
     private BeerRepository beerRepository;
 
-  //  Could consider making this based on FindByUsername instead of id
-
-//    @CrossOrigin(origins = "http://localhost:3000")
-//    @GetMapping
-//    public String displayUserFridge(Model model, @PathVariable int fridgeId){
-//        Optional optFridge = fridgeRepository.findById(fridgeId);
-//        if (optFridge.isPresent()) {
-//        Fridge fridge = (Fridge) optFridge.get();
-//        model.addAttribute("fridge", fridge);
-//        return "fridge";
-//        }
-//        else {
-//            return "redirect:../";
-//        }
-//    }
 
     @CrossOrigin
     @GetMapping("/getBeers")
