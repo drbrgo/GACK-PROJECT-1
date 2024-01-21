@@ -32,7 +32,6 @@ export default function fridgeAdmin(){
             await fetch(webUrl + '/user/fridge/getBeers/' + username)
             .then(response => response.json())
             .then(data => {
-                console.log(data); 
                 setBeers(data)
             })
         }
@@ -42,8 +41,10 @@ export default function fridgeAdmin(){
         
     <div >
         <CheckForLoggedIn>
+        {/* <NavBarCustom onSearch={(username, data) => console.log('Search initiated:', username, 'Data:', data)}
+        onDataFetch={onDataFetch}/> */}
         <div>
-        
+       
         <p>This is a User's 'fridge admin' page</p>
             
         </div>

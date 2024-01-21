@@ -1,34 +1,36 @@
-'use client'
-import { useState } from "react";
-import { useEffect } from "react";
-import FridgeDisplay from "./FridgeDisplay";
+// 'use client'
+// import { useState } from "react";
+// import { useEffect } from "react";
+// import FridgeDisplay from "./FridgeDisplay";
 
-export default function GuestFridge(props: any){
+// export default function GuestFridge(props: any){
 
-    interface Beer {
-        id : number,
-        name: string,
-        tastingNotes: string,
-        abv: number
-    }
-    const webUrl = "http://localhost:8080"
+//     interface Beer {
+//         id : number,
+//         name: string,
+//         tastingNotes: string,
+//         abv: number
+//     }
+//     const webUrl = "http://localhost:8080"
+//     console.log('Received data in GuestFridge:', props.beers);
 
 
-
-        const allBeers = props.beers.map((beer: Beer) => {
-            return( 
-                < FridgeDisplay 
-                key={beer.id}
-                beer={beer}
-                setBeers={props.setBeers}
-                />
-             )
-        })  
+//         const allBeers = Array.isArray(props.beers)
+//         ? props.beers.map((beer: Beer) => {
+//             return( 
+//                 < FridgeDisplay 
+//                 key={beer.id}
+//                 beer={beer}
+//                 setBeers={props.setBeers}
+//                 />
+//              )
+//         })  : null
     
-        return(
+//         return(
     
-            <div>
-                {allBeers}
-            </div>
-        )
-}
+//             <div>
+//                 {allBeers}
+                
+//             </div>
+//         )
+// }

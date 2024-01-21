@@ -1,3 +1,4 @@
+'use client'
 import { useState } from "react"
 
 //Handling Editing and Removing Beers below
@@ -36,7 +37,7 @@ export default function FridgeDisplay(props: any){
             props.setBeers(data);
             setBeer(prev => !prev)
         })
-
+        console.log('Received data in FridgeDisplay:', props.beer);
         }
     return (
             <div  className="fridge"  > 

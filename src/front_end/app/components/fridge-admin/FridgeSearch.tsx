@@ -1,41 +1,28 @@
 'use client';
 import React from 'react';
-import { useRouter } from 'next/navigation';
 import { useState, useId, useEffect } from 'react';
-import GuestFridge from './GuestFridge';
 
-export default function FridgeSearch(props: any) {
-  interface Beer {
-    id : number,
-    name: string,
-    tastingNotes: string,
-    abv: number,
-    favorite: boolean
+export default function FridgeSearch({onSubmit}) {
 
-}
-
-  const webUrl = "http://localhost:8080"
-  const [guestName, setGuestName]= useState('')
+  const [username, setUsername]= useState('')
   
 
-  //manage redirection
-  const router = useRouter();
-
-    const handleSubmit= (event) => {
-        event.preventDefault()
-        
-      }
+  const searchUrl = `/user/fridge/guest/${username}`;
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(username);
+  };
+  
         return (
-          <>
           <form onSubmit={handleSubmit}>
-          <label>Please specify:
-          <input  name="searchName" value={guestName} onChange={(event)=>setGuestName(event.target.value)} placeholder="Type username to find fridge"/>
+          <label>
+            Search for username:
+            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Type username to find fridge' />
           </label>
-          <button type="submit" onClick={()=>{router.push('localhost:3000/user/fridge/guest')}}>Search</button>
-          </form>
-        
-       </>
-  );
+          <button type="submit">Search</button>
+        </form>
+      );
 
 
 }

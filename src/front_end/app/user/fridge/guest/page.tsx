@@ -1,58 +1,47 @@
-'use client'
-import GuestFridge from "../../../components/fridge-admin/GuestFridge"
-import { useState, useEffect } from "react";
-import React from "react";
-import NavBarCustom from "../../../components/NavBarCustom";
-import { useRouter } from 'next/navigation';
-import FridgeAdmin from "../../../components/fridge-admin/FridgeAdmin";
+// 'use client'
+// import { useRouter } from 'next/router';
+// import { useEffect, useState } from 'react';
+// import GuestFridge from '../../../components/fridge-admin/GuestFridge';
+// import NavBarCustom from '../../../components/NavBarCustom';
 
-interface Beer {
-    id : number,
-    name: string,
-    tastingNotes: string,
-    abv: number
-}
+// export default function FridgeGuest2() {
+//     interface Beer {
+//         id : number,
+//         name: string,
+//         tastingNotes: string,
+//         abv: number,
+//         favorite: boolean
+//     }
+//     const router = useRouter();
+//   const { username } = router.query;
+//   const [beers, setBeers] = useState([]);
+//   const webUrl = "http://localhost:8080"
+  
+//   if (!username) {
+//     return <div>Loading...</div>;
+//   }
 
+//   useEffect(function() {
+//     const getBeers=async () => {
+        
+//     if (username) {
+//       fetch(webUrl + `/user/fridge/getBeers/guest/${username}`)
+//         .then((response) => response.json())
+//         .then((data) => setBeers(data))
+//         .catch((error) => console.error('Error fetching beers:', error));
+//     }
+// }
+//     getBeers()
+//   }, [username]);
 
-export default function fridgeAdminGuest (props){
-    const [beers, setBeers] = useState<Beer[]>([])
-
-    const webUrl = "http://localhost:8080"
-    const router = useRouter();
-    const [formData, setFormData]= useState("")
-
-    // const handleSubmit = event => {
-    //     event.preventDefault();
-    //       const formData= event.target.value;
-    //       // const formData = new FormData(form)
-       
-   
-    //     setFormData(formData)
-    //     console.log(formData)
-       
-
-    useEffect(function(){
-        const getBeers = async() => {
-            await fetch(webUrl + '/user/fridge/getBeers/guest/' + props.guestName)
-            // window.location.href.substring(window.location.href.lastIndexOf('/') + 1
-            .then(response => response.json())
-            .then(data => {
-                console.log(data); 
-                setBeers(data)
-               
-            })
-        }
-        getBeers()
-    },[])
-
-    return(
-        <>
-        <NavBarCustom/>
-        <p>This is the fridge page for viewing another's fridge</p>
-        <FridgeAdmin
-        beers={beers}
-    setBeers={setBeers}
-    />
-        </>
-    )
-}
+//   return (
+//     <div>
+//         <NavBarCustom/>
+//       <h1>Beer List for {username}</h1>
+//       <GuestFridge
+//         beers={beers}
+//     setBeers={setBeers}
+//     />
+//     </div>
+//   );
+// }
