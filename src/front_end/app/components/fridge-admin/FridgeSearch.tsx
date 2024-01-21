@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { useState, useId, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function FridgeSearch({onSubmit}) {
 
@@ -12,6 +12,7 @@ export default function FridgeSearch({onSubmit}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(username);
+    console.log("Is FridgeSearch handleSubmit being executed? Data received in FridgeSearch:", username)
   };
   
         return (

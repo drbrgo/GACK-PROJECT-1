@@ -7,7 +7,14 @@ import FridgeDisplay from '../../../../components/fridge-admin/FridgeDisplay';
 
 
 export default function FridgeGuest({ username }, props) {
-  const [beers, setBeers] = useState(props.allBeers);
+  const [beers, setBeers] = useState(props.beers);
+
+  // const mappedBeers = props.beers.map(beer => ({
+  //   id: beer.id,
+  //   name: beer.name,
+  //   tastingNotes: beer.tastingNotes,
+  //   abv: beer.abv,
+  // }));
 
   return (
     <div>
@@ -15,11 +22,7 @@ export default function FridgeGuest({ username }, props) {
         onSearch={(username, allBeers) => console.log('Search initiated:', username, 'Data:', allBeers)}
       />
       <h1>Beer List for {username}</h1>
-      < FridgeDisplay 
-            key={props.beer.id}
-            beer={props.beer}
-          setBeers={props.setBeers}
-        />
+
     </div>
   );
 }

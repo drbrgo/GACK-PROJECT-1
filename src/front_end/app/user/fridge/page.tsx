@@ -7,6 +7,7 @@ import { getCookies } from 'cookies-next';
 
 import CheckForLoggedIn from "../../components/authentication/CheckForLoggedIn";
 
+
     interface Beer {
         id : number,
         name: string,
@@ -41,8 +42,7 @@ export default function fridgeAdmin(){
         
     <div >
         <CheckForLoggedIn>
-        {/* <NavBarCustom onSearch={(username, data) => console.log('Search initiated:', username, 'Data:', data)}
-        onDataFetch={onDataFetch}/> */}
+        <NavBarCustom onSearch={(username, data) => console.log('Search initiated:', username, 'Data:', data)}/>
         <div>
        
         <p>This is a User's 'fridge admin' page</p>
