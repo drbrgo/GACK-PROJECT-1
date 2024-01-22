@@ -1,28 +1,21 @@
 package org.launchcode.buildabeer.controllers;
 
 import org.launchcode.buildabeer.data.BeerRepository;
-import org.launchcode.buildabeer.data.FridgeRepository;
 import org.launchcode.buildabeer.data.UserRepository;
 import org.launchcode.buildabeer.models.Beer;
-import org.launchcode.buildabeer.models.Fridge;
 import org.launchcode.buildabeer.models.dto.BeerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:3000")
 @Controller
 @RequestMapping("user/fridge")
 public class FridgeController {
 
-    @Autowired
-    private FridgeRepository fridgeRepository;
 
     @Autowired
     private UserRepository userRepository;

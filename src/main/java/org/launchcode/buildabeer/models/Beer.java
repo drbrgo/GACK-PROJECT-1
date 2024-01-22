@@ -8,8 +8,9 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class Beer extends AbstractEntity{
 
-
-    private Fridge fridge;
+    @ManyToOne
+    @JoinColumn(name = "create_profile_user_id")
+    private CreateProfile createProfile;
 
     @NotNull
     private String name;
@@ -31,15 +32,13 @@ public class Beer extends AbstractEntity{
     private boolean favorite;
 
     private String username;
-//    @ManyToOne
-//    @JoinColumn(name = "create_profile_user_id")
+
     private Integer userId;
 
     public Beer() {}
 
 
-    public Beer(Fridge fridge, String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, boolean favorite, String username, Integer userId) {
-        this.fridge = fridge;
+    public Beer( String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, boolean favorite, String username, Integer userId) {
         this.name = name;
         this.tastingNotes = tastingNotes;
         this.abv = abv;
@@ -86,13 +85,6 @@ public class Beer extends AbstractEntity{
         this.favorite = favorite;
     }
 
-    public Fridge getFridge() {
-        return fridge;
-    }
-
-    public void setFridge(Fridge fridge) {
-        this.fridge = fridge;
-    }
 
     public String getSetting() {
         return setting;

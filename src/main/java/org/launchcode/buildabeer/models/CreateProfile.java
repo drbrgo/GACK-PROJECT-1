@@ -20,7 +20,7 @@ public class CreateProfile {
     private Long phoneNumber;
     private String emailAddress;
 
-//    @OneToMany(mappedBy = "createProfile")
+    @OneToMany(mappedBy = "createProfile")
     private List<Beer> beers;
 
     public CreateProfile() {

@@ -1,12 +1,9 @@
 package org.launchcode.buildabeer.models.dto;
 
 import jakarta.validation.constraints.NotNull;
-import org.launchcode.buildabeer.models.Fridge;
 
 public class BeerDTO {
 
-    @NotNull
-    private Fridge fridge;
 
     @NotNull
     private String name;
@@ -34,9 +31,9 @@ public class BeerDTO {
     //public BeerDTO() {}
 
 
-    public BeerDTO(Fridge fridge, String name, String tastingNotes, Double abv, String setting,
+    public BeerDTO( String name, String tastingNotes, Double abv, String setting,
                    String readingMaterial, String sockColor, Integer listNumber, Boolean favorite, String username, Integer userId) {
-        this.fridge = fridge;
+
         this.name = name;
         this.tastingNotes = tastingNotes;
         this.abv = abv;
@@ -49,13 +46,6 @@ public class BeerDTO {
         this.userId = userId;
     }
 
-    public Fridge getFridge() {
-        return fridge;
-    }
-
-    public void setFridge(Fridge fridge) {
-        this.fridge = fridge;
-    }
 
     public String getName() {
         return name;
