@@ -6,6 +6,7 @@ import NavBarCustom from "../../components/NavBarCustom";
 import { getCookies } from 'cookies-next';
 
 import CheckForLoggedIn from "../../components/authentication/CheckForLoggedIn";
+import { getCookies } from "cookies-next";
 
 
     interface Beer {
@@ -21,6 +22,7 @@ export default function fridgeAdmin(){
     const webUrl = "http://localhost:8080"
 
     const [beers, setBeers] = useState<Beer[]>([])
+    const username = getCookies().username
 
     
     const username = getCookies().username
@@ -39,16 +41,11 @@ export default function fridgeAdmin(){
         getBeers()
     },[])
     return(
-        
-    <div >
-        <CheckForLoggedIn>
-        {/* <NavBarCustom /> */}
-        {/* onSearch={(username, data) => console.log('Search initiated:', username, 'Data:', data)} */}
         <div>
-       
-        <p>This is a User's 'fridge admin' page</p>
+        <CheckForLoggedIn>
+        <h2>Welcome to your fridge, {username}</h2>
             
-        </div>
+        
         <div>
         <FridgeAdmin 
         beers={beers}
@@ -56,6 +53,6 @@ export default function fridgeAdmin(){
         />
         </div>
         </CheckForLoggedIn>
-    </div>
+        </div>
     )
 }

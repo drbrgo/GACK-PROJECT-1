@@ -4,14 +4,13 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
-import org.launchcode.buildabeer.models.Fridge;
+import org.launchcode.buildabeer.models.CreateProfile;
 
 
 public class BeerDTO {
 
-
     @NotNull
-    private Fridge fridge;
+    private CreateProfile createProfile;
 
     @NotNull
     private String name;
@@ -34,14 +33,14 @@ public class BeerDTO {
 
     private String username;
 
-    private Integer userId;
+//    private Integer userId;
 
     //public BeerDTO() {}
 
 
-    public BeerDTO(Fridge fridge, String name, String tastingNotes, Double abv, String setting,
-                   String readingMaterial, String sockColor, Integer listNumber, Boolean favorite, String username, Integer userId) {
-        this.fridge = fridge;
+    public BeerDTO(String name, String tastingNotes, Double abv, String setting,
+                   String readingMaterial, String sockColor, Integer listNumber, Boolean favorite, String username, CreateProfile createProfile) {
+
         this.name = name;
         this.tastingNotes = tastingNotes;
         this.abv = abv;
@@ -51,16 +50,9 @@ public class BeerDTO {
         this.listNumber = listNumber;
         this.favorite = favorite;
         this.username = username;
-        this.userId = userId;
+        this.createProfile = createProfile;
     }
 
-    public Fridge getFridge() {
-        return fridge;
-    }
-
-    public void setFridge(Fridge fridge) {
-        this.fridge = fridge;
-    }
 
     public String getName() {
         return name;
@@ -130,7 +122,11 @@ public class BeerDTO {
         return username;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public CreateProfile getCreateProfile() {
+        return createProfile;
+    }
+
+    public void setCreateProfile(CreateProfile createProfile) {
+        this.createProfile = createProfile;
     }
 }
