@@ -25,7 +25,7 @@ export default function UserAdminCard(props: any) {
             emailAddress: String(event.target.emailAddress.value),            
         }
 
-        fetch(webUrl + "/userAdmin/updateUser/" + event.target.id, {
+        fetch(webUrl + "/userAdmin/updateUser/" + props.userprofile.id, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -86,4 +86,4 @@ export default function UserAdminCard(props: any) {
         </div>       
     )
 } 
-//set this as its own component so it can be a series of cards with a special tag once fully set up...will need css styling for that
+//set this as its own component so it can be a series of cards with a special tag once fully set up
