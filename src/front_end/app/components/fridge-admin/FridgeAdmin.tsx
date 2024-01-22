@@ -1,6 +1,7 @@
 'use client'
 import React from "react";
 import FridgeDisplay from "./FridgeDisplay";
+import { getCookies } from "cookies-next";
 
 interface Beer {
     id : number,
@@ -14,7 +15,7 @@ interface Beer {
 export default function FridgeAdmin(props: any){
 
     const webUrl = "http://localhost:8080"
-
+    const usernameCookie = getCookies().username;
     
     const removeBeer = (beerId: number) => {
         fetch(webUrl + '/user/fridge/removeBeer/' + beerId, {

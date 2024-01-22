@@ -3,14 +3,16 @@ package org.launchcode.buildabeer.controllers;
 import org.launchcode.buildabeer.data.BeerRepository;
 import org.launchcode.buildabeer.data.UserRepository;
 import org.launchcode.buildabeer.models.Beer;
+import org.launchcode.buildabeer.models.User;
 import org.launchcode.buildabeer.models.dto.BeerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
+import org.launchcode.buildabeer.models.dto.LoginDTO;
 import java.util.Optional;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @Controller
 @RequestMapping("user/fridge")
@@ -42,7 +44,7 @@ public class FridgeController {
         Optional<Beer> removeBeer = beerRepository.findById(id);
 
         if(removeBeer.isPresent()){
-            beerRepository.delete(removeBeer.get());
+            beerRepository.deleteById(id);
         }
         return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
     }
@@ -50,6 +52,7 @@ public class FridgeController {
     @PutMapping("/updateBeer/{id}")
     public ResponseEntity<?> updateBeer(@PathVariable int id, @RequestBody BeerDTO beerDTO){
 
+//        String username = beerDTO.getUsername();
         Optional<Beer> updateBeer = beerRepository.findById(id);
 
         if (updateBeer.isPresent()) {
@@ -59,7 +62,7 @@ public class FridgeController {
             updateBeer.get().setFavorite(beerDTO.getFavorite());
             beerRepository.save(updateBeer.get());
         }
-
         return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
+//        return new ResponseEntity<>(beerRepository.findBeersByUsername(username), HttpStatus.OK);
     }
 }

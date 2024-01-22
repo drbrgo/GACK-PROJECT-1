@@ -9,7 +9,8 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class Beer extends AbstractEntity{
 
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn()
     private CreateProfile createProfile;
 
     @NotNull
