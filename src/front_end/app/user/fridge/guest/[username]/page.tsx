@@ -19,7 +19,7 @@ export default function FridgeGuest({ username }, props) {
   return (
     <div>
       <NavBarCustom
-        onSearch={(username, allBeers) => console.log('Search initiated:', username, 'Data:', allBeers)}
+        onSearch={(username) => console.log('Search initiated:', username)}
       />
       <h1>Beer List for {username}</h1>
 

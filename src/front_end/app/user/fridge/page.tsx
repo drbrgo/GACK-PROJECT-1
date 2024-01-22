@@ -42,7 +42,7 @@ export default function fridgeAdmin(){
         
     <div >
         <CheckForLoggedIn>
-        <NavBarCustom onSearch={(username, data) => console.log('Search initiated:', username, 'Data:', data)}/>
+        <NavBarCustom onSearch={(username) => console.log('Search initiated:', username)}/>
         <div>
        
         <p>This is a User's 'fridge admin' page</p>
