@@ -20,7 +20,7 @@ export default function fridgeAdmin(){
 
     const [beers, setBeers] = useState<Beer[]>([])
     const username = getCookies().username
-    
+
     useEffect(function(){
         const getBeers = async() => {
             await fetch(webUrl + '/user/fridge/getBeers/' + username)
@@ -37,7 +37,7 @@ export default function fridgeAdmin(){
         <CheckForLoggedIn>
         <div>
         
-        <p>This is a User's 'fridge admin' page</p>
+        <h2>Welcome to your fridge, {username}</h2>
             
         </div>
         <div>

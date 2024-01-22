@@ -17,11 +17,5 @@ public interface BeerRepository extends JpaRepository<Beer, Integer> {
     List<Beer> findBeersByUsername(@Param("username") String username);
 
     List<Beer> deleteById(int id);
-//    @Query(value = "SET FOREIGN_KEY_CHECKS=0", nativeQuery = true)
-//        List<Beer> negateForeignKeys();
 
-//    @Query(value = "SET FOREIGN_KEY_CHECKS=1", nativeQuery = true)
-//    List<Beer> returnForeignKeys();
-    //@Query(value = "SET FOREIGN_KEY_CHECKS=0; DELETE FROM beer WHERE create_profile_user_id = :id; SET FOREIGN_KEY_CHECKS=1;", nativeQuery = true)
-          //  List<Beer> deleteById(@Param("id") int id);
 }

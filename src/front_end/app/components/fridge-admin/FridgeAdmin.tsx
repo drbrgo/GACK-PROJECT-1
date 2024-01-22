@@ -17,9 +17,10 @@ export default function FridgeAdmin(props: any){
     const webUrl = "http://localhost:8080"
     const usernameCookie = getCookies().username;
     
-    const removeBeer = (beerId: number) => {
-        fetch(webUrl + '/user/fridge/removeBeer/' + beerId, {
+    const removeBeer = (beerId: number, usernameCookie=getCookies().username) => {
+        fetch(webUrl + '/user/fridge/removeBeer/' + beerId,  {
             method: "DELETE",
+            body: usernameCookie
         }).then((response) => response.json()).then((data: Beer[]) => {
             props.setBeers(data);
         })
