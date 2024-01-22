@@ -20,7 +20,7 @@ public class CreateProfileController {
 
     @Autowired
     private CreateProfileRepository createProfileRepository;
-    //access in our controller to create profile repository
+    //dependency injection. spring will automatically populate this field. spring will manage this for us. access in our controller to create profile repository
     @PostMapping("/createNewProfile")
     public ResponseEntity<?> createNewProfile(@RequestBody CreateProfileDTO createProfileDTO,
                                                           Errors errors,

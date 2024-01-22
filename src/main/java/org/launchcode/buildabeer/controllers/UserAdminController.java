@@ -41,7 +41,7 @@ public class UserAdminController {
         return new ResponseEntity<>(userAdminRepository.findAll(), HttpStatus.OK);
     }
 
-    @PutMapping("updateUser/{id}")
+    @PutMapping("/updateUser/{id}")
     public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody UserAdminDTO userAdminDTO) {
 
         Optional<UserAdmin> updateUserProfile =userAdminRepository.findById(id);
