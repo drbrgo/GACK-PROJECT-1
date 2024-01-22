@@ -1,5 +1,6 @@
 package org.launchcode.buildabeer.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -8,8 +9,7 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class Beer extends AbstractEntity{
 
-    @ManyToOne
-    @JoinColumn(name = "create_profile_user_id")
+    @ManyToOne(cascade= CascadeType.ALL)
     private CreateProfile createProfile;
 
     @NotNull
@@ -33,12 +33,12 @@ public class Beer extends AbstractEntity{
 
     private String username;
 
-    private Integer userId;
+
 
     public Beer() {}
 
 
-    public Beer( String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, boolean favorite, String username, Integer userId) {
+    public Beer( String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, boolean favorite, String username, CreateProfile createProfile) {
         this.name = name;
         this.tastingNotes = tastingNotes;
         this.abv = abv;
@@ -48,7 +48,7 @@ public class Beer extends AbstractEntity{
         this.listNumber = listNumber;
         this.favorite = favorite;
         this.username = username;
-        this.userId = userId;
+        this.createProfile = createProfile;
     }
 
     //might not need setters for anything other than name. we'll see how Marleny creates the beer
@@ -126,11 +126,11 @@ public class Beer extends AbstractEntity{
         this.username = username;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public CreateProfile getCreateProfile() {
+        return createProfile;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setCreateProfile(CreateProfile createProfile) {
+        this.createProfile = createProfile;
     }
 }

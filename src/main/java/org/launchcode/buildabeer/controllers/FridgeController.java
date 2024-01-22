@@ -23,21 +23,6 @@ public class FridgeController {
     @Autowired
     private BeerRepository beerRepository;
 
-  //  Could consider making this based on FindByUsername instead of id
-
-//    @CrossOrigin(origins = "http://localhost:3000")
-//    @GetMapping
-//    public String displayUserFridge(Model model, @PathVariable int fridgeId){
-//        Optional optFridge = fridgeRepository.findById(fridgeId);
-//        if (optFridge.isPresent()) {
-//        Fridge fridge = (Fridge) optFridge.get();
-//        model.addAttribute("fridge", fridge);
-//        return "fridge";
-//        }
-//        else {
-//            return "redirect:../";
-//        }
-//    }
 
     @CrossOrigin
     @GetMapping("/getBeers")
@@ -46,17 +31,10 @@ public class FridgeController {
     }
 
 
-//    @CrossOrigin
-//    @GetMapping("/getBeers/{username}")
-//    public ResponseEntity<?> getBeerObjectsByUsername(@PathVariable String username){
-
-//    Optional<Beer> getBeerObjectsByUsername = fridgeRepository.findBeersByUsername(username);
-//    if (getBeerObjectsByUsername.isPresent()){
-//        fridgeRepository.findBeersByUsername()
-//        }
-//        return new ResponseEntity<>(fridgeRepository.findBeersByUsername(username), HttpStatus.OK);
-//
-//    }
+    @CrossOrigin
+    @GetMapping("/getBeers/{username}")
+    public ResponseEntity<?> getBeerObjectsByUsername(@PathVariable String username){
+        return new ResponseEntity<>(beerRepository.findBeersByUsername(username), HttpStatus.OK); }
 
     @CrossOrigin
     @DeleteMapping("/removeBeer/{id}")
