@@ -18,7 +18,7 @@ export default function FridgeSearch({onSubmit}) {
         return (
           <form onSubmit={handleSubmit}>
           <label>
-            Search for username:
+            {/* Search for username: */}
             <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Type username to find fridge' />
           </label>
           <button type="submit">Search</button>

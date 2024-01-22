@@ -21,17 +21,28 @@ export default function NavBarCustom ({ onSearch }, props: any) {
 
     const handleSearch = async (username) => {
         console.log(`Searching for user: ${username}`);
-    
-        // Fetch data from the desired API endpoint
       
         router.push(`/user/fridge/guest/${username}`);
+
+        // Fetch data from the desired API endpoint
+
         try {
           const response = await fetch(webUrl + `/user/fridge/getBeers/guest/${username}`)
-          .then(response => response.json())
-          .then(data => {
+          //don't need this method chaining because you are using 'await'
+          // .then(response => response.json())
+          // .then(data => {
+
+          const data = await response.json();
            
             console.log('Fetched data:', data);
-            const allBeers = beers.map((beer: Beer) => {
+
+            //apparently not needed? In any case, it does not work. to setBeers(data) and then beers.map((beer: Beer)) -- returns an empty array
+            setBeers(data);
+
+            //use data.map for success
+            
+            const allBeers = data.map((beer: Beer) => {
+              console.log("User beer data: ", beer);
               return( 
                   < FridgeDisplay 
                   key={beer.id}
@@ -43,9 +54,13 @@ export default function NavBarCustom ({ onSearch }, props: any) {
             })
 
             // setBeers(allBeers)
+            //this console.log returns an empty array whether beers or allBeers
+            //console.log(beers);
+            console.log(allBeers);
+            console.log(username);
             console.log(beers);
             onSearch(username, allBeers);
-          })
+          // })
          
           // Call onSearch with both username and data
          
