@@ -6,7 +6,6 @@ import NavBarCustom from "../../components/NavBarCustom";
 import { getCookies } from 'cookies-next';
 
 import CheckForLoggedIn from "../../components/authentication/CheckForLoggedIn";
-import { getCookies } from "cookies-next";
 
 
     interface Beer {
@@ -25,7 +24,6 @@ export default function fridgeAdmin(){
     const username = getCookies().username
 
     
-    const username = getCookies().username
     // // delete below line, only needed for testing:
     // const username= "testername"   
     
