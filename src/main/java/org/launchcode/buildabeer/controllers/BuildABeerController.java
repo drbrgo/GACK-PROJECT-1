@@ -36,7 +36,7 @@ public class BuildABeerController {
 
         //get username from beerDTO, then get userId from createprofile repository
         CreateProfile user = createProfileRepository.findByName(beerDTO.getUsername());
-        Integer userId = user.getId();
+        Integer userId = user.getUserId();
 
         //build the beer with beerDTO data and userId from createprofile repository
         Beer newBeer = new Beer(beerDTO.getFridge(), beerDTO.getName(), beerDTO.getTastingNotes(), beerDTO.getAbv(), beerDTO.getSetting(),

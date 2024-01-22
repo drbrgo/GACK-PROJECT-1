@@ -3,6 +3,7 @@ package org.launchcode.buildabeer.models.dto;
 import java.util.Date;
 
 public class CreateProfileDTO {
+    private int userId;
     private String name;
 
     private String password;
@@ -13,13 +14,22 @@ public class CreateProfileDTO {
     private Long phoneNumber;
     private String emailAddress;
 
-    public CreateProfileDTO(String name, String password, String verifyPassword, Date birthdate, Long phoneNumber, String emailAddress) {
+    public CreateProfileDTO(int userId, String name, String password, String verifyPassword, Date birthdate, Long phoneNumber, String emailAddress) {
+        this.userId = userId;
         this.name = name;
         this.password = password;
         this.verifyPassword = verifyPassword;
         this.birthdate = birthdate;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getName() {

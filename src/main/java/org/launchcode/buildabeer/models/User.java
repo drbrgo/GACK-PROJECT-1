@@ -15,7 +15,7 @@ public class User extends AbstractEntity {
     private String pwHash;
 
 
-    @OneToOne
+//    @OneToOne
     private Fridge fridge;
 
 

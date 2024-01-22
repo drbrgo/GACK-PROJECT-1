@@ -8,8 +8,7 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class Beer extends AbstractEntity{
 
-    @ManyToOne
-    @JoinColumn(name = "fridge_id")
+
     private Fridge fridge;
 
     @NotNull
@@ -32,7 +31,8 @@ public class Beer extends AbstractEntity{
     private boolean favorite;
 
     private String username;
-
+//    @ManyToOne
+//    @JoinColumn(name = "create_profile_user_id")
     private Integer userId;
 
     public Beer() {}
