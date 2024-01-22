@@ -59,9 +59,15 @@ public class FridgeController {
         return new ResponseEntity<>(beerRepository.findByUsername(username), HttpStatus.OK);
 
     }
+
     @CrossOrigin
-    @GetMapping("/getBeers/guest/{username}")
-    public ResponseEntity<?> getGuestBeerObjectsByUsername(@PathVariable String username){
+    @GetMapping("/getBeers/guest/")
+    public ResponseEntity<?> getGuestBeerObjectsByUsername(@RequestParam String username){
+
+        if(beerRepository.findBeersByUsername(username).isEmpty()){
+            System.out.println("Your friend, " + username + " has yet to start brewing!");
+        }
+        System.out.println(beerRepository.findBeersByUsername(username));
         return new ResponseEntity<>(beerRepository.findByUsername(username), HttpStatus.OK);
 
     }

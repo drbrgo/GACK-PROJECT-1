@@ -1,3 +1,24 @@
+import GuestFridgeDisplay from "../../../components/fridge-admin/GuestFridgeDisplay";
+import CheckForLoggedIn from "../../../components/authentication/CheckForLoggedIn";
+
+const FridgeGuest = () => {
+    return(
+        <div>
+            <CheckForLoggedIn>
+            <GuestFridgeDisplay />
+           </CheckForLoggedIn>
+        </div>
+    )
+}
+
+export default FridgeGuest;
+
+
+
+
+
+
+
 // 'use client'
 // import { useRouter } from 'next/router';
 // import { useEffect, useState } from 'react';

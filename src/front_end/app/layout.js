@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
        {/* <Container> */}
         {/* <NavBarCustom onSearch={(username) => console.log('Search initiated:', username)}/> */}
+        <NavBarCustom />
         {children}
         {/* <Footer /> */}
        {/* </Container>  */}
