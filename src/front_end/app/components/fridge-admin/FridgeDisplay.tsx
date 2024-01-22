@@ -1,3 +1,4 @@
+import { getCookies } from "cookies-next";
 import { useState } from "react"
 
 //Handling Editing and Removing Beers below
@@ -15,6 +16,7 @@ export default function FridgeDisplay(props: any){
 
         //useState<boolean>(false) is used below in ternary operator to determine whether or not we are in a state of editing the beer.
         const [beer, setBeer] = useState<boolean>(false);
+        const usernameCookie = getCookies().username;
 
         const handleSubmit = (event: any) =>{
             event.preventDefault();
@@ -24,6 +26,7 @@ export default function FridgeDisplay(props: any){
                 abv: Number(event.target.abv.value),
                 tastingNotes: String(event.target.tastingNotes.value),
                 favorite: Boolean(event.target.favorite.value),
+                username: usernameCookie
             }
 
             fetch(webUrl + "/user/fridge/updateBeer/" + props.beer.id, {

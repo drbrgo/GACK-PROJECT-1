@@ -1,5 +1,6 @@
 package org.launchcode.buildabeer.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -9,8 +10,8 @@ import jakarta.validation.constraints.NotNull;
 public class Beer extends AbstractEntity{
 
     @ManyToOne
-    @JoinColumn(name = "fridge_id")
-    private Fridge fridge;
+    @JoinColumn()
+    private CreateProfile createProfile;
 
     @NotNull
     private String name;
@@ -33,13 +34,12 @@ public class Beer extends AbstractEntity{
 
     private String username;
 
-    private Integer userId;
+
 
     public Beer() {}
 
 
-    public Beer(Fridge fridge, String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, boolean favorite, String username, Integer userId) {
-        this.fridge = fridge;
+    public Beer( String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, boolean favorite, String username, CreateProfile createProfile) {
         this.name = name;
         this.tastingNotes = tastingNotes;
         this.abv = abv;
@@ -49,7 +49,7 @@ public class Beer extends AbstractEntity{
         this.listNumber = listNumber;
         this.favorite = favorite;
         this.username = username;
-        this.userId = userId;
+        this.createProfile = createProfile;
     }
 
     //might not need setters for anything other than name. we'll see how Marleny creates the beer
@@ -86,13 +86,6 @@ public class Beer extends AbstractEntity{
         this.favorite = favorite;
     }
 
-    public Fridge getFridge() {
-        return fridge;
-    }
-
-    public void setFridge(Fridge fridge) {
-        this.fridge = fridge;
-    }
 
     public String getSetting() {
         return setting;
@@ -134,11 +127,11 @@ public class Beer extends AbstractEntity{
         this.username = username;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public CreateProfile getCreateProfile() {
+        return createProfile;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setCreateProfile(CreateProfile createProfile) {
+        this.createProfile = createProfile;
     }
 }

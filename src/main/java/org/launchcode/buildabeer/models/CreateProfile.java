@@ -4,10 +4,15 @@ import jakarta.persistence.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
-public class CreateProfile extends AbstractEntity {
+public class CreateProfile {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer userId;
     private String name;
 
     private String pwHash;
@@ -15,18 +20,27 @@ public class CreateProfile extends AbstractEntity {
     private Long phoneNumber;
     private String emailAddress;
 
-    @OneToOne
-    private Fridge fridge;
+    @OneToMany
+    private List<Beer> beers;
 
     public CreateProfile() {
     }
 
-    public CreateProfile(String name, String password, Date birthdate, Long phoneNumber, String emailAddress) {
+    public CreateProfile(int userId, String name, String password, Date birthdate, Long phoneNumber, String emailAddress) {
+        this.userId=userId;
         this.name = name;
         this.pwHash = encoder.encode(password);
         this.birthdate = birthdate;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getName() {
