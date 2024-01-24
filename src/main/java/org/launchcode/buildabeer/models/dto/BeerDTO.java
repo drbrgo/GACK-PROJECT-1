@@ -1,16 +1,10 @@
-package org.launchcode.buildabeer.models;
+package org.launchcode.buildabeer.models.dto;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
+import org.launchcode.buildabeer.models.CreateProfile;
 
-@Entity
-public class Beer extends AbstractEntity{
-
-    @ManyToOne
-    @JoinColumn()
+public class BeerDTO {
+    @NotNull
     private CreateProfile createProfile;
 
     @NotNull
@@ -30,16 +24,18 @@ public class Beer extends AbstractEntity{
 
     private Integer listNumber;
 
-    private boolean favorite;
+    private Boolean favorite;
 
     private String username;
 
+//    private Integer userId;
+
+    //public BeerDTO() {}
 
 
-    public Beer() {}
+    public BeerDTO(String name, String tastingNotes, Double abv, String setting,
+                   String readingMaterial, String sockColor, Integer listNumber, Boolean favorite, String username, CreateProfile createProfile) {
 
-
-    public Beer( String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, boolean favorite, String username, CreateProfile createProfile) {
         this.name = name;
         this.tastingNotes = tastingNotes;
         this.abv = abv;
@@ -52,8 +48,7 @@ public class Beer extends AbstractEntity{
         this.createProfile = createProfile;
     }
 
-    //might not need setters for anything other than name. we'll see how Marleny creates the beer
-    //object with data from the form
+
     public String getName() {
         return name;
     }
@@ -77,15 +72,6 @@ public class Beer extends AbstractEntity{
     public void setAbv(Double abv) {
         this.abv = abv;
     }
-
-    public boolean isFavorite() {
-        return favorite;
-    }
-
-    public void setFavorite(boolean favorite) {
-        this.favorite = favorite;
-    }
-
 
     public String getSetting() {
         return setting;
@@ -119,12 +105,16 @@ public class Beer extends AbstractEntity{
         this.listNumber = listNumber;
     }
 
-    public String getUsername() {
-        return username;
+    public Boolean getFavorite() {
+        return favorite;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public CreateProfile getCreateProfile() {

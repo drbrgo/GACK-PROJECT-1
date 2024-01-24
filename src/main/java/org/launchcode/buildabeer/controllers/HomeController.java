@@ -2,6 +2,8 @@ package org.launchcode.buildabeer.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.launchcode.buildabeer.data.CreateProfileRepository;
+import org.launchcode.buildabeer.models.CreateProfile;
 import org.launchcode.buildabeer.models.User;
 import org.launchcode.buildabeer.models.dto.LoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +15,17 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.launchcode.buildabeer.data.UserRepository;
+import java.util.Optional;
 
 @Controller
 @CrossOrigin (origins = "http://localhost:3000")
+
 public class HomeController {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CreateProfileRepository createProfileRepository;
 
 //for use without react frontend
 //    @GetMapping
@@ -65,7 +72,7 @@ public class HomeController {
         //User theUser = new User (loginDTO.getUsername(), loginDTO.getPassword());
 
         //Look up user in database using username they provided in the form
-        User theUser = userRepository.findByUsername(loginDTO.getUsername());
+        CreateProfile theUser = createProfileRepository.findByName(loginDTO.getUsername());
 
         // Get the password the user supplied in the form
         String password = loginDTO.getPassword();
@@ -83,23 +90,19 @@ public class HomeController {
         }
             //otherwise, set user in session
             session.setAttribute("user", theUser);
-            System.out.println("your ass should be logged in now, but if it's not, the error is due to session setting" +
-                    "or headers");
+            //System.out.println("your ass should be logged in now, but if it's not, the error is due to session setting" +
+                   // "or headers"); it was due to headers -- cannot redirect from backend
             System.out.println(session.getId());
 
-            //use httpheaders to redirect to profile page
-            /*HttpHeaders headers = new HttpHeaders();
-            headers.add("Location", "/user/profile");
-            return new ResponseEntity<>(headers, HttpStatus.FOUND);*/
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add("Set-Cookie", "JSESSIONID=" + session.getId());
-            headers.add("Set-Cookie", "username=" + session.getAttribute(theUser.getUsername()));
+//            headers.add("Set-Cookie", "JSESSIONID=" + session.getId());
+            //headers.add("Set-Cookie", "username=" + session.getAttribute(theUser.getUsername()));
             //"; HttpOnly; SameSite=None; Secure
+            headers.add("User-ID", theUser.getName());
 
-            return ResponseEntity.ok().headers(headers).build();
 
-            //return new ResponseEntity<>(loginDTO, HttpStatus.OK);
+            return new ResponseEntity<>(theUser, HttpStatus.OK);
 
         //let's try to return a token!
         // generate toekn uncomment the below once spring security is g2g
@@ -122,5 +125,11 @@ public class HomeController {
 //        }
 //
 //    }
+    //use httpheaders to redirect to profile page
+            /*HttpHeaders headers = new HttpHeaders();
+            headers.add("Location", "/user/profile");
+            return new ResponseEntity<>(headers, HttpStatus.FOUND);*/
+    //return ResponseEntity.ok().headers(headers).build();
 
-    }
+
+}

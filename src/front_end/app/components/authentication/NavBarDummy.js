@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const NavBarDummy = () => {
     const [user, setUser] = useState(null);
 
     const webUrl = "http://localhost:8080/user/profile";
 
-    //what is the correct library for this module?
-   // const router = useRouter();
+    //what is the correct library for this module? next/navigation is the correct library
+    const router = useRouter();
 
     useEffect(() => {
         // fetch user info from backend
