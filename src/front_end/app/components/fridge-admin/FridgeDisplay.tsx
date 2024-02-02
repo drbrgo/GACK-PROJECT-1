@@ -25,9 +25,10 @@ export default function FridgeDisplay(props: any){
                 name: String(event.target.name.value),
                 abv: Number(event.target.abv.value),
                 tastingNotes: String(event.target.tastingNotes.value),
-                favorite: Boolean(event.target.favorite.value),
+                favorite: Boolean(event.target.favorite.checked),
                 username: usernameCookie
             }
+            
 
             fetch(webUrl + "/user/fridge/updateBeer/" + props.beer.id, {
             method: "PUT",
@@ -40,6 +41,7 @@ export default function FridgeDisplay(props: any){
             setBeer(prev => !prev)
         })
         console.log('Received data in FridgeDisplay:', props.beer);
+        console.log("outbound data", data)
         }
     return (
             <div  className="fridge"  > 

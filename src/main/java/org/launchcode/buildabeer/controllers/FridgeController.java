@@ -33,11 +33,11 @@ public class FridgeController {
 //        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
 //    }
 
-    @CrossOrigin
-    @GetMapping("/getBeers")
-    public ResponseEntity<?> getBeerObjects() {
-        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
-    }
+//    @CrossOrigin
+//    @GetMapping("/getBeers")
+//    public ResponseEntity<?> getBeerObjects() {
+//        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
+//    }
 
 
 

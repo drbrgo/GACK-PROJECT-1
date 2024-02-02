@@ -13,10 +13,11 @@ import java.util.List;
 
 public interface BeerRepository extends CrudRepository<Beer, Integer> {
     @Query( value = "SELECT beer.* FROM beer \n" +
-            "JOIN create_profile ON user_id= create_profile.id\n" +
+            "JOIN create_profile ON beer.user_id= create_profile.user_id\n" +
             "WHERE beer.username= :username", nativeQuery = true)
     List<Beer> findBeersByUsername(@Param("username") String username);
     Iterable<Beer> findByUsername(String username);
+    //changing join line from "JOIN create_profile ON user_id=  create_profile.id\n"
 //=======
 //public interface BeerRepository extends JpaRepository<Beer, Integer> {
 //    Iterable<Beer> findByUsername(String username);

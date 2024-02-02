@@ -47,8 +47,9 @@ public class CreateProfileController {
 
             // OTHERWISE, save new user info and hashed password in database
 
-            CreateProfile newProfile = new CreateProfile(createProfileDTO.getUserId(), createProfileDTO.getName(), createProfileDTO.getPassword(),
+            CreateProfile newProfile = new CreateProfile(createProfileDTO.getName(), createProfileDTO.getPassword(),
                     createProfileDTO.getBirthdate(), createProfileDTO.getPhoneNumber(), createProfileDTO.getEmailAddress());
+            //removed createProfileDTO.getUserId()
 
             createProfileRepository.save(newProfile);
             return new ResponseEntity<>(createProfileDTO, HttpStatus.OK);
