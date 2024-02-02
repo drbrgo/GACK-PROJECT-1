@@ -8,9 +8,9 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class Beer extends AbstractEntity{
 
-//    @ManyToOne
-//    @JoinColumn(name = "fridge_id")
-//    private Fridge fridge;
+    @ManyToOne
+    @JoinColumn()
+    private CreateProfile createProfile;
 
     @NotNull
     private String name;
@@ -38,7 +38,7 @@ public class Beer extends AbstractEntity{
     public Beer() {}
 
 
-    public Beer(String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, boolean favorite, String username, Integer userId) {
+    public Beer(String name, String tastingNotes, Double abv, String setting, String readingMaterial, String sockColor, Integer listNumber, boolean favorite, String username, Integer userId, CreateProfile createProfile) {
 //        this.fridge = fridge;
         this.name = name;
         this.tastingNotes = tastingNotes;
@@ -50,6 +50,7 @@ public class Beer extends AbstractEntity{
         this.favorite = favorite;
         this.username = username;
         this.userId = userId;
+        this.createProfile = createProfile;
     }
 
     //might not need setters for anything other than name. we'll see how Marleny creates the beer
