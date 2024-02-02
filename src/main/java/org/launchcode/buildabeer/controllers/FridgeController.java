@@ -73,17 +73,20 @@ public class FridgeController {
     }
     @CrossOrigin
     @DeleteMapping("/removeBeer/{id}")
-    public ResponseEntity<?> removeBeer(@PathVariable int id){
+    public ResponseEntity<?> removeBeer(@PathVariable int id, @RequestBody String username){
         Optional<Beer> removeBeer = beerRepository.findById(id);
 
         if(removeBeer.isPresent()){
             beerRepository.delete(removeBeer.get());
         }
-        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(beerRepository.findByUsername(username), HttpStatus.OK);
     }
 
     @PutMapping("/updateBeer/{id}")
     public ResponseEntity<?> updateBeer(@PathVariable int id, @RequestBody BeerDTO beerDTO){
+
+        String username = beerDTO.getUsername();
+
 
         Optional<Beer> updateBeer = beerRepository.findById(id);
 
@@ -95,6 +98,6 @@ public class FridgeController {
             beerRepository.save(updateBeer.get());
         }
 
-        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(beerRepository.findByUsername(username), HttpStatus.OK);
     }
 }
