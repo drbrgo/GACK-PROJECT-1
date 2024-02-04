@@ -26,18 +26,39 @@ public class FridgeController {
     private BeerRepository beerRepository;
 
 
-    @CrossOrigin
-    @GetMapping("/getBeers")
-    public ResponseEntity<?> getBeerObjects() {
-        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
-    }
+
+//    @CrossOrigin
+//    @GetMapping("/getBeers")
+//    public ResponseEntity<?> getBeerObjects() {
+//        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
+//    }
+
+//    @CrossOrigin
+//    @GetMapping("/getBeers")
+//    public ResponseEntity<?> getBeerObjects() {
+//        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
+//    }
+
 
 
     @CrossOrigin
     @GetMapping("/getBeers/{username}")
     public ResponseEntity<?> getBeerObjectsByUsername(@PathVariable String username){
-        return new ResponseEntity<>(beerRepository.findBeersByUsername(username), HttpStatus.OK); }
+        return new ResponseEntity<>(beerRepository.findByUsername(username), HttpStatus.OK);
 
+    }
+
+    @CrossOrigin
+    @GetMapping("/getBeers/guest/")
+    public ResponseEntity<?> getGuestBeerObjectsByUsername(@RequestParam String username){
+
+        if(beerRepository.findBeersByUsername(username).isEmpty()){
+            System.out.println("Your friend, " + username + " has yet to start brewing!");
+        }
+        System.out.println(beerRepository.findBeersByUsername(username));
+        return new ResponseEntity<>(beerRepository.findByUsername(username), HttpStatus.OK);
+
+    }
     @CrossOrigin
     @DeleteMapping("/removeBeer/{id}")
     public ResponseEntity<?> removeBeer(@PathVariable int id, @RequestBody String username ){

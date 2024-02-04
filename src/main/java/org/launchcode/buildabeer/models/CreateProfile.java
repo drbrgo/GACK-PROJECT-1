@@ -26,8 +26,8 @@ public class CreateProfile {
     public CreateProfile() {
     }
 
-    public CreateProfile(int userId, String name, String password, Date birthdate, Long phoneNumber, String emailAddress) {
-        this.userId=userId;
+    public CreateProfile(String name, String password, Date birthdate, Long phoneNumber, String emailAddress) {
+//        this.userId=userId;
         this.name = name;
         this.pwHash = encoder.encode(password);
         this.birthdate = birthdate;
@@ -39,9 +39,9 @@ public class CreateProfile {
         return userId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+//    public void setUserId(int userId) {
+//        this.userId = userId;
+//    }
 
     public String getName() {
         return name;

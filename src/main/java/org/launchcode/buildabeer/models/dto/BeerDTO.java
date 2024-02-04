@@ -1,9 +1,14 @@
 package org.launchcode.buildabeer.models.dto;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import org.launchcode.buildabeer.models.CreateProfile;
 
+
 public class BeerDTO {
+
     @NotNull
     private CreateProfile createProfile;
 
