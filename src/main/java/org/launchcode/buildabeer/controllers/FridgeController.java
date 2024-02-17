@@ -84,6 +84,8 @@ public class FridgeController {
             beerRepository.save(updateBeer.get());
         }
 //        return new ResponseEntity<>(beerRepository.findAll(), HttpStatus.OK);
-        return new ResponseEntity<>(beerRepository.findBeersByUsername(username), HttpStatus.OK);
+        System.out.println(username);
+        System.out.println(beerRepository.findBeersByUsername(username));
+        return new ResponseEntity<>(beerRepository.findByUsername(username), HttpStatus.OK);
     }
 }

@@ -42,6 +42,7 @@ export default function FridgeDisplay(props: any){
         })
         console.log('Received data in FridgeDisplay:', props.beer);
         console.log("outbound data", data)
+        console.log("username: ", usernameCookie)
         }
     return (
             <div  className="fridge"  > 
